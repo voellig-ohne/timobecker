@@ -3,6 +3,8 @@ import { Link } from 'react-router'
 import { prefixLink } from 'gatsby-helpers'
 import DocumentTitle from 'react-document-title'
 import { config } from 'config'
+import Logo from './_logo'
+
 
 export default class Index extends React.Component {
     render () {
@@ -10,6 +12,7 @@ export default class Index extends React.Component {
             <DocumentTitle title={config.siteTitle}>
                 <div>
                     yehu
+                    <Logo />
                 </div>
             </DocumentTitle>
         )
