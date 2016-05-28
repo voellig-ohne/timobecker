@@ -1,5 +1,4 @@
 import React from 'react'
-import 'css/markdown-styles.css'
 import DocumentTitle from 'react-document-title'
 import { config } from 'config'
 
