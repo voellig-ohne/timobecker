@@ -10,11 +10,11 @@ module.exports = React.createClass({
         p.setup(this._canvas)
 
         const points = [
-            [100, 120],
-            [250, 160],
-            [110, 250],
-            [300, 300],
-            [330, 120]
+            [120, 30],
+            [200, 160],
+            [110, 190],
+            [30, 150],
+            [50, 70],
         ]
 
         this.initPaint(p)
