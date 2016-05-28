@@ -1,11 +1,12 @@
 import React from 'react'
 
-import p from 'paper'
+import paper from 'paper'
 import { prefixLink } from 'gatsby-helpers'
 import { config } from 'config'
 
 module.exports = React.createClass({
     componentDidMount() {
+        const p = new paper.PaperScope();
         p.setup(this._canvas)
 
         const points = [
@@ -18,8 +19,20 @@ module.exports = React.createClass({
 
         this.initPaint(p)
         this.drawPoints(p, points)
+        this.drawLine(p, points, this.props.order)
 
         p.view.draw()
+    },
+
+    drawLine (p, points, order) {
+        const line = new p.Path()
+        line.strokeColor = 'black'
+        line.closed = true
+
+        order.forEach((index) => {
+            console.log(points[index])
+            line.add(new p.Point(points[index]))
+        })
     },
 
     drawPoints (p, points) {
@@ -27,12 +40,16 @@ module.exports = React.createClass({
         	center: [0, 0],
         	radius: 5,
         	fillColor: 'black'
-        });
+        })
 
         const symbol = new p.Symbol(dot);
 
-        const circles = points.map((point) => {
-            return symbol.place(point)
+        const circles = points.forEach((point, index) => {
+            console.log(index, point)
+            const pPoint = new p.Point(point)
+            const label = new p.PointText(pPoint.add([-15,-8]))
+            label.content = index
+            symbol.place(point)
         })
     },
 
@@ -57,8 +74,9 @@ module.exports = React.createClass({
     render () {
         return (
             <canvas ref={(c) => this._canvas = c}
-                width='500'
-                height='500' />
+                width='220'
+                height='220'
+                className={this.props.className} />
         )
     }
 })
