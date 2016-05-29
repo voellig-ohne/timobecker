@@ -9,11 +9,19 @@ import 'style/main.less'
 
 export default class Index extends React.Component {
     render () {
-        const dotCount = 5
+
+        const points = [
+            [120, 30],
+            [200, 160],
+            [110, 190],
+            [30, 150],
+            [50, 70],
+            [100, 120]
+        ]
 
         const automatedOrders = [];
 
-        const orders = permuteWrapper([0,1,2,3,4]);
+        const orders = generatePermutations(points.length);
 
         const ordersWithoutLoops = orders;
 
@@ -57,6 +65,7 @@ export default class Index extends React.Component {
                     <h2>{title}</h2>
                     <Logo
                         className="tb_logo"
+                        points={points}
                         order={order} />
                 </div>
             )
@@ -74,7 +83,13 @@ export default class Index extends React.Component {
 }
 
 // http://stackoverflow.com/questions/9960908/permutations-in-javascript
-function permuteWrapper (input) {
+function generatePermutations (length) {
+    const input = []
+
+    for (let i = 0; i < length; i++) {
+        input.push(i)
+    }
+
     const permArr = []
     const usedChars = []
 

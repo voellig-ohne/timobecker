@@ -8,14 +8,7 @@ module.exports = React.createClass({
     componentDidMount() {
         const p = new paper.PaperScope();
         p.setup(this._canvas)
-
-        const points = [
-            [120, 30],
-            [200, 160],
-            [110, 190],
-            [30, 150],
-            [50, 70],
-        ]
+        const points = this.props.points
 
         this.initPaint(p)
         this.drawPoints(p, points)
