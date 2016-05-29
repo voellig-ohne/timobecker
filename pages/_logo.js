@@ -30,7 +30,6 @@ module.exports = React.createClass({
         line.closed = true
 
         order.forEach((index) => {
-            console.log(points[index])
             line.add(new p.Point(points[index]))
         })
     },
@@ -45,7 +44,6 @@ module.exports = React.createClass({
         const symbol = new p.Symbol(dot);
 
         const circles = points.forEach((point, index) => {
-            console.log(index, point)
             const pPoint = new p.Point(point)
             const label = new p.PointText(pPoint.add([-15,-8]))
             label.content = index
