@@ -42,7 +42,8 @@ export default class Index extends React.Component {
 
             for (let i = 0; i < ordering.length; i++) {
                 shifted = shiftOrder(shifted)
-                const shiftedReverse = shifted.split('').reverse().join()
+                const shiftedReverse = shifted.split('').reverse().join('')
+
                 ordersString.splice(ordersString.indexOf(shifted), 1)
                 ordersString.splice(ordersString.indexOf(shiftedReverse), 1)
             }
@@ -74,7 +75,7 @@ export default class Index extends React.Component {
         return (
             <DocumentTitle title={config.siteTitle}>
                 <div>
-                    <h1>{uniques.length} variations: </h1>
+                    <h1>{points.length} points, {uniques.length} variations: </h1>
                     {logos}
                 </div>
             </DocumentTitle>
