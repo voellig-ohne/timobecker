@@ -4,6 +4,12 @@ import paper from 'paper'
 import { prefixLink } from 'gatsby-helpers'
 import { config } from 'config'
 
+const BLEND_MODE = 'multiply'
+
+const COLOR_PEN = '#0625D4'
+const COLOR_DOT = '#FF9800'
+const COLOR_LINE = '#4CAF50'
+
 module.exports = React.createClass({
     componentDidMount() {
         const p = new paper.PaperScope();
@@ -19,8 +25,9 @@ module.exports = React.createClass({
 
     drawLine (p, points, order) {
         const line = new p.Path()
-        line.strokeColor = 'black'
+        line.strokeColor = COLOR_LINE
         line.closed = true
+        line.blendMode = BLEND_MODE
 
         order.forEach((index) => {
             line.add(new p.Point(points[index]))
@@ -28,10 +35,13 @@ module.exports = React.createClass({
     },
 
     drawPoints (p, points) {
+        const color = new p.Color(COLOR_DOT)
+
         const dot = new p.Path.Circle({
         	center: [0, 0],
         	radius: 5,
-        	fillColor: 'black'
+        	fillColor: color,
+            blendMode: BLEND_MODE
         })
 
         const symbol = new p.Symbol(dot);
@@ -52,13 +62,16 @@ module.exports = React.createClass({
 
         function onMouseDown(event) {
             const path = new p.Path()
-            path.strokeColor = 'red'
+            path.strokeColor = new p.Color(COLOR_PEN)
+            path.blendMode = BLEND_MODE
             path.add(event.point)
+            path.strokeWidth = 3;
             paths.push(path)
         }
 
         function onMouseDrag (event) {
             paths[paths.length - 1].add(event.point)
+            paths[paths.length - 1].smooth()
         }
     },
 
