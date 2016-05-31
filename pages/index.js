@@ -16,7 +16,8 @@ export default class Index extends React.Component {
             [110, 190],
             [30, 150],
             [50, 70],
-            [100, 120]
+            [100, 120],
+            [20, 20]
         ]
 
         const automatedOrders = [];
