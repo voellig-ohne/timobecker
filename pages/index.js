@@ -22,9 +22,13 @@ export default class Index extends React.Component {
 
         const uniques = []
 
+        const groups = {}
+        const grouped = {}
+
         while (ordersString.length !== 0) {
             const ordering = ordersString[0]
-            const duplicateGroup = []
+            const duplicates = []
+
             let shifted = ordering
 
             uniques.push(ordering.split(''))
@@ -33,9 +37,17 @@ export default class Index extends React.Component {
                 shifted = shiftOrder(shifted)
                 const shiftedReverse = shifted.split('').reverse().join('')
 
-                ordersString.splice(ordersString.indexOf(shifted), 1)
-                ordersString.splice(ordersString.indexOf(shiftedReverse), 1)
+                const doup = ordersString.splice(ordersString.indexOf(shifted), 1)[0]
+                const doupReverse = ordersString.splice(ordersString.indexOf(shiftedReverse), 1)[0]
+
+                groups[doup] = ordering
+                groups[doupReverse] = ordering
+
+                duplicates.push(doup)
+                duplicates.push(doupReverse)
             }
+
+            grouped[ordering] = duplicates
         }
 
         function shiftOrder (order) {
