@@ -68,7 +68,9 @@ export default class Index extends React.Component {
                     <Logo
                         className="tb_logo"
                         points={points}
-                        order={order} />
+                        order={order}
+                        width={200}
+                        height={200} />
                 </div>
             )
         })
