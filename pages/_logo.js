@@ -6,7 +6,7 @@ import { config } from 'config'
 
 const BLEND_MODE = 'multiply'
 
-const COLOR_PEN = '#0625D4'
+const COLOR_PEN = '#b82020'
 const COLOR_DOT = 'black'
 const COLOR_LINE = 'black'
 
