@@ -70,7 +70,7 @@ export default class Index extends React.Component {
                         points={points}
                         order={order}
                         size={200}
-                        margin={33} />
+                        margin={20} />
                 </div>
             )
         })

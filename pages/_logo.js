@@ -22,11 +22,12 @@ module.exports = React.createClass({
         this.SIZES_RELATIVE = _.mapValues(SIZES, (size) => {
             return this.getRelativeValue(size)
         })
+        const relativeMargin = this.getRelativeValue(this.props.margin)
 
         const points = this.props.points.map((point) => {
             return point.map((position) => {
                 const withoutMargin = this.getRelativeValue(position)
-                return this.props.margin + (withoutMargin / 100 * (100 - this.props.margin))
+                return relativeMargin + (withoutMargin / 100 * (100 - this.props.margin * 2))
             })
         })
 
