@@ -11,17 +11,25 @@ const COLOR_PEN = '#b82020'
 const COLOR_DOT = 'black'
 const COLOR_LINE = 'black'
 
-const POINT_SIZE = 2.5;
-
-const PEN_STROKE_WIDTH = 3;
-
-const LINE_STROKE_WIDTH = 5;
+const SIZES = {
+    POINT_RADIUS: 1,
+    PEN_STROKE_WIDTH: 1,
+    LINE_STROKE_WIDTH: 2
+}
 
 module.exports = React.createClass({
     componentDidMount() {
+        this.SIZES_RELATIVE = _.mapValues(SIZES, (size) => {
+            return this.getRelativeValue(size)
+        })
+
         const p = new paper.PaperScope();
         p.setup(this._canvas)
-        const points = this.props.points
+        const points = this.props.points.map((point) => {
+            return point.map((position) => {
+                return this.getRelativeValue(position)
+            })
+        })
 
         this.initPaint(p)
         this.drawPoints(p, points)
@@ -35,7 +43,7 @@ module.exports = React.createClass({
         line.strokeColor = COLOR_LINE
         line.closed = true
         line.blendMode = BLEND_MODE
-        line.strokeWidth = LINE_STROKE_WIDTH
+        line.strokeWidth = this.SIZES_RELATIVE.LINE_STROKE_WIDTH
         line.strokeJoin = 'round'
 
         order.forEach((index) => {
@@ -48,7 +56,7 @@ module.exports = React.createClass({
 
         const dot = new p.Path.Circle({
         	center: [0, 0],
-        	radius: POINT_SIZE,
+        	radius: this.SIZES_RELATIVE.POINT_RADIUS,
         	fillColor: color,
             blendMode: BLEND_MODE
         })
@@ -63,9 +71,14 @@ module.exports = React.createClass({
         })
     },
 
+    getRelativeValue (value) {
+        return value / 100 * this.props.size
+    },
+
     initPaint (p) {
         let paths = []
         const painter = new p.Tool()
+        const strokeWidth = this.SIZES_RELATIVE.PEN_STROKE_WIDTH
         painter.onMouseDown = onMouseDown
         painter.onMouseDrag = onMouseDrag
 
@@ -74,7 +87,7 @@ module.exports = React.createClass({
             path.strokeColor = new p.Color(COLOR_PEN)
             path.blendMode = BLEND_MODE
             path.add(event.point)
-            path.strokeWidth = PEN_STROKE_WIDTH;
+            path.strokeWidth = strokeWidth
             paths.push(path)
         }
 
