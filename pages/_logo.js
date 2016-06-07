@@ -86,8 +86,8 @@ module.exports = React.createClass({
     render () {
         return (
             <canvas ref={(c) => this._canvas = c}
-                width={this.props.width}
-                height={this.props.height}
+                width={this.props.size}
+                height={this.props.size}
                 className={this.props.className} />
         )
     }
