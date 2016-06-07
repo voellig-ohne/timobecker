@@ -12,9 +12,9 @@ export default class Index extends React.Component {
 
         const points = [
             [0, 0],
-            [100, 5],
-            [60, 90],
-            [30, 50],
+            [100, 100],
+            [0, 100],
+            [100, 0],
             [40, 95],
             [70, 30],
             [20, 20]
@@ -69,7 +69,8 @@ export default class Index extends React.Component {
                         className="tb_logo"
                         points={points}
                         order={order}
-                        size={200} />
+                        size={200}
+                        margin={33} />
                 </div>
             )
         })

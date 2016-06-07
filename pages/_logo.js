@@ -23,13 +23,15 @@ module.exports = React.createClass({
             return this.getRelativeValue(size)
         })
 
-        const p = new paper.PaperScope();
-        p.setup(this._canvas)
         const points = this.props.points.map((point) => {
             return point.map((position) => {
-                return this.getRelativeValue(position)
+                const withoutMargin = this.getRelativeValue(position)
+                return this.props.margin + (withoutMargin / 100 * (100 - this.props.margin))
             })
         })
+
+        const p = new paper.PaperScope();
+        p.setup(this._canvas)
 
         this.initPaint(p)
         this.drawPoints(p, points)
