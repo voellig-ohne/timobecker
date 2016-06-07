@@ -4,26 +4,14 @@ import { prefixLink } from 'gatsby-helpers'
 import DocumentTitle from 'react-document-title'
 import { config } from 'config'
 import Logo from './_logo'
+import POINTS from './_points'
 
 import 'style/main.less'
 
 export default class Index extends React.Component {
     render () {
-
-        const points = [
-            [0, 0],
-            [100, 100],
-            [0, 100],
-            [100, 0],
-            [40, 95],
-            [70, 30],
-            [20, 20]
-        ]
-
-        const automatedOrders = [];
-
-        const orders = generatePermutations(points.length);
-
+        const automatedOrders = []
+        const orders = generatePermutations(POINTS.length)
         const ordersWithoutLoops = orders;
 
         let duplicatesDisplay;
@@ -67,7 +55,7 @@ export default class Index extends React.Component {
                     <h2>{title}</h2>
                     <Logo
                         className="tb_logo"
-                        points={points}
+                        points={POINTS}
                         order={order}
                         size={200}
                         margin={20} />
@@ -78,7 +66,7 @@ export default class Index extends React.Component {
         return (
             <DocumentTitle title={config.siteTitle}>
                 <div>
-                    <h1>{points.length} points, {uniques.length} variations: </h1>
+                    <h1>{POINTS.length} POINTS, {uniques.length} variations: </h1>
                     {logos}
                 </div>
             </DocumentTitle>
