@@ -5,14 +5,16 @@ import DocumentTitle from 'react-document-title'
 import { config } from 'config'
 import Logo from './_logo'
 import POINTS from './_points'
-import findPaths from './_findPaths'
+//import findPaths from './_findPaths'
+import PATHS from './_renderedPaths7.json'
 
 import 'style/main.less'
 
 export default class Index extends React.Component {
     render () {
-        const paths = findPaths(POINTS.length)
-        const uniques = paths.uniques
+        // const paths = findPaths(POINTS.length)
+
+        const uniques = PATHS.uniques
 
         const logos = uniques.map((order, index) => {
             const title = order.map((i) => {
