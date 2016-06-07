@@ -66,10 +66,12 @@ module.exports = React.createClass({
 
         const symbol = new p.Symbol(dot);
 
-        const circles = points.forEach((point, index) => {
-            const pPoint = new p.Point(point)
-            const label = new p.PointText(pPoint.add([-15,-8]))
-            label.content = index
+        points.forEach((point, index) => {
+            if (this.props.showLabels) {
+                const pPoint = new p.Point(point)
+                const label = new p.PointText(pPoint.add([-15,-8]))
+                label.content = index
+            }
             symbol.place(point)
         })
     },

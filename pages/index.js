@@ -58,7 +58,8 @@ export default class Index extends React.Component {
                         points={POINTS}
                         order={order}
                         size={200}
-                        margin={20} />
+                        margin={20}
+                        showLabels={false} />
                 </div>
             )
         })
