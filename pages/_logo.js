@@ -7,8 +7,14 @@ import { config } from 'config'
 const BLEND_MODE = 'multiply'
 
 const COLOR_PEN = '#0625D4'
-const COLOR_DOT = '#FF9800'
-const COLOR_LINE = '#4CAF50'
+const COLOR_DOT = 'black'
+const COLOR_LINE = 'black'
+
+const POINT_SIZE = 2.5;
+
+const PEN_STROKE_WIDTH = 3;
+
+const LINE_STROKE_WIDTH = 5;
 
 module.exports = React.createClass({
     componentDidMount() {
@@ -28,6 +34,8 @@ module.exports = React.createClass({
         line.strokeColor = COLOR_LINE
         line.closed = true
         line.blendMode = BLEND_MODE
+        line.strokeWidth = LINE_STROKE_WIDTH
+        line.strokeJoin = 'round'
 
         order.forEach((index) => {
             line.add(new p.Point(points[index]))
@@ -39,7 +47,7 @@ module.exports = React.createClass({
 
         const dot = new p.Path.Circle({
         	center: [0, 0],
-        	radius: 5,
+        	radius: POINT_SIZE,
         	fillColor: color,
             blendMode: BLEND_MODE
         })
@@ -65,7 +73,7 @@ module.exports = React.createClass({
             path.strokeColor = new p.Color(COLOR_PEN)
             path.blendMode = BLEND_MODE
             path.add(event.point)
-            path.strokeWidth = 3;
+            path.strokeWidth = PEN_STROKE_WIDTH;
             paths.push(path)
         }
 
