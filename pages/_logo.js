@@ -18,39 +18,54 @@ const SIZES = {
 }
 
 module.exports = React.createClass({
+    init() {
+        if (this.props.order) {
+            this.drawLine(this.PaperScope, this.points, this.props.order)
+        }
+        this.PaperScope.view.draw()
+    },
+
     componentDidMount() {
         this.SIZES_RELATIVE = _.mapValues(SIZES, (size) => {
             return this.getRelativeValue(size)
         })
-        const relativeMargin = this.getRelativeValue(this.props.margin)
+        this.relativeMargin = this.getRelativeValue(this.props.margin)
 
-        const points = this.props.points.map((point) => {
+        this.points = this.props.points.map((point) => {
             return point.map((position) => {
                 const withoutMargin = this.getRelativeValue(position)
-                return relativeMargin + (withoutMargin / 100 * (100 - this.props.margin * 2))
+                return this.relativeMargin + (withoutMargin / 100 * (100 - this.props.margin * 2))
             })
         })
 
-        const p = new paper.PaperScope();
-        p.setup(this._canvas)
+        this.PaperScope = new paper.PaperScope();
+        this.PaperScope.setup(this._canvas)
 
-        this.initPaint(p)
-        this.drawPoints(p, points)
-        this.drawLine(p, points, this.props.order)
+        this.initPaint(this.PaperScope)
+        this.drawPoints(this.PaperScope, this.points)
 
-        p.view.draw()
+        this.init()
+    },
+
+    componentDidUpdate() {
+        this.init()
     },
 
     drawLine (p, points, order) {
-        const line = new p.Path()
-        line.strokeColor = COLOR_LINE
-        line.closed = true
-        line.blendMode = BLEND_MODE
-        line.strokeWidth = this.SIZES_RELATIVE.LINE_STROKE_WIDTH
-        line.strokeJoin = 'round'
+
+        if (!this.line) {
+            this.line = new p.Path()
+            this.line.strokeColor = COLOR_LINE
+            this.line.closed = true
+            this.line.blendMode = BLEND_MODE
+            this.line.strokeWidth = this.SIZES_RELATIVE.LINE_STROKE_WIDTH
+            this.line.strokeJoin = 'round'
+        } else {
+            this.line.removeSegments()
+        }
 
         order.forEach((index) => {
-            line.add(new p.Point(points[index]))
+            this.line.add(new p.Point(points[index]))
         })
     },
 
@@ -64,7 +79,7 @@ module.exports = React.createClass({
             blendMode: BLEND_MODE
         })
 
-        const symbol = new p.Symbol(dot);
+        const symbol = new p.Symbol(dot)
 
         points.forEach((point, index) => {
             if (this.props.showLabels) {
@@ -104,10 +119,12 @@ module.exports = React.createClass({
 
     render () {
         return (
-            <canvas ref={(c) => this._canvas = c}
-                width={this.props.size}
-                height={this.props.size}
-                className={this.props.className} />
+            <div>
+                <canvas ref={(c) => this._canvas = c}
+                    width={this.props.size}
+                    height={this.props.size}
+                    className={this.props.className} />
+            </div>
         )
     }
 })
