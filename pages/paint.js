@@ -52,8 +52,8 @@ export default class Index extends React.Component {
                     <Logo className="tb_logo"
                             points={POINTS}
                             order={this.state.activePath}
-                            size={200}
                             painting={this.state.activePath && this.paintings[this.state.activePath.join('')]}
+                            size={400}
                             margin={20}
                             showLabels={false}
                             painted={this.handlePaint.bind(this)} />
