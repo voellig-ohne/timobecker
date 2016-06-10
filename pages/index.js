@@ -16,6 +16,14 @@ export default class Index extends React.Component {
                     <Link to={prefixLink('/list/')}>
                         liste aller kombinationen
                     </Link>
+                    <br />
+                    <Link to={prefixLink('/paint/')}>
+                        malen!
+                    </Link>
+                    <br />
+                    <Link to={prefixLink('/connect/')}>
+                        vebinden!
+                    </Link>
                 </div>
             </DocumentTitle>
         )
