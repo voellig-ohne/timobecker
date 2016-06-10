@@ -17,9 +17,15 @@ export default class Index extends React.Component {
             activePath: undefined
         }
         this.handleClick = this.handleClick.bind(this);
+        this.paintings = {}
     }
     handleClick(path) {
         this.setState({activePath: path});
+    }
+    handlePaint(paths) {
+        if (this.state.activePath) {
+            this.paintings[this.state.activePath.join('')] = paths
+        }
     }
     render () {
         const pathList = PATHS.uniques.map((path) => {
@@ -47,8 +53,10 @@ export default class Index extends React.Component {
                             points={POINTS}
                             order={this.state.activePath}
                             size={200}
+                            painting={this.state.activePath && this.paintings[this.state.activePath.join('')]}
                             margin={20}
-                            showLabels={false} />
+                            showLabels={false}
+                            painted={this.handlePaint.bind(this)} />
                     <ul className="paint-list">
                         {pathList}
                     </ul>

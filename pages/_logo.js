@@ -22,6 +22,7 @@ module.exports = React.createClass({
         if (this.props.order) {
             this.drawLine(this.PaperScope, this.points, this.props.order)
         }
+        this.initPaint(this.PaperScope)
         this.PaperScope.view.draw()
     },
 
@@ -41,7 +42,6 @@ module.exports = React.createClass({
         this.PaperScope = new paper.PaperScope();
         this.PaperScope.setup(this._canvas)
 
-        this.initPaint(this.PaperScope)
         this.drawPoints(this.PaperScope, this.points)
 
         this.init()
@@ -96,11 +96,26 @@ module.exports = React.createClass({
     },
 
     initPaint (p) {
-        let paths = []
-        const painter = new p.Tool()
+
+        const paths = this.props.painting || []
         const strokeWidth = this.SIZES_RELATIVE.PEN_STROKE_WIDTH
-        painter.onMouseDown = onMouseDown
-        painter.onMouseDrag = onMouseDrag
+        const that = this;
+
+        if (!this.painter) {
+            this.painter = new p.Tool()
+        }
+
+        if (this.paintGroup) {
+            this.paintGroup.removeChildren()
+        } else {
+            this.paintGroup = new p.Group()
+        }
+
+        this.paintGroup.addChildren(paths)
+
+        this.painter.onMouseDown = onMouseDown
+        this.painter.onMouseDrag = onMouseDrag
+        this.painter.onMouseUp = onMouseUp
 
         function onMouseDown(event) {
             const path = new p.Path()
@@ -114,6 +129,11 @@ module.exports = React.createClass({
         function onMouseDrag (event) {
             paths[paths.length - 1].add(event.point)
             paths[paths.length - 1].smooth()
+        }
+
+        function onMouseUp (event) {
+            that.paintGroup.addChild(paths[paths.length - 1])
+            that.props.painted(paths);
         }
     },
 
