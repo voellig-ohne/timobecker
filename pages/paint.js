@@ -27,6 +27,16 @@ export default class Index extends React.Component {
             this.paintings[this.state.activePath.join('')] = paths
         }
     }
+    handleTextAreaChange(event) {
+        // console.log(this)
+        this.paintings = JSON.parse(event.target.value);
+        console.log(JSON.parse(event.target.value))
+        console.log(this.paintings)
+        // console.log(JSON.parse(event.target.value))
+    }
+    exportPaintings () {
+        console.log('exporting')
+    }
     render () {
         const pathList = PATHS.uniques.map((path) => {
             const boundClick = this.handleClick.bind(null, path)
@@ -57,9 +67,20 @@ export default class Index extends React.Component {
                             margin={20}
                             showLabels={false}
                             painted={this.handlePaint.bind(this)} />
+                    <textarea
+                        onChange={this.handleTextAreaChange.bind(this)}>
+                    </textarea>
+                    <div className="paint_output">
+                        {JSON.stringify(this.paintings)}
+                    </div>
+                    <button onClick={this.exportPaintings.bind(this)}>
+                        export
+                    </button>
+                    <br />
                     <ul className="paint-list">
                         {pathList}
                     </ul>
+
                 </div>
             </DocumentTitle>
         )
