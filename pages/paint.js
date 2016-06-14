@@ -69,6 +69,7 @@ export default class Index extends React.Component {
                 <div>
                     <h1>Malen, Timo.</h1>
                     selected: {activePath}
+                    <br />
 
                     <Logo className="tb_logo"
                             points={POINTS}
@@ -78,6 +79,7 @@ export default class Index extends React.Component {
                             margin={20}
                             showLabels={false}
                             painted={this.handlePaint.bind(this)} />
+                    <br />
                     <input type="file" id="files" name="files[]" onChange={this.handleImport.bind(this)} />
                     <br />
                     <button onClick={this.exportPaintings.bind(this)}>
