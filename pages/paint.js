@@ -27,15 +27,26 @@ export default class Index extends React.Component {
             this.paintings[this.state.activePath.join('')] = paths
         }
     }
-    handleTextAreaChange(event) {
-        // console.log(this)
-        this.paintings = JSON.parse(event.target.value);
-        console.log(JSON.parse(event.target.value))
-        console.log(this.paintings)
-        // console.log(JSON.parse(event.target.value))
-    }
     exportPaintings () {
-        console.log('exporting')
+        const downloadElement = document.createElement("a")
+        const file = new Blob([JSON.stringify(this.paintings)], {type: 'text/plain'})
+        downloadElement.href = URL.createObjectURL(file)
+        downloadElement.download = 'paintings.json';
+        downloadElement.click();
+    }
+    handleImport (event) {
+        const reader = new FileReader()
+        const file = event.target.files[0]
+        const that = this;
+
+        reader.onload = (function() {
+            return function(e) {
+                const imported = JSON.parse(e.target.result)
+                that.paintings = imported
+            };
+        })(file);
+
+        reader.readAsText(file)
     }
     render () {
         const pathList = PATHS.uniques.map((path) => {
@@ -67,12 +78,8 @@ export default class Index extends React.Component {
                             margin={20}
                             showLabels={false}
                             painted={this.handlePaint.bind(this)} />
-                    <textarea
-                        onChange={this.handleTextAreaChange.bind(this)}>
-                    </textarea>
-                    <div className="paint_output">
-                        {JSON.stringify(this.paintings)}
-                    </div>
+                    <input type="file" id="files" name="files[]" onChange={this.handleImport.bind(this)} />
+                    <br />
                     <button onClick={this.exportPaintings.bind(this)}>
                         export
                     </button>
