@@ -97,7 +97,7 @@ module.exports = React.createClass({
 
     initPaint (p) {
 
-        const paths = this.props.painting || []
+        const paths = []
         const strokeWidth = this.SIZES_RELATIVE.PEN_STROKE_WIDTH
         const that = this;
 
@@ -109,6 +109,10 @@ module.exports = React.createClass({
             this.paintGroup.removeChildren()
         } else {
             this.paintGroup = new p.Group()
+        }
+
+        if (this.props.painting) {
+            this.paintGroup.importJSON(this.props.painting)
         }
 
         this.paintGroup.addChildren(paths)
@@ -133,7 +137,7 @@ module.exports = React.createClass({
 
         function onMouseUp (event) {
             that.paintGroup.addChild(paths[paths.length - 1])
-            that.props.painted(paths);
+            that.props.painted(that.paintGroup.exportJSON());
         }
     },
 
