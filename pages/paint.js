@@ -71,14 +71,16 @@ export default class Index extends React.Component {
                     selected: {activePath}
                     <br />
 
-                    <Logo className="tb_logo"
-                            points={POINTS}
-                            order={this.state.activePath}
-                            painting={this.state.activePath && this.paintings[this.state.activePath.join('')]}
-                            size={400}
-                            margin={20}
-                            showLabels={false}
-                            painted={this.handlePaint.bind(this)} />
+                    <div className="logo_container">
+                        <Logo className="tb_logo"
+                                points={POINTS}
+                                order={this.state.activePath}
+                                painting={this.state.activePath && this.paintings[this.state.activePath.join('')]}
+                                size={400}
+                                margin={20}
+                                showLabels={false}
+                                painted={this.handlePaint.bind(this)} />
+                    </div>
                     <br />
                     <input type="file" id="files" name="files[]" onChange={this.handleImport.bind(this)} />
                     <br />
