@@ -1,7 +1,6 @@
 import React from 'react'
 import _ from 'lodash'
 
-import paper from 'paper'
 import { prefixLink } from 'gatsby-helpers'
 import { config } from 'config'
 
@@ -15,6 +14,12 @@ const SIZES = {
     POINT_RADIUS: 1,
     PEN_STROKE_WIDTH: 1,
     LINE_STROKE_WIDTH: 2
+}
+
+// only conditionally import paperjs for static page building
+let paper;
+if (typeof window !== 'undefined') {
+    paper = require('paper')
 }
 
 module.exports = React.createClass({
