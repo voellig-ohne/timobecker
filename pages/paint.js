@@ -60,8 +60,6 @@ export default class Index extends React.Component {
             let className = 'paint-list_item' + ((this.state.activePath === path) ? ' paint-list_item--active' : '')
             className += this.paintings[path.join('')] ? ' paint-list_item--painted' : ''
 
-            //console.log(this.paintings, path.join(''))
-
             return (
                 <li key={path}
                         onClick={boundClick}
@@ -71,13 +69,13 @@ export default class Index extends React.Component {
             )
         })
 
-        const activePath = (this.state.activePath) ? this.state.activePath.join('') : 'nothing'
+        const activePath = (this.state.activePath) ? this.state.activePath.join('') : 'nichts'
 
         return (
             <DocumentTitle title={config.siteTitle}>
                 <div>
                     <h1>Malen, Timo.</h1>
-                    selected: {activePath}
+                    ausgewählt: {activePath}
                     <br />
 
                     <div className="logo_container">
@@ -94,13 +92,14 @@ export default class Index extends React.Component {
                     <button onClick={this.deletePainting.bind(this)}>
                         aktuelles löschen
                     </button>
-                    <br />
-                    <input type="file" id="files" name="files[]" onChange={this.handleImport.bind(this)} />
-                    <br />
+                    <hr />
+                    <h2>exportieren:</h2>
                     <button onClick={this.exportPaintings.bind(this)}>
                         export
                     </button>
-                    <br />
+                    <h2>importieren:</h2>
+                    <input type="file" id="files" name="files[]" onChange={this.handleImport.bind(this)} />
+                    <h2>Liste aller Kombinationen:</h2>
                     <ul className="paint-list">
                         {pathList}
                     </ul>
