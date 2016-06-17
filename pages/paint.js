@@ -25,6 +25,7 @@ export default class Index extends React.Component {
     handlePaint(paths) {
         if (this.state.activePath) {
             this.paintings[this.state.activePath.join('')] = paths
+            this.forceUpdate()
         }
     }
     exportPaintings () {
@@ -47,6 +48,10 @@ export default class Index extends React.Component {
         })(file);
 
         reader.readAsText(file)
+    }
+    deletePainting () {
+        delete this.paintings[this.state.activePath.join('')]
+        this.forceUpdate()
     }
     render () {
         const pathList = PATHS.uniques.map((path) => {
@@ -84,6 +89,10 @@ export default class Index extends React.Component {
                                 showLabels={false}
                                 painted={this.handlePaint.bind(this)} />
                     </div>
+                    <br />
+                    <button onClick={this.deletePainting.bind(this)}>
+                        aktuelles löschen
+                    </button>
                     <br />
                     <input type="file" id="files" name="files[]" onChange={this.handleImport.bind(this)} />
                     <br />
