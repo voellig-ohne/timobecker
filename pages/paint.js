@@ -51,7 +51,10 @@ export default class Index extends React.Component {
     render () {
         const pathList = PATHS.uniques.map((path) => {
             const boundClick = this.handleClick.bind(null, path)
-            const className = 'paint-list_item' + ((this.state.activePath === path) ? ' paint-list_item--active' : '')
+            let className = 'paint-list_item' + ((this.state.activePath === path) ? ' paint-list_item--active' : '')
+            className += this.paintings[path.join('')] ? ' paint-list_item--painted' : ''
+
+            //console.log(this.paintings, path.join(''))
 
             return (
                 <li key={path}

@@ -10,6 +10,18 @@
         &--active {
             text-decoration: underline;
         }
+
+        &--painted {
+            &:after {
+                content: '';
+                display: inline-block;
+                background: #b82020;
+                border-radius: 100%;
+                height: .5em;
+                width: .5em;
+                margin: .25em;
+            }
+        }
     }
 }
 
