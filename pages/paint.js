@@ -44,6 +44,7 @@ export default class Index extends React.Component {
             return function(e) {
                 const imported = JSON.parse(e.target.result)
                 that.paintings = imported
+                that.forceUpdate()
             };
         })(file);
 
