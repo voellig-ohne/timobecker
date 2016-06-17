@@ -42,6 +42,8 @@
   "scripts": {
     "lint": "./node_modules/.bin/eslint --ext .js,.jsx --ignore-pattern public .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "gatsby develop"
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "deploy": "rsync -avzc --del public/ voellig@antares.uberspace.de:/var/www/virtual/voellig/timo.xn--vlligohne-07a.de/"
   }
 }
