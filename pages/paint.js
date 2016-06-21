@@ -22,6 +22,31 @@ export default class Index extends React.Component {
     handleClick(path) {
         this.setState({activePath: path});
     }
+    openNext() {
+        if (this.state.activePath) {
+            const current = this.getActivePathIndex()
+            this.setState({activePath: PATHS.uniques[current + 1]})
+        } else {
+            this.setState({activePath: PATHS.uniques[0]})
+        }
+    }
+    openPrev() {
+        if (this.state.activePath) {
+            const current = this.getActivePathIndex()
+            this.setState({activePath: PATHS.uniques[current - 1]})
+        } else {
+            this.setState({activePath: PATHS.uniques[0]})
+        }
+    }
+    getActivePathIndex () {
+        if (this.state.activePath) {
+            return PATHS.uniques.map((path) => {
+                return path.join('')
+            }).indexOf(this.state.activePath.join(''))
+        } else {
+            return -1
+        }
+    }
     handlePaint(paths) {
         if (this.state.activePath) {
             this.paintings[this.state.activePath.join('')] = paths
@@ -91,6 +116,13 @@ export default class Index extends React.Component {
                     <br />
                     <button onClick={this.deletePainting.bind(this)}>
                         aktuelles löschen
+                    </button>
+                    <hr />
+                    <button onClick={this.openPrev.bind(this)}>
+                        vorheriges
+                    </button>
+                    <button onClick={this.openNext.bind(this)}>
+                        nächstes
                     </button>
                     <hr />
                     <h2>exportieren:</h2>
