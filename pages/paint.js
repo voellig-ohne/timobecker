@@ -100,7 +100,7 @@ export default class Index extends React.Component {
             <DocumentTitle title={config.siteTitle}>
                 <div>
                     <h1>Malen, Timo.</h1>
-                    ausgewählt: {activePath}
+                    ausgewählt: {activePath} ({this.getActivePathIndex()} von {PATHS.uniques.length})
                     <br />
 
                     <div className="logo_container">
