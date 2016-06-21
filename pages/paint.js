@@ -108,7 +108,7 @@ export default class Index extends React.Component {
                                 points={POINTS}
                                 order={this.state.activePath}
                                 painting={this.state.activePath && this.paintings[this.state.activePath.join('')]}
-                                size={400}
+                                size={800}
                                 margin={20}
                                 showLabels={false}
                                 painted={this.handlePaint.bind(this)} />
