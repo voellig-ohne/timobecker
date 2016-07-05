@@ -98,7 +98,7 @@ module.exports = React.createClass({
 
     addConnectionDot (point, index) {
         const p = this.PaperScope
-        if (this.connectOrder.indexOf(index) <= 0) {
+        if (!_.includes(this.connectOrder, index)) {
             this.line.add(new p.Point(point))
             this.connectOrder.push(index)
         }
