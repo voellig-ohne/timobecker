@@ -70,7 +70,6 @@ module.exports = React.createClass({
     },
 
     drawPoints (p, points) {
-        const that = this
         const color = new p.Color(COLOR_DOT)
 
         const dot = new p.Path.Circle({
@@ -92,18 +91,17 @@ module.exports = React.createClass({
             const placed = symbol.place(point)
 
             if (this.props.mode === 'connect') {
-                placed.onMouseEnter = handleDotEnter
+                placed.onMouseEnter = this.addConnectionDot.bind(this, point, index)
             }
         })
-
-        function handleDotEnter () {
-            that.addConnectionDot(this.position)
-        }
     },
 
-    addConnectionDot (position) {
+    addConnectionDot (point, index) {
         const p = this.PaperScope
-        this.line.add(new p.Point(position))
+        if (this.connectOrder.indexOf(index) <= 0) {
+            this.line.add(new p.Point(point))
+            this.connectOrder.push(index)
+        }
     },
 
     getRelativeValue (value) {
@@ -173,6 +171,8 @@ module.exports = React.createClass({
         const p = this.PaperScope
 
         this.initConnectionLine()
+
+        this.connectOrder = []
 
         console.log('initializing connect')
     },
