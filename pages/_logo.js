@@ -16,6 +16,9 @@ const SIZES = {
     LINE_STROKE_WIDTH: 2
 }
 
+import PATHS from './_renderedPaths7.json'
+import PAINTINGS from './_paintings.json'
+
 // only conditionally import paperjs for static page building
 let paper;
 if (typeof window !== 'undefined') {
@@ -28,7 +31,7 @@ module.exports = React.createClass({
             this.drawLine(this.PaperScope, this.points, this.props.order)
         }
         if (this.props.mode === 'paint') {
-            this.initPaint(this.PaperScope)
+            this.initPaint()
         }
         if (this.props.mode === 'connect') {
             this.initConnect()
@@ -102,6 +105,16 @@ module.exports = React.createClass({
             this.line.add(new p.Point(point))
             this.connectOrder.push(index)
         }
+        if (this.connectOrder.length === this.points.length) {
+            this.dotConnectionFinished()
+        }
+    },
+
+    dotConnectionFinished () {
+        this.line.closed = true
+        const drawingIndex = PATHS.byKey[this.connectOrder.join('')]
+
+        this.initPaint(PAINTINGS[drawingIndex])
     },
 
     getRelativeValue (value) {
@@ -121,7 +134,8 @@ module.exports = React.createClass({
         }
     },
 
-    initPaint (p) {
+    initPaint (painting) {
+        const p = this.PaperScope
 
         const paths = []
         const strokeWidth = this.SIZES_RELATIVE.PEN_STROKE_WIDTH
@@ -139,6 +153,10 @@ module.exports = React.createClass({
 
         if (this.props.painting) {
             this.paintGroup.importJSON(this.props.painting)
+        }
+
+        if (painting) {
+            this.paintGroup.importJSON(painting)
         }
 
         this.paintGroup.addChildren(paths)
@@ -173,8 +191,6 @@ module.exports = React.createClass({
         this.initConnectionLine()
 
         this.connectOrder = []
-
-        console.log('initializing connect')
     },
 
     render () {
