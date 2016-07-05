@@ -111,7 +111,8 @@ export default class Index extends React.Component {
                                 size={800}
                                 margin={20}
                                 showLabels={false}
-                                painted={this.handlePaint.bind(this)} />
+                                painted={this.handlePaint.bind(this)}
+                                mode="paint" />
                     </div>
                     <br />
                     <button onClick={this.deletePainting.bind(this)}>

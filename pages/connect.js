@@ -24,7 +24,8 @@ export default class Index extends React.Component {
                             points={POINTS}
                             size={800}
                             margin={20}
-                            showLabels={false} />
+                            showLabels={false}
+                            mode="connect" />
                 </div>
             </DocumentTitle>
         )

@@ -27,7 +27,12 @@ module.exports = React.createClass({
         if (this.props.order) {
             this.drawLine(this.PaperScope, this.points, this.props.order)
         }
-        this.initPaint(this.PaperScope)
+        if (this.props.mode === 'paint') {
+            this.initPaint(this.PaperScope)
+        }
+        if (this.props.mode === 'connect') {
+            this.initConnect()
+        }
         this.PaperScope.view.draw()
     },
 
@@ -57,17 +62,7 @@ module.exports = React.createClass({
     },
 
     drawLine (p, points, order) {
-
-        if (!this.line) {
-            this.line = new p.Path()
-            this.line.strokeColor = COLOR_LINE
-            this.line.closed = true
-            this.line.blendMode = BLEND_MODE
-            this.line.strokeWidth = this.SIZES_RELATIVE.LINE_STROKE_WIDTH
-            this.line.strokeJoin = 'round'
-        } else {
-            this.line.removeSegments()
-        }
+        this.initConnectionLine()
 
         order.forEach((index) => {
             this.line.add(new p.Point(points[index]))
@@ -98,6 +93,19 @@ module.exports = React.createClass({
 
     getRelativeValue (value) {
         return value / 100 * this.props.size
+    },
+
+    initConnectionLine () {
+        if (!this.line) {
+            this.line = new this.PaperScope.Path()
+            this.line.strokeColor = COLOR_LINE
+            this.line.closed = true
+            this.line.blendMode = BLEND_MODE
+            this.line.strokeWidth = this.SIZES_RELATIVE.LINE_STROKE_WIDTH
+            this.line.strokeJoin = 'round'
+        } else {
+            this.line.removeSegments()
+        }
     },
 
     initPaint (p) {
@@ -144,6 +152,14 @@ module.exports = React.createClass({
             that.paintGroup.addChild(paths[paths.length - 1])
             that.props.painted(that.paintGroup.exportJSON());
         }
+    },
+
+    initConnect () {
+        const p = this.PaperScope
+
+        this.initConnectionLine()
+
+        console.log('initializing connect')
     },
 
     render () {
