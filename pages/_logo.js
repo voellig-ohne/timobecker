@@ -70,6 +70,7 @@ module.exports = React.createClass({
     },
 
     drawPoints (p, points) {
+        const that = this
         const color = new p.Color(COLOR_DOT)
 
         const dot = new p.Path.Circle({
@@ -87,8 +88,22 @@ module.exports = React.createClass({
                 const label = new p.PointText(pPoint.add([-15,-8]))
                 label.content = index
             }
-            symbol.place(point)
+
+            const placed = symbol.place(point)
+
+            if (this.props.mode === 'connect') {
+                placed.onMouseEnter = handleDotEnter
+            }
         })
+
+        function handleDotEnter () {
+            that.addConnectionDot(this.position)
+        }
+    },
+
+    addConnectionDot (position) {
+        const p = this.PaperScope
+        this.line.add(new p.Point(position))
     },
 
     getRelativeValue (value) {
@@ -99,7 +114,7 @@ module.exports = React.createClass({
         if (!this.line) {
             this.line = new this.PaperScope.Path()
             this.line.strokeColor = COLOR_LINE
-            this.line.closed = true
+            this.line.closed = this.props.mode === 'paint'
             this.line.blendMode = BLEND_MODE
             this.line.strokeWidth = this.SIZES_RELATIVE.LINE_STROKE_WIDTH
             this.line.strokeJoin = 'round'
