@@ -189,9 +189,11 @@ module.exports = React.createClass({
 
         this.paintGroup.addChildren(paths)
 
-        this.painter.onMouseDown = onMouseDown
-        this.painter.onMouseDrag = onMouseDrag
-        this.painter.onMouseUp = onMouseUp
+        if (this.props.mode === 'paint') {
+            this.painter.onMouseDown = onMouseDown
+            this.painter.onMouseDrag = onMouseDrag
+            this.painter.onMouseUp = onMouseUp
+        }        
 
         function onMouseDown(event) {
             const path = new p.Path()
@@ -220,7 +222,6 @@ module.exports = React.createClass({
     reset() {
         this.initConnect()
         this.initPaint()
-
         this.PaperScope.view.draw()
     },
 
