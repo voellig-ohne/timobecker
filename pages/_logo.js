@@ -104,9 +104,16 @@ module.exports = React.createClass({
         if (!_.includes(this.connectOrder, index)) {
             this.line.add(new p.Point(point))
             this.connectOrder.push(index)
+
+            if (this.mouseLine.segments.length === 1) {
+                this.mouseLine.add(new this.PaperScope.Point(point))
+            } else {
+                this.mouseLine.lastSegment.point = point
+            }
         }
         if (this.connectOrder.length === this.points.length) {
             this.dotConnectionFinished()
+            this.mouseLine.lastSegment.remove()
         }
     },
 
@@ -131,6 +138,21 @@ module.exports = React.createClass({
             this.line.strokeJoin = 'round'
         } else {
             this.line.removeSegments()
+        }
+
+        if (!this.mouseLine && this.props.mode === 'connect') {
+            this.mouseLine = new this.PaperScope.Path()
+            this.mouseLine.strokeColor = COLOR_LINE
+            this.mouseLine.blendMode = BLEND_MODE
+            this.mouseLine.strokeWidth = this.SIZES_RELATIVE.LINE_STROKE_WIDTH
+            this.mouseLine.strokeCap = 'round'
+            this.mouseLine.sendToBack()
+
+            this.mouseLine.add(new this.PaperScope.Point(0, 0))
+
+            this.PaperScope.view.onMouseMove = (event) => {
+                this.mouseLine.firstSegment.point = event.point
+            }
         }
     },
 
