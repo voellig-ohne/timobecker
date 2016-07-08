@@ -11,6 +11,9 @@ import 'style/main.less'
 import './connect.less'
 
 export default class Index extends React.Component {
+    reset () {
+        this.refs.logo.reset()
+    }
     constructor() {
         super()
     }
@@ -25,7 +28,12 @@ export default class Index extends React.Component {
                             size={800}
                             margin={20}
                             showLabels={false}
-                            mode="connect" />
+                            mode="connect"
+                            ref="logo"/>
+                    <br />
+                    <button onClick={this.reset.bind(this)}>
+                        reset
+                    </button>
                 </div>
             </DocumentTitle>
         )

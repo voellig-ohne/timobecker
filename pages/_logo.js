@@ -129,16 +129,16 @@ module.exports = React.createClass({
     },
 
     initConnectionLine () {
-        if (!this.line) {
-            this.line = new this.PaperScope.Path()
-            this.line.strokeColor = COLOR_LINE
-            this.line.closed = this.props.mode === 'paint'
-            this.line.blendMode = BLEND_MODE
-            this.line.strokeWidth = this.SIZES_RELATIVE.LINE_STROKE_WIDTH
-            this.line.strokeJoin = 'round'
-        } else {
-            this.line.removeSegments()
+        if (this.line) {
+            this.line.remove()
         }
+
+        this.line = new this.PaperScope.Path()
+        this.line.strokeColor = COLOR_LINE
+        this.line.closed = this.props.mode === 'paint'
+        this.line.blendMode = BLEND_MODE
+        this.line.strokeWidth = this.SIZES_RELATIVE.LINE_STROKE_WIDTH
+        this.line.strokeJoin = 'round'
 
         if (!this.mouseLine && this.props.mode === 'connect') {
             this.mouseLine = new this.PaperScope.Path()
@@ -153,7 +153,13 @@ module.exports = React.createClass({
             this.PaperScope.view.onMouseMove = (event) => {
                 this.mouseLine.firstSegment.point = event.point
             }
+        } else if (this.props.mode === 'connect') {
+            if (this.mouseLine.segments.length !== 1) {
+                this.mouseLine.lastSegment.remove()
+            }
         }
+
+        this.connectOrder = []
     },
 
     initPaint (painting) {
@@ -208,11 +214,14 @@ module.exports = React.createClass({
     },
 
     initConnect () {
-        const p = this.PaperScope
-
         this.initConnectionLine()
+    },
 
-        this.connectOrder = []
+    reset() {
+        this.initConnect()
+        this.initPaint()
+
+        this.PaperScope.view.draw()
     },
 
     render () {
