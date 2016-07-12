@@ -13,15 +13,15 @@ export default class Index extends React.Component {
             <DocumentTitle title={config.siteTitle}>
                 <div>
                     <h1>Timos Website...</h1>
-                    <Link to={prefixLink('/list/')}>
+                    <Link to={prefixLink('/test/list/')}>
                         liste aller kombinationen
                     </Link>
                     <br />
-                    <Link to={prefixLink('/paint/')}>
+                    <Link to={prefixLink('/test/paint/')}>
                         malen!
                     </Link>
                     <br />
-                    <Link to={prefixLink('/connect/')}>
+                    <Link to={prefixLink('/test/connect/')}>
                         vebinden!
                     </Link>
                 </div>
