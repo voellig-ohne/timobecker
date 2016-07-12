@@ -16,8 +16,8 @@ const SIZES = {
     LINE_STROKE_WIDTH: 2
 }
 
-import PATHS from './_renderedPaths7.json'
-import PAINTINGS from './_paintings.json'
+import PATHS from './renderedPaths7.json'
+import PAINTINGS from './paintings.json'
 
 // only conditionally import paperjs for static page building
 let paper;
