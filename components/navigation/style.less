@@ -1,3 +1,5 @@
+@import '../../style/vars';
+
 .navigation {
     position: fixed;
     bottom: 0;
@@ -6,8 +8,14 @@
     display: flex;
     justify-content: space-between;
     padding: 1rem;
+    font-size: @font-size-l;
+    font-weight: 200;
 
     &-nav_link {
-        margin-left: .2rem;
+        margin-left: .3em;
+    }
+
+    a {
+        text-decoration: none;
     }
 }
