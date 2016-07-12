@@ -82,7 +82,15 @@ module.exports = React.createClass({
             blendMode: BLEND_MODE
         })
 
+        const connectionDot = new p.Path.Circle({
+        	center: [0, 0],
+        	radius: this.SIZES_RELATIVE.POINT_RADIUS * 2,
+        	fillColor: 'rgba(0,0,0,0)',
+            blendMode: BLEND_MODE
+        })
+
         const symbol = new p.Symbol(dot)
+        const connectionSymbol = new p.Symbol(connectionDot)
 
         points.forEach((point, index) => {
             if (this.props.showLabels) {
@@ -91,15 +99,20 @@ module.exports = React.createClass({
                 label.content = index
             }
 
-            const placed = symbol.place(point)
+            symbol.place(point)
 
             if (this.props.mode === 'connect') {
-                placed.onMouseEnter = this.addConnectionDot.bind(this, point, index)
+                const connectionDotPlaced = connectionSymbol.place(point)
+                connectionDotPlaced.onMouseEnter = this.addConnectionDot.bind(this, point, index)
             }
         })
     },
 
     addConnectionDot (point, index) {
+        if (this.line.closed) {
+            return
+        }
+
         const p = this.PaperScope
         if (!_.includes(this.connectOrder, index)) {
             this.line.add(new p.Point(point))
@@ -113,11 +126,11 @@ module.exports = React.createClass({
         }
         if (this.connectOrder.length === this.points.length) {
             this.dotConnectionFinished()
-            this.mouseLine.lastSegment.remove()
         }
     },
 
     dotConnectionFinished () {
+        this.mouseLine.lastSegment.remove()
         this.line.closed = true
         const drawingIndex = PATHS.byKey[this.connectOrder.join('')]
 
@@ -193,7 +206,7 @@ module.exports = React.createClass({
             this.painter.onMouseDown = onMouseDown
             this.painter.onMouseDrag = onMouseDrag
             this.painter.onMouseUp = onMouseUp
-        }        
+        }
 
         function onMouseDown(event) {
             const path = new p.Path()
