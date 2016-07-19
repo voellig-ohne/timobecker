@@ -10,6 +10,9 @@ const COLOR_PEN = '#e80101'
 const COLOR_DOT = 'black'
 const COLOR_LINE = 'black'
 
+// forgot to define in the beginning -.-
+const ORIGINAL_CANVAS_SIZE = 800
+
 const SIZES = {
     POINT_RADIUS: 1,
     PEN_STROKE_WIDTH: 1,
@@ -197,7 +200,12 @@ module.exports = React.createClass({
         }
 
         if (painting) {
+            const scaleFactor = this.props.size / ORIGINAL_CANVAS_SIZE
+
             this.paintGroup.importJSON(painting)
+            this.paintGroup.scale(scaleFactor, new p.Point(0, 0))
+
+            this.paintGroup.strokeWidth *= scaleFactor
         }
 
         this.paintGroup.addChildren(paths)
