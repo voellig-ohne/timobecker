@@ -281,6 +281,8 @@ module.exports = React.createClass({
         return (
             <canvas ref={(c) => this._canvas = c}
                 className={this.props.className}
+                width={this.props.size}
+                height={this.props.size}
                 data-paper-resize="true" />
         )
     }

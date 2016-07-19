@@ -19,39 +19,6 @@ module.exports = React.createClass({
         this.refs.logo.reset()
     },
 
-    getInitialState: function() {
-        if (typeof window !== 'undefined') {
-            return {windowSize: this.getWindowSize()};
-        } else {
-            return {windowSize: {height: 1000, widht: 1000}};
-        }
-    },
-
-    componentDidMount: function() {
-        if (typeof window !== 'undefined') {
-            window.addEventListener('resize', this.handleResize);
-        }
-    },
-
-    componentWillUnmount: function() {
-        if (typeof window !== 'undefined') {
-            window.removeEventListener('resize', this.handleResize);
-        }
-    },
-
-    handleResize: function() {
-        if (typeof window !== 'undefined') {
-            this.setState({windowSize: this.getWindowSize()});
-        }
-    },
-
-    getWindowSize: function() {
-        return {
-            width: window.innerWidth,
-            height: window.innerHeight
-        }
-    },
-
     render () {
         return (
             <DocumentTitle title={config.siteTitle}>
@@ -63,7 +30,7 @@ module.exports = React.createClass({
                             showLabels={false}
                             mode="connect"
                             ref="logo"
-                            canvasSize={this.state.windowSize} />
+                            canvasResize={true} />
                     <button onClick={this.reset}
                             className="intro-reset">
                         neu <span className="english">new</span>
