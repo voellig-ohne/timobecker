@@ -39,6 +39,11 @@ module.exports = React.createClass({
         if (this.props.mode === 'connect') {
             this.initConnectionLine()
         }
+
+        if (this.props.canvasResize) {
+            this.setCanvasSize(this.props.canvasSize)
+        }
+
         this.PaperScope.view.draw()
     },
 
@@ -60,16 +65,11 @@ module.exports = React.createClass({
 
         this.masterGroup = new this.PaperScope.Group()
 
-
         this.drawPoints(this.PaperScope, this.points)
 
         this.init()
 
         this.PaperScope.view.onResize = this.setCanvasSize.bind(this, 'foo')
-
-        if (this.props.canvasSize) {
-            this.setCanvasSize(this.props.canvasSize)
-        }
     },
 
     componentDidUpdate(nextProps) {
@@ -170,6 +170,8 @@ module.exports = React.createClass({
         const drawingIndex = PATHS.byKey[this.connectOrder.join('')]
 
         this.initPaint(PAINTINGS[drawingIndex])
+
+        this.setCanvasSize(this.props.canvasSize)
     },
 
     getRelativeValue (value) {
