@@ -88,10 +88,20 @@ module.exports = React.createClass({
     setCanvasSize() {
         const size = this.PaperScope.view.viewSize
 
+        if (!this.originalPosition) {
+            this.originalPosition = this.masterGroup.position
+        }
+
+        console.log('master', this.masterGroup.position)
         this.masterGroup.position = new this.PaperScope.Point(size.width / 2, size.height / 2)
 
         if (this.paintGroup) {
-            this.paintGroup.position = new this.PaperScope.Point(size.width / 2, size.height / 2)
+            if (!this.paintGroupPositionTmp) {
+                this.paintGroupPositionTmp = this.paintGroup.position
+            }
+
+            const diff = this.masterGroup.position.subtract(this.originalPosition)
+            this.paintGroup.position = this.paintGroupPositionTmp.add(diff)
         }
 
         this.PaperScope.view.draw()
@@ -191,6 +201,7 @@ module.exports = React.createClass({
         this.line.closed = this.props.mode === 'paint'
 
         this.masterGroup.addChild(this.line)
+        this.paintGroupPositionTmp = undefined
 
         if (!this.mouseLine && this.props.mode === 'connect') {
             this.mouseLine = new this.PaperScope.Path()
