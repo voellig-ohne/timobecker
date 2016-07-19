@@ -8,10 +8,50 @@ import POINTS from 'components/logo/points'
 
 import 'style/main.less'
 
-export default class Index extends React.Component {
-    reset () {
+module.exports = React.createClass({
+    propTypes () {
+        return {
+            children: React.PropTypes.any,
+        }
+    },
+
+    reset: function() {
         this.refs.logo.reset()
-    }
+    },
+
+    getInitialState: function() {
+        if (typeof window !== 'undefined') {
+            return {windowSize: this.getWindowSize()};
+        } else {
+            return {windowSize: {height: 1000, widht: 1000}};
+        }
+    },
+
+    componentDidMount: function() {
+        if (typeof window !== 'undefined') {
+            window.addEventListener('resize', this.handleResize);
+        }
+    },
+
+    componentWillUnmount: function() {
+        if (typeof window !== 'undefined') {
+            window.removeEventListener('resize', this.handleResize);
+        }
+    },
+
+    handleResize: function() {
+        if (typeof window !== 'undefined') {
+            this.setState({windowSize: this.getWindowSize()});
+        }
+    },
+
+    getWindowSize: function() {
+        return {
+            width: window.innerWidth,
+            height: window.innerHeight
+        }
+    },
+
     render () {
         return (
             <DocumentTitle title={config.siteTitle}>
@@ -22,13 +62,15 @@ export default class Index extends React.Component {
                             margin={20}
                             showLabels={false}
                             mode="connect"
-                            ref="logo"/>
-                    <button onClick={this.reset.bind(this)}
+                            ref="logo"
+                            canvasSize={this.state.windowSize} />
+                    <button onClick={this.reset}
                             className="intro-reset">
                         neu <span className="english">new</span>
                     </button>
+
                 </div>
             </DocumentTitle>
         )
     }
-}
+})

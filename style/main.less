@@ -32,10 +32,22 @@ body {
     align-items: center;
     justify-content: center;
 
+    canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+
     &-reset {
         border: none;
         background: none;
         cursor: pointer;
+
+        position: fixed;
+        bottom: 4rem;
+
 
         &:hover {
             text-decoration: underline;

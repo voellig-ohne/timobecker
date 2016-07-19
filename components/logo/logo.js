@@ -37,7 +37,7 @@ module.exports = React.createClass({
             this.initPaint()
         }
         if (this.props.mode === 'connect') {
-            this.initConnect()
+            this.initConnectionLine()
         }
         this.PaperScope.view.draw()
     },
@@ -55,16 +55,46 @@ module.exports = React.createClass({
             })
         })
 
-        this.PaperScope = new paper.PaperScope();
+        this.PaperScope = new paper.PaperScope()
         this.PaperScope.setup(this._canvas)
+
+        this.masterGroup = new this.PaperScope.Group()
+
 
         this.drawPoints(this.PaperScope, this.points)
 
         this.init()
+
+        this.PaperScope.view.onResize = this.setCanvasSize.bind(this, 'foo')
+
+        if (this.props.canvasSize) {
+            this.setCanvasSize(this.props.canvasSize)
+        }
     },
 
-    componentDidUpdate() {
-        this.init()
+    componentDidUpdate(nextProps) {
+        const currentOrder = this.props.order && this.props.order.join()
+        const nextOrder = nextProps.order && nextProps.order.join()
+
+        if (nextOrder !== currentOrder || this.props.painting !== nextProps.painting) {
+            this.init()
+        }
+
+        if (this.props.canvasSize !== nextProps.canvasSize) {
+            this.setCanvasSize(nextProps.canvasSize)
+        }
+    },
+
+    setCanvasSize() {
+        const size = this.PaperScope.view.viewSize
+
+        this.masterGroup.position = new this.PaperScope.Point(size.width / 2, size.height / 2)
+
+        if (this.paintGroup) {
+            this.paintGroup.position = new this.PaperScope.Point(size.width / 2, size.height / 2)
+        }
+
+        this.PaperScope.view.draw()
     },
 
     drawLine (p, points, order) {
@@ -102,29 +132,31 @@ module.exports = React.createClass({
                 label.content = index
             }
 
-            symbol.place(point)
+            this.masterGroup.addChild(symbol.place(point))
 
             if (this.props.mode === 'connect') {
                 const connectionDotPlaced = connectionSymbol.place(point)
-                connectionDotPlaced.onMouseEnter = this.addConnectionDot.bind(this, point, index)
+                connectionDotPlaced.onMouseEnter = this.addConnectionDot.bind(this, point, index, connectionDotPlaced)
+                this.masterGroup.addChild(connectionDotPlaced)
             }
         })
     },
 
-    addConnectionDot (point, index) {
+    addConnectionDot (point, index, connectionDotPlaced) {
         if (this.line.closed) {
             return
         }
 
         const p = this.PaperScope
+
         if (!_.includes(this.connectOrder, index)) {
-            this.line.add(new p.Point(point))
+            this.line.add(new p.Point(connectionDotPlaced.position))
             this.connectOrder.push(index)
 
             if (this.mouseLine.segments.length === 1) {
-                this.mouseLine.add(new this.PaperScope.Point(point))
+                this.mouseLine.add(new this.PaperScope.Point(connectionDotPlaced.position))
             } else {
-                this.mouseLine.lastSegment.point = point
+                this.mouseLine.lastSegment.point = connectionDotPlaced.position
             }
         }
         if (this.connectOrder.length === this.points.length) {
@@ -151,13 +183,16 @@ module.exports = React.createClass({
 
         this.line = new this.PaperScope.Path()
         this.line.strokeColor = COLOR_LINE
-        this.line.closed = this.props.mode === 'paint'
         this.line.blendMode = BLEND_MODE
         this.line.strokeWidth = this.SIZES_RELATIVE.LINE_STROKE_WIDTH
         this.line.strokeJoin = 'round'
+        this.line.closed = this.props.mode === 'paint'
+
+        this.masterGroup.addChild(this.line)
 
         if (!this.mouseLine && this.props.mode === 'connect') {
             this.mouseLine = new this.PaperScope.Path()
+
             this.mouseLine.strokeColor = COLOR_LINE
             this.mouseLine.blendMode = BLEND_MODE
             this.mouseLine.strokeWidth = this.SIZES_RELATIVE.LINE_STROKE_WIDTH
@@ -236,12 +271,8 @@ module.exports = React.createClass({
         }
     },
 
-    initConnect () {
-        this.initConnectionLine()
-    },
-
     reset() {
-        this.initConnect()
+        this.initConnectionLine()
         this.initPaint()
         this.PaperScope.view.draw()
     },
@@ -249,9 +280,8 @@ module.exports = React.createClass({
     render () {
         return (
             <canvas ref={(c) => this._canvas = c}
-                width={this.props.size}
-                height={this.props.size}
-                className={this.props.className} />
+                className={this.props.className}
+                data-paper-resize="true" />
         )
     }
 })
