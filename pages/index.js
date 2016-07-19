@@ -18,7 +18,7 @@ export default class Index extends React.Component {
                 <div className="intro">
                     <Logo className="tb_logo"
                             points={POINTS}
-                            size={800}
+                            size={400}
                             margin={20}
                             showLabels={false}
                             mode="connect"
