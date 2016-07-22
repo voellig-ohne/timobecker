@@ -12,7 +12,9 @@ module.exports = React.createClass({
     render () {
         return (
             <div>
-                {this.props.children}
+                <main className="main_content">
+                    {this.props.children}
+                </main>
                 <Navigation />
             </div>
         )
