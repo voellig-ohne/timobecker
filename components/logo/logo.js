@@ -92,7 +92,6 @@ module.exports = React.createClass({
             this.originalPosition = this.masterGroup.position
         }
 
-        console.log('master', this.masterGroup.position)
         this.masterGroup.position = new this.PaperScope.Point(size.width / 2, size.height / 2)
 
         if (this.paintGroup) {
@@ -224,6 +223,10 @@ module.exports = React.createClass({
         }
 
         this.connectOrder = []
+
+        this.PaperScope.project.view.onMouseDown = () => {
+            this.reset()
+        }
     },
 
     initPaint (painting) {

@@ -31,11 +31,6 @@ module.exports = React.createClass({
                             mode="connect"
                             ref="logo"
                             canvasResize={true} />
-                    <button onClick={this.reset}
-                            className="intro-reset">
-                        neu <span className="english">new</span>
-                    </button>
-
                 </div>
             </DocumentTitle>
         )
