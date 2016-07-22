@@ -16,26 +16,33 @@ module.exports = React.createClass({
     render () {
         return (
             <DocumentTitle title={config.siteTitle}>
-                <div className="about">
-                    <div className="about-content">
-                        <div className="about-portrait">
-                            <img src="portrait.jpg" />
+                <article className="page">
+                    <header className="page-header">
+                        <img src="portrait.jpg" className="page-header-background"/>
+                        <div className="page-header-text">
+                            <div className="page-header-main">
+                                <h1>Timo Becker</h1>
+                                <p lang="de">
+                                    Mein Anspruch ist es, die Idee zu durchdringen,
+                                    Prinzipien aus ihr abzuleiten und diese in einem
+                                    Konzept für das perfekte der Idee entsprechende
+                                    Produkt zu nutzen.
+                                </p>
+                                <p lang="en">
+                                    It is my utmost desire to pierce the idea, relate
+                                    principles to it and form a concept for the perfect
+                                    product.
+                                </p>
+                            </div>
+                            <div className="page-header-aside">
+                                <p>
+                                    noch was kleines über ihn...
+                                </p>
+                            </div>
                         </div>
-                        <div>
-                            <p lang="de">
-                                Mein Anspruch ist es, die Idee zu durchdringen,
-                                Prinzipien aus ihr abzuleiten und diese in einem
-                                Konzept für das perfekte der Idee entsprechende
-                                Produkt zu nutzen.
-                            </p>
-                            <p lang="en">
-                                It is my utmost desire to pierce the idea, relate
-                                principles to it and form a concept for the perfect
-                                product.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+
+                    </header>
+                </article>
             </DocumentTitle>
         )
     }
