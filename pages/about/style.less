@@ -1,0 +1,28 @@
+@import '../../style/vars';
+
+.about {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100vh;
+    padding-bottom: @nav-height;
+
+    &-content {
+        max-width: @content-width;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin: -1rem;
+
+        & > * {
+            flex: 1 0 15rem;
+            margin: 1rem;
+        }
+    }
+
+    &-portrait {
+        img {
+            width: 100%;
+        }
+    }
+}

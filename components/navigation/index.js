@@ -20,7 +20,7 @@ module.exports = React.createClass({
         ]
         return (
             <header className="navigation">
-                <Link to={'/'}>
+                <Link to={'/about/'}>
                     Timo Becker
                 </Link>
                 <nav>
