@@ -5,36 +5,49 @@ import { prefixLink } from 'gatsby-helpers'
 import './style.less'
 
 module.exports = React.createClass({
+    propTypes () {
+        return {
+            children: React.PropTypes.any,
+        }
+    },
+
     render () {
         const navLinks = [
             {
-                link: '/konzept',
+                link: '/konzept/',
                 title: 'Konzept'
             },{
-                link: '/event',
+                link: '/event/',
                 title: 'Event'
             },{
-                link: '/illustration',
+                link: '/illustration/',
                 title: 'Illustration'
             },
         ]
+
         return (
-            <header className="navigation">
-                <Link to={'/about/'}>
-                    Timo Becker
-                </Link>
-                <nav>
-                    {navLinks.map((link, index) => {
-                        return (
-                            <Link to={prefixLink(link.link)}
-                                    key={index}
-                                    className="navigation-nav_link">
-                                {link.title}
-                            </Link>
-                        )
-                    })}
-                </nav>
-            </header>
+            <span>
+                { this.props.currentPath !== '/' &&
+                    <Link to={prefixLink('/')} className="navigation-home"></Link>
+                }
+
+                <header className="navigation">
+                    <Link to={prefixLink('/about/')}>
+                        Timo Becker
+                    </Link>
+                    <nav>
+                        {navLinks.map((link, index) => {
+                            return (
+                                <Link to={prefixLink(link.link)}
+                                        key={index}
+                                        className="navigation-nav_link">
+                                    {link.title}
+                                </Link>
+                            )
+                        })}
+                    </nav>
+                </header>
+        </span>
         )
     }
 })

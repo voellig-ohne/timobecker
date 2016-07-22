@@ -19,4 +19,21 @@
     a {
         text-decoration: none;
     }
+
+    &-home {
+        position: fixed;
+        top: 0;
+        left: 0;
+        margin: .5rem;
+        padding: 1rem;
+
+        &:after {
+            content: '';
+            display: block;
+            border-radius: 50%;
+            height: .5rem;
+            width: .5rem;
+            background: @primary-color;
+        }
+    }
 }
