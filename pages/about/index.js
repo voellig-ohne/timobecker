@@ -37,7 +37,6 @@ module.exports = React.createClass({
         return (
             <DocumentTitle title={config.siteTitle}>
                 <Article {...meta}>
-                    hello, word
                 </Article>
             </DocumentTitle>
         )
