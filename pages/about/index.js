@@ -4,8 +4,6 @@ import { prefixLink } from 'gatsby-helpers'
 import DocumentTitle from 'react-document-title'
 import { config } from 'config'
 
-import './style.less'
-
 module.exports = React.createClass({
     propTypes () {
         return {
