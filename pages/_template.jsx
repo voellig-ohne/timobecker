@@ -10,8 +10,6 @@ module.exports = React.createClass({
         }
     },
     render () {
-        console.log(this.props.location.pathname)
-
         return (
             <div>
                 <main className="main_content">
