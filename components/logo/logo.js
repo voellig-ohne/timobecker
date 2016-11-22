@@ -100,6 +100,7 @@ module.exports = React.createClass({
             }
 
             const diff = this.masterGroup.position.subtract(this.originalPosition)
+
             this.paintGroup.position = this.paintGroupPositionTmp.add(diff)
         }
 
@@ -180,7 +181,7 @@ module.exports = React.createClass({
 
         this.initPaint(PAINTINGS[drawingIndex])
 
-        this.setCanvasSize(this.props.canvasSize)
+        // this.setCanvasSize(this.props.canvasSize)
     },
 
     getRelativeValue (value) {
@@ -251,12 +252,22 @@ module.exports = React.createClass({
         }
 
         if (painting) {
+
             const scaleFactor = this.props.size / ORIGINAL_CANVAS_SIZE
 
             this.paintGroup.importJSON(painting)
             this.paintGroup.scale(scaleFactor, new p.Point(0, 0))
-
             this.paintGroup.strokeWidth *= scaleFactor
+
+            this.paintGroup.children.forEach((child, idx) => {
+                child.opacity = 0
+
+                setTimeout(() => {
+                    child.opacity = 1
+                    this.setCanvasSize()
+                    this.PaperScope.view.draw()
+                }, idx * 100 + 200)
+            })
         }
 
         this.paintGroup.addChildren(paths)
