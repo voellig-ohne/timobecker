@@ -9,7 +9,7 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-1": "^6.5.0",
     "front-matter": "^2.0.7",
-    "gatsby": "^0.11.0",
+    "gatsby": "^0.12.18",
     "highlight.js": "^9.3.0",
     "history": "^2.0.2",
     "js-yaml": "^3.6.0",
