@@ -9,8 +9,13 @@ export default class Article extends React.Component {
         const { 
             background, 
             title, 
-            descriptionSecondary 
+            descriptionSecondary
         } = this.props.children.props.route.page.data
+
+        const {
+            mainAddition,
+            gallery
+        } = this.props
 
         const backgroundImage = background + '.jpg'
 
@@ -21,9 +26,19 @@ export default class Article extends React.Component {
                     <div className={style.text}>
                         <div className={style.main}>
                             <h1>{title}</h1>
-                            { this.props.children }                            
+                            { this.props.children }
+                            { mainAddition ? 
+                                <div>
+                                    { mainAddition }
+                                </div> : null
+                            }
                         </div>
                     </div>
+                    { gallery ? 
+                        <div>
+                            { gallery }
+                        </div> : null
+                    }
                 </header>
             </article>
         )
