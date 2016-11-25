@@ -12,10 +12,12 @@ export default class Article extends React.Component {
             descriptionSecondary 
         } = this.props.children.props.route.page.data
 
+        const backgroundImage = background + '.jpg'
+
         return (
             <article className="page">
                 <header className={style.header}>
-                    <img src={background} className={style.background}/>
+                    <img src={backgroundImage} className={style.background}/>
                     <div className={style.text}>
                         <div className={style.main}>
                             <h1>{title}</h1>

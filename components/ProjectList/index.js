@@ -1,15 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router'
 import { prefixLink } from 'gatsby-helpers'
+import Article from 'components/Article'
 
 import style from './style.module.less'
 
 export default class ProjectList extends React.Component {
     render () {
         return (
-            <article className="page">
+            <Article>
                 {this.props.children}
-            </article>
+            </Article>
         )
     }
 }
