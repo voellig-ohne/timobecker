@@ -9,6 +9,7 @@ import POINTS from 'components/logo/points'
 import PATHS from 'components/logo/renderedPaths7.json'
 
 import 'style/main.less'
+import style from './style.module.less'
 
 export default class Index extends React.Component {
     render () {
@@ -22,11 +23,11 @@ export default class Index extends React.Component {
             }).join('')
 
             return (
-                <div className="tb_logo-wrapper"
+                <div className={style.wrapper}
                     key={index}>
                     <h2>{title}</h2>
                     <Logo
-                        className="tb_logo"
+                        className={style.logo}
                         points={POINTS}
                         order={order}
                         size={200}
