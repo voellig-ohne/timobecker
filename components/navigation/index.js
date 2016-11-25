@@ -4,13 +4,7 @@ import { prefixLink } from 'gatsby-helpers'
 
 import style from './style.module.less'
 
-module.exports = React.createClass({
-    propTypes () {
-        return {
-            children: React.PropTypes.any,
-        }
-    },
-
+export default class Navigation extends React.Component {
     render () {
         const navLinks = [
             {
@@ -50,4 +44,4 @@ module.exports = React.createClass({
         </span>
         )
     }
-})
+}
