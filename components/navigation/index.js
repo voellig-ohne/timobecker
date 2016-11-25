@@ -12,7 +12,7 @@ export default class Navigation extends React.Component {
                 title: 'Concept'
             },{
                 link: '/sketches/',
-                title: 'Scetches'
+                title: 'Sketches'
             },{
                 link: '/illustration/',
                 title: 'Illustration'
