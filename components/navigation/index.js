@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 import { prefixLink } from 'gatsby-helpers'
 
-import './style.less'
+import style from './style.module.less'
 
 module.exports = React.createClass({
     propTypes () {
@@ -28,10 +28,10 @@ module.exports = React.createClass({
         return (
             <span>
                 { this.props.currentPath !== '/' &&
-                    <Link to={prefixLink('/')} className="navigation-home"></Link>
+                    <Link to={prefixLink('/')} className={style.home}></Link>
                 }
 
-                <header className="navigation">
+                <header className={style.navigation}>
                     <Link to={prefixLink('/about/')}>
                         Timo Becker
                     </Link>
@@ -40,7 +40,7 @@ module.exports = React.createClass({
                             return (
                                 <Link to={prefixLink(link.link)}
                                         key={index}
-                                        className="navigation-nav_link">
+                                        className={style.nav_link}>
                                     {link.title}
                                 </Link>
                             )
