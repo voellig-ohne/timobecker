@@ -15,7 +15,8 @@ module.exports = React.createClass({
     render () {
         const meta = {
             title: 'Timo Becker',
-            description: (
+            background: 'portrait.jpg',
+            body: (
                 <span>
                     <p lang="de">
                         Mein Anspruch ist es, die Idee zu durchdringen,

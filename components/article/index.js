@@ -6,22 +6,30 @@ import style from './style.module.less'
 
 export default class Article extends React.Component {
     render () {
+        const { 
+            background, 
+            title, 
+            body, 
+            children, 
+            descriptionSecondary 
+        } = this.props
+
         return (
             <article className="page">
                 <header className={style.header}>
-                    <img src="portrait.jpg" className={style.background}/>
+                    <img src={background} className={style.background}/>
                     <div className={style.text}>
                         <div className={style.main}>
-                            <h1>{this.props.title}</h1>
-                            {this.props.description}
+                            <h1>{title}</h1>
+                            {body}
                         </div>
                         <div className={style.aside}>
-                            {this.props.descriptionSecondary}
+                            {descriptionSecondary}
                         </div>
                     </div>
                 </header>
 
-                {this.props.children}
+                {children}
             </article>
         )
     }
