@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 import { prefixLink } from 'gatsby-helpers'
 
-import './style.less'
+import style from './style.module.less'
 
 module.exports = React.createClass({
     propTypes () {
@@ -14,14 +14,14 @@ module.exports = React.createClass({
     render () {
         return (
             <article className="page">
-                <header className="header">
-                    <img src="portrait.jpg" className="header-background"/>
-                    <div className="header-text">
-                        <div className="header-main">
+                <header className={style.header}>
+                    <img src="portrait.jpg" className={style.background}/>
+                    <div className={style.text}>
+                        <div className={style.main}>
                             <h1>{this.props.title}</h1>
                             {this.props.description}
                         </div>
-                        <div className="header-aside">
+                        <div className={style.aside}>
                             {this.props.descriptionSecondary}
                         </div>
                     </div>
