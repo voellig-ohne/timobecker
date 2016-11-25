@@ -41,7 +41,7 @@ module.exports = React.createClass({
         }
 
         if (this.props.canvasResize) {
-            this.setCanvasSize(this.props.canvasSize)
+            this.setCanvasSize()
         }
 
         this.PaperScope.view.draw()
@@ -60,16 +60,18 @@ module.exports = React.createClass({
             })
         })
 
-        this.PaperScope = new paper.PaperScope()
-        this.PaperScope.setup(this._canvas)
+        setTimeout(() => {
+            this.PaperScope = new paper.PaperScope()
+            this.PaperScope.setup(this._canvas)
 
-        this.masterGroup = new this.PaperScope.Group()
+            this.masterGroup = new this.PaperScope.Group()
 
-        this.drawPoints(this.PaperScope, this.points)
+            this.drawPoints(this.PaperScope, this.points)
 
-        this.init()
+            this.init()
 
-        this.PaperScope.view.onResize = this.setCanvasSize.bind(this, 'foo')
+            this.PaperScope.view.onResize = this.setCanvasSize
+        })
     },
 
     componentDidUpdate(nextProps) {
