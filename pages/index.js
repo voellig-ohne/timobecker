@@ -7,6 +7,7 @@ import Logo from 'components/logo/logo'
 import POINTS from 'components/logo/points'
 
 import 'style/main.less'
+import style from './intro.module.less'
 
 module.exports = React.createClass({
     propTypes () {
@@ -22,8 +23,8 @@ module.exports = React.createClass({
     render () {
         return (
             <DocumentTitle title={config.siteTitle}>
-                <div className="intro">
-                    <Logo className="tb_logo"
+                <div className={style.intro}>
+                    <Logo className={style.logo}
                             points={POINTS}
                             size={400}
                             margin={20}
