@@ -13,7 +13,7 @@ module.exports = React.createClass({
     },
 
     render () {
-        const meta = {
+        const content = {
             title: 'Timo Becker',
             background: 'portrait.jpg',
             body: (
@@ -30,14 +30,11 @@ module.exports = React.createClass({
                         product.
                     </p>
                 </span>
-            ),
-            descriptionSecondary: (
-                <p>hello</p>
             )
         }
         return (
             <DocumentTitle title={config.siteTitle}>
-                <Article {...meta}>
+                <Article {...content}>
                 </Article>
             </DocumentTitle>
         )
