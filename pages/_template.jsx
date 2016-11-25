@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router'
 import { prefixLink } from 'gatsby-helpers'
 import Navigation from 'components/navigation'
+import Project from 'components/Project'
+import ProjectList from 'components/ProjectList'
 
 module.exports = React.createClass({
     propTypes () {
@@ -10,10 +12,13 @@ module.exports = React.createClass({
         }
     },
     render () {
+        const post = this.props.children.props.route.page
         return (
             <div>
                 <main className="main_content">
-                    {this.props.children}
+                    {
+                        chooseTemplate(this.props.children)
+                    }                    
                 </main>
                 <Navigation
                     currentPath={this.props.location.pathname}/>
@@ -21,3 +26,25 @@ module.exports = React.createClass({
         )
     },
 })
+
+function chooseTemplate (children) {
+    const layout = children.props.route.page.data.layout;
+
+    if (layout === 'project') {
+        return (
+            <Project>
+                {children}
+            </Project>
+        )
+    }
+
+    if (layout === 'projectList') {
+        return (
+            <ProjectList>
+                {children}
+            </ProjectList>
+        )
+    }
+    
+    return children;
+}
