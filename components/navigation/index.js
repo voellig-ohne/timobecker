@@ -14,11 +14,11 @@ module.exports = React.createClass({
     render () {
         const navLinks = [
             {
-                link: '/konzept/',
-                title: 'Konzept'
+                link: '/concept/',
+                title: 'Concept'
             },{
-                link: '/event/',
-                title: 'Event'
+                link: '/sketches/',
+                title: 'Scetches'
             },{
                 link: '/illustration/',
                 title: 'Illustration'
