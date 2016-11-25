@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 import { prefixLink } from 'gatsby-helpers'
 import Navigation from 'components/navigation'
+import Article from 'components/article'
 import Project from 'components/Project'
 import ProjectList from 'components/ProjectList'
 
@@ -43,6 +44,14 @@ function chooseTemplate (children) {
             <ProjectList>
                 {children}
             </ProjectList>
+        )
+    }
+
+    if (layout === 'article') {
+        return (
+            <Article>
+                {children}
+            </Article>
         )
     }
     

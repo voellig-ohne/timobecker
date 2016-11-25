@@ -9,10 +9,8 @@ export default class Article extends React.Component {
         const { 
             background, 
             title, 
-            body, 
-            children, 
             descriptionSecondary 
-        } = this.props
+        } = this.props.children.props.route.page.data
 
         return (
             <article className="page">
@@ -21,7 +19,7 @@ export default class Article extends React.Component {
                     <div className={style.text}>
                         <div className={style.main}>
                             <h1>{title}</h1>
-                            {body}
+                            { this.props.children }                            
                         </div>
                         {
                             descriptionSecondary ?
@@ -31,8 +29,6 @@ export default class Article extends React.Component {
                         }
                     </div>
                 </header>
-
-                {children}
             </article>
         )
     }
