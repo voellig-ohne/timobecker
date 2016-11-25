@@ -2,7 +2,7 @@
 
 title: achitecture
 layout: project
-background: 065
+background: "065"
 
 ---
 

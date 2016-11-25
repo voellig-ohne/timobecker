@@ -2,7 +2,7 @@
 
 title: menschen.
 layout: project
-background: 076
+background: "076"
 
 ---
 
