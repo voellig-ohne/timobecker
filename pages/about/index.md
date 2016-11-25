@@ -1,7 +1,7 @@
 ---
 
 title: Timo Becker
-background: portrait.jpg
+background: portrait_bw.jpg
 layout: article
 
 ---
