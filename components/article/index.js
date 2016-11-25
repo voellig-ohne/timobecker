@@ -23,9 +23,12 @@ export default class Article extends React.Component {
                             <h1>{title}</h1>
                             {body}
                         </div>
-                        <div className={style.aside}>
-                            {descriptionSecondary}
-                        </div>
+                        {
+                            descriptionSecondary ?
+                            <div className={style.aside}>
+                                {descriptionSecondary}
+                            </div> : null
+                        }
                     </div>
                 </header>
 
