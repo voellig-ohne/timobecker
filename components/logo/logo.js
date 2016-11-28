@@ -24,7 +24,8 @@ import PAINTINGS from './paintings.json'
 
 // only conditionally import paperjs for static page building
 let paper;
-if (typeof window !== 'undefined') {
+
+if (!STATIC) {
     paper = require('paper')
 }
 
