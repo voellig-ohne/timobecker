@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router'
 import { prefixLink } from 'gatsby-helpers'
+import classNames from 'classnames'
+
 
 import style from './style.module.less'
 
@@ -19,6 +21,8 @@ export default class Navigation extends React.Component {
             },
         ]
 
+        const currentPath = this.props.currentPath;
+
         return (
             <span>
                 { this.props.currentPath !== '/' &&
@@ -31,10 +35,13 @@ export default class Navigation extends React.Component {
                     </Link>
                     <nav className={style.navigation_main}>
                         {navLinks.map((link, index) => {
+                            const active = currentPath === link.link
+                            const className = classNames(style.nav_link, {[style.nav_link_active]: active})
+
                             return (
                                 <Link to={prefixLink(link.link)}
                                         key={index}
-                                        className={style.nav_link}>
+                                        className={className}>
                                     {link.title}
                                 </Link>
                             )
