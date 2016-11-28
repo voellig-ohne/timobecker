@@ -20,7 +20,6 @@ const SIZES = {
 }
 
 import PATHS from './renderedPaths7.json'
-import PAINTINGS from './paintings.json'
 
 // only conditionally import paperjs for static page building
 let paper;
@@ -49,6 +48,22 @@ module.exports = React.createClass({
     },
 
     componentDidMount() {
+
+        const paintingsLink = require('!file-loader!./paintings.json')
+
+        fetch(paintingsLink)
+            .then((response) => {
+                return response.json()
+            }).then((json) => {
+                this.paintings = json
+                if (this.waitingIndex) {
+                    this.initPaint(this.paintings[this.waitingIndex])
+                    this.waitingIndex = undefined
+                }
+            }).catch((ex) => {
+                console.log('parsing failed', ex)
+            })
+
         this.SIZES_RELATIVE = _.mapValues(SIZES, (size) => {
             return this.getRelativeValue(size)
         })
@@ -182,9 +197,11 @@ module.exports = React.createClass({
         this.line.closed = true
         const drawingIndex = PATHS.byKey[this.connectOrder.join('')]
 
-        this.initPaint(PAINTINGS[drawingIndex])
-
-        // this.setCanvasSize(this.props.canvasSize)
+        if (this.paintings) {
+            this.initPaint(this.paintings[drawingIndex])
+        } else {
+            this.waitingIndex = drawingIndex
+        }
     },
 
     getRelativeValue (value) {
