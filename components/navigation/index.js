@@ -26,10 +26,10 @@ export default class Navigation extends React.Component {
                 }
 
                 <header className={style.navigation}>
-                    <Link to={prefixLink('/about/')}>
+                    <Link to={prefixLink('/about/')} className={style.navigation_about}>
                         Timo Becker
                     </Link>
-                    <nav>
+                    <nav className={style.navigation_main}>
                         {navLinks.map((link, index) => {
                             return (
                                 <Link to={prefixLink(link.link)}
