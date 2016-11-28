@@ -8,14 +8,14 @@ export default class Navigation extends React.Component {
     render () {
         const navLinks = [
             {
+                link: '/illustration/',
+                title: 'Illustration'
+            },{
                 link: '/concept/',
                 title: 'Concept'
             },{
                 link: '/sketches/',
                 title: 'Sketches'
-            },{
-                link: '/illustration/',
-                title: 'Illustration'
             },
         ]
 
