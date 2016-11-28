@@ -7,6 +7,10 @@
     display: flex;
     justify-content: center;
     padding-top: 60vh;
+
+    &--no_gallery {
+        margin-bottom: @nav-height;
+    }
 }
 
 .text {
@@ -20,21 +24,11 @@
 }
 
 .main {
+    flex: 1 1 30rem;
     background: @background-color;
     padding: 1rem;
     margin: .5rem;
-
-    & > *:first-child {
-        margin-top: 0;
-    }
-
-    & > *:last-child {
-        margin-bottom: 0;
-    }
-}
-
-.main {
-    flex: 1 1 30rem;
+    max-width: (@content-width / 2);
 }
 
 .background {

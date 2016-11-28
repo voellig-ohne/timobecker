@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 import { prefixLink } from 'gatsby-helpers'
+import classNames from 'classnames'
 
 import style from './style.module.less'
 
@@ -21,7 +22,7 @@ export default class Article extends React.Component {
 
         return (
             <article className="page">
-                <header className={style.header}>
+                <header className={classNames(style.header, {[style['header--no_gallery']]: !gallery})}>
                     <img src={backgroundImage} className={style.background}/>
                     <div className={style.text}>
                         <div className={style.main}>
