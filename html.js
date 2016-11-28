@@ -5,6 +5,8 @@ import { prefixLink } from 'gatsby-helpers'
 
 const BUILD_TIME = new Date().getTime()
 
+require('file?name=.htaccess!./.htaccess')
+
 module.exports = React.createClass({
   propTypes () {
     return {
