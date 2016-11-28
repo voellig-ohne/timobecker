@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 import { prefixLink } from 'gatsby-helpers'
 import classNames from 'classnames'
+import { includes } from 'lodash'
 
 
 import style from './style.module.less'
@@ -35,7 +36,7 @@ export default class Navigation extends React.Component {
                     </Link>
                     <nav className={style.navigation_main}>
                         {navLinks.map((link, index) => {
-                            const active = currentPath === link.link
+                            const active = includes(currentPath, link.link)
                             const className = classNames(style.nav_link, {[style.nav_link_active]: active})
 
                             return (
