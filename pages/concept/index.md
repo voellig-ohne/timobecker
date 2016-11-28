@@ -2,7 +2,7 @@
 
 title: Concept Art
 layout: projectList
-background: cover
+background: coverConcept
 
 ---
 

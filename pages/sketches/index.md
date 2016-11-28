@@ -2,7 +2,7 @@
 
 title: Sketches
 layout: projectList
-background: cover
+background: coverSketches
 
 ---
 
