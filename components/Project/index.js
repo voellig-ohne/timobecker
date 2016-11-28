@@ -6,8 +6,6 @@ import { map } from 'lodash'
 
 import style from './style.module.less'
 
-console.log(style)
-
 export default class Project extends React.Component {
     render () {
         const images = this.props.children.props.route.page.data.images
