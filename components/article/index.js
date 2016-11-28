@@ -34,12 +34,13 @@ export default class Article extends React.Component {
                             }
                         </div>
                     </div>
-                    { gallery ? 
-                        <div>
-                            { gallery }
-                        </div> : null
-                    }
                 </header>
+
+                { gallery ? 
+                    <div>
+                        { gallery }
+                    </div> : null
+                }
             </article>
         )
     }
