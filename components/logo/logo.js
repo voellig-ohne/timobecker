@@ -51,18 +51,21 @@ module.exports = React.createClass({
 
         const paintingsLink = require('!file-loader!./paintings.json')
 
-        fetch(paintingsLink)
-            .then((response) => {
-                return response.json()
-            }).then((json) => {
-                this.paintings = json
-                if (this.waitingIndex) {
-                    this.initPaint(this.paintings[this.waitingIndex])
-                    this.waitingIndex = undefined
-                }
-            }).catch((ex) => {
-                console.log('parsing failed', ex)
-            })
+        if (this.props.mode === 'connect') {
+            fetch(paintingsLink)
+                .then((response) => {
+                    return response.json()
+                }).then((json) => {
+                    this.paintings = json
+                    if (this.waitingIndex) {
+                        this.initPaint(this.paintings[this.waitingIndex])
+                        this.waitingIndex = undefined
+                    }
+                }).catch((ex) => {
+                    console.log('parsing failed', ex)
+                })
+        }
+        
 
         this.SIZES_RELATIVE = _.mapValues(SIZES, (size) => {
             return this.getRelativeValue(size)
