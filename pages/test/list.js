@@ -30,7 +30,7 @@ export default class Index extends React.Component {
                         className={style.logo}
                         points={POINTS}
                         order={order}
-                        size={200}
+                        size={800}
                         margin={20}
                         showLabels={false} />
                 </div>
