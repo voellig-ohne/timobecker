@@ -134,6 +134,8 @@ module.exports = React.createClass({
         order.forEach((index) => {
             this.line.add(new p.Point(points[index]))
         })
+
+        this.line.add(new p.Point(points[order[0]]))
     },
 
     drawPoints (p, points) {
