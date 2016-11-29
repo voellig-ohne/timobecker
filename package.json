@@ -36,6 +36,7 @@
     "lodash": "^4.13.1",
     "paper": "^0.9.25",
     "promise-polyfill": "^6.0.2",
+    "sharp": "^0.16.2",
     "whatwg-fetch": "^2.0.1"
   },
   "keywords": [
