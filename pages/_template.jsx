@@ -5,6 +5,7 @@ import Navigation from 'components/Navigation'
 import Article from 'components/Article'
 import Project from 'components/Project'
 import ProjectList from 'components/ProjectList'
+import { startsWith } from 'lodash'
 
 module.exports = React.createClass({
     propTypes () {
@@ -13,7 +14,8 @@ module.exports = React.createClass({
         }
     },
     render () {
-        const post = this.props.children.props.route.page
+        const isTest = startsWith(this.props.children.props.route.path, '/test/')
+
         return (
             <div>
                 <main className="main_content">
@@ -21,8 +23,12 @@ module.exports = React.createClass({
                         chooseTemplate(this.props.children)
                     }                    
                 </main>
-                <Navigation
-                    currentPath={this.props.location.pathname}/>
+                {
+                    !isTest ?
+                    <Navigation currentPath={this.props.location.pathname}/> : 
+                    null
+                }
+                
             </div>
         )
     },
