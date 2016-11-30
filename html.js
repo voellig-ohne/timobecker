@@ -30,8 +30,8 @@ module.exports = React.createClass({
             name="viewport"
             content="width=device-width, initial-scale=1.0 maximum-scale=1.0"
           />
+          <link rel="shortcut icon" href="/favicon.png" />
           <title>{title}</title>
-          <link rel="shortcut icon" href={this.props.favicon} />
           {css}
         </head>
         <body>
