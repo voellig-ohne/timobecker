@@ -32,7 +32,7 @@ export default class Navigation extends React.Component {
 
                 <header className={style.navigation}>
                     <Link to={prefixLink('/about/')} className={
-                            classNames(style.navigation_about, {[style.nav_link_active]: includes(currentPath, '/about/')})
+                            classNames(style.navigation_about, style.nav_link, {[style.nav_link_active]: includes(currentPath, '/about/')})
                         }>
                         Timo Becker
                     </Link>

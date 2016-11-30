@@ -22,6 +22,10 @@
 
     &_main {
         right: @padding;
+
+        .nav_link {
+            padding-left: .5em;
+        }
     }
 
     a {
@@ -30,9 +34,12 @@
 }
 
 .nav_link {
-    margin-left: .3em;
-
     &_active {
+        font-weight: bold;
+    }
+
+    &:hover {
+        color: black;
         font-weight: bold;
     }
 }
