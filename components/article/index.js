@@ -11,6 +11,7 @@ export default class Article extends React.Component {
         const { 
             background, 
             title, 
+            publisher,
             descriptionSecondary
         } = this.props.children.props.route.page.data
 
@@ -22,6 +23,8 @@ export default class Article extends React.Component {
         const backgroundImage = background
         const currentPath = this.props.children.props.route.path
 
+        const subTitle = publisher
+
         return (
             <article className="page">
                 <header className={classNames(style.header, {[style['header--no_gallery']]: !gallery})}>
@@ -29,6 +32,11 @@ export default class Article extends React.Component {
                     <div className={style.text}>
                         <div className={style.main}>
                             <h1>{title}</h1>
+                            { subTitle ?
+                                <p className={style.sub_title}>
+                                    { subTitle } 
+                                </p> : null
+                            }
                             { this.props.children }
                             { mainAddition ? 
                                 <div>
