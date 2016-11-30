@@ -21,3 +21,28 @@
     width: 100%;
     display: block;
 }
+
+.nextPrev {
+    width: 100%;
+    display: flex;
+    padding: 5rem 0;
+
+    &_link {
+        text-decoration: none;
+        padding: 1rem;
+        flex: 1 0 50%;
+
+        &:first-child {
+            text-align: right;
+        }
+    }
+
+    &_label {
+        font-style: italic;
+    }
+
+    &_title {
+        font-family: 'functioncaps';
+        text-transform: uppercase;
+    }
+}
