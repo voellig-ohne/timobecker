@@ -22,8 +22,21 @@ body {
     font-weight: bold;
 }
 
+@font-face {
+	font-family: 'functioncaps';
+	src: url('../webfonts/functioncaps_demi_macroman/FunctionCaps-Demi-webfont.woff');
+    font-weight: normal;
+}
+
 h1, h2 {
-    font-size: inherit;
+    font-size: 1.2rem;
+    font-family: functioncaps;
+    font-weight: normal;
+    text-transform: uppercase;
+
+    &:first-child {
+        margin-top: 0;
+    }
 }
 
 h1, p {
