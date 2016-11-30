@@ -49,6 +49,9 @@ export default class Navigation extends React.Component {
                         })}
                     </nav>
                 </header>
+                <div className={style.force_load_font}>
+                    t
+                </div>
         </span>
         )
     }
