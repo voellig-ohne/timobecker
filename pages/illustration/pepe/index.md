@@ -4,6 +4,7 @@ title: Pepe und der Pups-Roboter
 publisher: Willegoos Verlag
 layout: project
 background: 159
+thumbnail: 121
 images:
  - src: 119
  - src: 120

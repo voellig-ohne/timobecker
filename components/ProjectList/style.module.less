@@ -1,4 +1,29 @@
+@imageHeight: 8rem;
+@imageHeightHalf: (@imageHeight / 2);
+
 .projectLink {
     display: block;
-    padding: .5rem;
+    font-family: functioncaps;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-top: 1rem;
+
+    &:hover {
+        .projectImage {
+            transform: translateY(~"calc(-50% + @{imageHeightHalf})") scale(1.05);
+        }
+    }
+}
+
+.projectImage {
+    transition: .2s all;
+    width: 100%;
+    transform: translateY(~"calc(-50% + @{imageHeightHalf})");
+}
+
+.projectImage_container {
+    margin-top: .2rem;
+    width: 100%;
+    height: @imageHeight;
+    overflow: hidden;
 }

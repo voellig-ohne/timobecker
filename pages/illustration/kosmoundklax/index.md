@@ -4,6 +4,7 @@ title: Kosmo&Klax
 publisher: Mixtvision Verlag
 layout: project
 background: 178
+thumbnail: 113
 images: 
  - src: 109
  - src: 110

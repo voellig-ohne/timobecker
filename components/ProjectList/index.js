@@ -3,6 +3,7 @@ import { Link } from 'react-router'
 import { prefixLink } from 'gatsby-helpers'
 import Article from 'components/Article'
 import { filter, includes, flow, map } from 'lodash'
+import ResponsiveImage from 'components/ResponsiveImage' 
 
 import style from './style.module.less'
 
@@ -19,7 +20,6 @@ export default class ProjectList extends React.Component {
 
         const mainAdditions = (
             <div>
-                <h2>Projekte</h2>
                 { projects }
             </div>
         )
@@ -38,10 +38,18 @@ function isProject(page, currentPath) {
 
 function Project( project ) {
     const { path } = project
+    const imageProps = {
+        source: project.data.thumbnail || project.data.background,
+        location: path,
+        className: style.projectImage
+    }
 
     return (
         <Link to={path} key={path} className={style.projectLink}>
             { project.data.title }
+            <div className={style.projectImage_container}> 
+                <ResponsiveImage { ...imageProps }/>
+            </div>
         </Link>
     )
 } 

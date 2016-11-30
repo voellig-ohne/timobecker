@@ -1,8 +1,9 @@
 ---
 
-title: achitecture
+title: Architektur
 layout: project
 background: "065"
+thumbnail: 102
 images:
   - src: "086"
     size: large
