@@ -49,6 +49,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "gatsby develop",
     "build": "gatsby build",
-    "deploy": "rsync -avzc --del public/ voellig@antares.uberspace.de:/var/www/virtual/voellig/timo.xn--vlligohne-07a.de/"
+    "deploy": "rsync -avzc --del public/ timo@eltanin.uberspace.de:/home/timo/html",
+    "deployTest": "rsync -avzc --del public/ timo@eltanin.uberspace.de:/var/www/virtual/timo/test.timobecker.com"
   }
 }
