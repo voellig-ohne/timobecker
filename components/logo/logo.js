@@ -158,6 +158,8 @@ module.exports = React.createClass({
         const symbol = new p.Symbol(dot)
         const connectionSymbol = new p.Symbol(connectionDot)
 
+        this.placedDots = []
+
         points.forEach((point, index) => {
             if (this.props.showLabels) {
                 const pPoint = new p.Point(point)
@@ -169,13 +171,16 @@ module.exports = React.createClass({
 
             if (this.props.mode === 'connect') {
                 const connectionDotPlaced = connectionSymbol.place(point)
-                connectionDotPlaced.onMouseEnter = this.addConnectionDot.bind(this, point, index, connectionDotPlaced)
+                connectionDotPlaced.onMouseEnter = this.addConnectionDot.bind(this, point, index)
                 this.masterGroup.addChild(connectionDotPlaced)
+                this.placedDots.push(connectionDotPlaced)
             }
         })
     },
 
     addConnectionDot (point, index, connectionDotPlaced) {
+        const position = this.placedDots[index].position
+                
         if (this.line.closed) {
             return
         }
@@ -183,13 +188,15 @@ module.exports = React.createClass({
         const p = this.PaperScope
 
         if (!_.includes(this.connectOrder, index)) {
-            this.line.add(new p.Point(connectionDotPlaced.position))
+            this.line.add(new p.Point(position))
             this.connectOrder.push(index)
 
-            if (this.mouseLine.segments.length === 1) {
-                this.mouseLine.add(new this.PaperScope.Point(connectionDotPlaced.position))
-            } else {
-                this.mouseLine.lastSegment.point = connectionDotPlaced.position
+            if (!this.props.typing) {
+                if (this.mouseLine.segments.length === 1) {
+                    this.mouseLine.add(new this.PaperScope.Point(position))
+                } else {
+                    this.mouseLine.lastSegment.point = position
+                }
             }
         }
         if (this.connectOrder.length === this.points.length) {
@@ -198,7 +205,10 @@ module.exports = React.createClass({
     },
 
     dotConnectionFinished () {
-        this.mouseLine.lastSegment.remove()
+        if (!this.props.typing) {
+            this.mouseLine.lastSegment.remove()
+        }
+
         this.line.closed = true
         const drawingIndex = PATHS.byKey[this.connectOrder.join('')]
 
@@ -237,13 +247,14 @@ module.exports = React.createClass({
             this.mouseLine.strokeCap = 'round'
             this.mouseLine.sendToBack()
 
-            this.mouseLine.add(new this.PaperScope.Point(0, 0))
-
-            this.PaperScope.view.onMouseMove = (event) => {
-                this.mouseLine.firstSegment.point = event.point
+            if (!this.props.typing) {
+                this.mouseLine.add(new this.PaperScope.Point(0, 0))
+                this.PaperScope.view.onMouseMove = (event) => {
+                    this.mouseLine.firstSegment.point = event.point
+                }
             }
         } else if (this.props.mode === 'connect') {
-            if (this.mouseLine.segments.length !== 1) {
+            if (this.mouseLine.segments.length !== 1 && !this.props.typing) {
                 this.mouseLine.lastSegment.remove()
             }
         }
@@ -326,6 +337,11 @@ module.exports = React.createClass({
     reset() {
         this.initConnectionLine()
         this.initPaint()
+        this.PaperScope.view.draw()
+    },
+
+    connect(dot) {
+        this.addConnectionDot('foo', dot)
         this.PaperScope.view.draw()
     },
 
