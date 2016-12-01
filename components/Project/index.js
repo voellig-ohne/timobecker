@@ -30,7 +30,9 @@ export default class Project extends React.Component {
         const gallery = (
             <ul className={style.gallery}>
                 { map(images, (image, idx) => Image(image, idx, currentPath)) }
-                <NextPrev {...nextPrev} />
+                { nextPrev.next ? 
+                    <NextPrev {...nextPrev} /> : null 
+                }
             </ul>
         )
 

@@ -1,8 +1,20 @@
 ---
 
 title: Sketches
-layout: projectList
+layout: project
 background: coverSketches
+images:
+ - src: "065"
+ - src: "076"
+ - src: "086"
+ - src: "087"
+ - src: "088"
+ - src: 102
+ - src: 103
+ - src: 104
+ - src: 105
+ - src: 106
+ - src: 107
 
 ---
 
