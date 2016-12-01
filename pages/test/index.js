@@ -24,6 +24,10 @@ export default class Index extends React.Component {
                     <Link to={prefixLink('/test/connect/')}>
                         vebinden!
                     </Link>
+                    <br />
+                    <Link to={prefixLink('/test/project/')}>
+                        projezieren!
+                    </Link>
                 </div>
             </DocumentTitle>
         )
