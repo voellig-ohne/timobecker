@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 import { prefixLink } from 'gatsby-helpers'
 import Article from 'components/Article'
-import { filter, includes, flow, map } from 'lodash'
+import { filter, includes, flow, map, sortBy } from 'lodash'
 import ResponsiveImage from 'components/ResponsiveImage' 
 
 import style from './style.module.less'
@@ -14,8 +14,9 @@ export default class ProjectList extends React.Component {
         const pages = this.props.children.props.route.pages
 
         const projects = flow(
-            (pages) => filter(pages, page => isProject(page, currentPath)),
-            (pages) => map(pages, Project)
+            pages => filter(pages, page => isProject(page, currentPath)),
+            pages => sortBy(pages, page => page.data.order),
+            pages => map(pages, Project)
         )(pages)
 
         const mainAdditions = (
