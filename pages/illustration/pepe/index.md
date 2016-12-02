@@ -5,7 +5,7 @@ publisher: Willegoos
 layout: project
 order: 2
 background: 159
-thumbnail: 164
+thumbnail: 164-2
 images:
  - src: 119
  - src: 122

@@ -5,9 +5,9 @@ publisher: KD1 Designagentur/Deutscher Sparkassen-Verlag
 layout: project
 order: 4
 background: 225
-thumbnail: 202
+thumbnail: 118-2
 images:
- - src: 208
+ - src: 202
  - src: 117
  - src: 116
  - src: 194

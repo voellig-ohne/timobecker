@@ -5,7 +5,7 @@ publisher: Mixtvision Verlag
 layout: project
 order: 1
 background: 176
-thumbnail: 108
+thumbnail: 189-2
 images: 
  - src: 188
  - src: 189
@@ -27,7 +27,9 @@ Gemeinsam mit meiner Lektorin Martina Kuscheck, der Autorin Alexandra Helmig und
 */These tales caught me right away. I planned to just cross the text but couldn´t help myself: A minute later my wife and I sat on the sofa and read chapter by chapter, drinking tea and eating sweets.  
 Since March 2015 I illustrate these book series and I´m not planning to drop it.*
 
-[Kosmo&Klax](http://www.kosmo-klax.de/)
+[zur website](http://www.kosmo-klax.de/)
+<br><br>
+![buchpreis](BUCHPREIS.png)
 
 • 
 

@@ -6,10 +6,9 @@ layout: project
 background: 12
 thumbnail: 12
 images:
- - src: 13
  - src: 14
  - src: 15
- - src: 12
+ - src: 13
 
 ---
 
