@@ -10,13 +10,24 @@ Ich bin begeisterter Zeichner, Forscher, Papa, Designer, Illustrator.
 
 */ I love sketching, exploring, designing and fooling around.*
 
-•  
+• 
 
-Siemensstraße 16, 10551 Berlin  
-+49 176 8111 4552  
+<br><br><br><br>
+
+Bei Fragen melden Sie sich gern bei mir.
+
+*/ Feel free to contact me.*
+
+Timo Becker  
+Siemensstr 16  
+10551 Berlin  
+
 mail@timobecker.com  
++49.176.8111 4552
 
-•  
+• 
+
+<br><br><br><br>
 
 **1988:** geboren in Bad Pyrmont, Niedersachsen  
 */ Born in Bad Pyrmont, Germany*

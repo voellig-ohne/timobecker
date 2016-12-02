@@ -17,3 +17,7 @@ images:
 ---
 
 Bei den Editorial Illustrationen für KD1 war vor allem spannend, dass es in jedem Heft neue Anforderungen gab. Nicht nur thematischer Art, sondern auch in Hinsicht auf die möglichen Layout-Lösungen.
+
+*/ What I felt most interesting about these illustrations, were those always changing requirements. Not only thematic-wise, also regarding graphical solutions.*
+
+• 
