@@ -1,13 +1,16 @@
-.nextPrev {
+.container {
     width: 100%;
     display: flex;
     padding: 5rem 0 8rem;
     background: white;
+    align-items: center;
+}
 
+.nextPrev {
     &_link {
         text-decoration: none;
         padding: 1rem;
-        flex: 1 0 50%;
+        flex: 0 1 50%;
 
         &:first-child {
             text-align: right;
@@ -22,4 +25,26 @@
         font-family: 'functioncaps';
         text-transform: uppercase;
     }
+}
+
+.icon {
+    height: 3rem;
+    width: 3rem;
+    display: inline-block;
+
+    &:not(:last-child) {
+        margin-right: .5rem;
+    }
+
+    svg {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.content {
+    flex: 1 0 auto;
+    display: flex;
+    justify-content: center;
+    margin: 0 1rem;
 }

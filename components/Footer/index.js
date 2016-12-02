@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 import { prefixLink } from 'gatsby-helpers'
 import classNames from 'classnames'
+import Illustration from 'components/Illustration' 
 
 import style from './style.module.less'
 
@@ -9,8 +10,10 @@ export default class Footer extends React.Component {
     render() {
         const { next, prev } = this.props
 
+        console.log(next)
+
         return (
-            <footer className={style.nextPrev}>
+            <footer className={style.container}>
                 { prev ? 
                     <Link to={prev.path} className={style.nextPrev_link}>
                         <div className={style.nextPrev_label}>
@@ -21,6 +24,17 @@ export default class Footer extends React.Component {
                         </div>
                     </Link> : null 
                 }
+                <div className={style.content}>
+                    <a href="https://www.facebook.com/timo.becker.54" className={style.icon}>
+                        <Illustration illustration="icons_facebook" />
+                    </a>
+                    <a href="mailto:mail@timobecker.com" className={style.icon}>
+                        <Illustration illustration="icons_mail" />
+                    </a>
+                    <a href="https://volligohne.de" className={style.icon}>
+                        <Illustration illustration="icons_vo" />
+                    </a>
+                </div>
                 { next ?
                     <Link to={next.path} className={style.nextPrev_link}>
                         <div className={style.nextPrev_label}>
