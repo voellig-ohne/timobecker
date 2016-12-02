@@ -6,4 +6,3 @@ background: coverIllustration
 
 ---
 
-(hier ein text über illustration)
