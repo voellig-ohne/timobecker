@@ -2,19 +2,23 @@
 
 title: Sketches
 layout: project
-background: coverSketches
+background: "074"
 images:
+ - src: "055"
+ - src: 107
+ - src: 106
  - src: "065"
- - src: "076"
- - src: "086"
- - src: "087"
- - src: "088"
  - src: 102
- - src: 103
  - src: 104
  - src: 105
- - src: 106
- - src: 107
+ - src: "086"
+ - src: "079"
+ - src: "071"
+ - src: "073"
+ - src: "076"
+ - src: "077"
+ - src: "053"
+ - src: "088"
 
 ---
 

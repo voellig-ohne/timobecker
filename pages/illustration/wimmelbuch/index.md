@@ -3,14 +3,16 @@
 title: Wimmelbuch Deutschland
 publisher: Compact
 layout: project
+order: 3
 background: 124
+thumbnail: 124
 images:
- - src: 123
- - src: 126
- - src: 129
  - src: 146
  - src: 149
- - src: 150
+ - src: 125
+ - src: 123
+ - src: 151
+ - src: 129
 
 ---
 

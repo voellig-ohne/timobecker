@@ -3,6 +3,7 @@
 title: Kosmo&Klax
 publisher: Mixtvision Verlag
 layout: project
+order: 1
 background: 176
 thumbnail: 108
 images: 
@@ -23,8 +24,8 @@ images:
 Die Buchreihe hat mich beim Lesen der Texte sofort überzeugt! Eigentlich wollte ich mit meiner Frau nur einmal grob über die Texte schauen und ruck, zuck saßen wir zu Hause mit Tee und einem Stapel Geschichten auf dem Sofa.
 Gemeinsam mit meiner Lektorin Martina Kuscheck, der Autorin Alexandra Helmig und dem tollen Team von Mixtvision arbeite ich nun seit März 2015 mit Begeisterung an dieser Buchreihe.
 
-„Ich kenne keinen Illustrator, der in der Zusammenarbeit so kreativ und gleichzeitig konstruktiv mit einem Thema umgeht, wie Timo. Chapeau!“
-<br />*Martina Kuscheck, Freie Lektorin für „Kosmo&Klax“*
+„Ich kenne keinen Illustrator, der in der Zusammenarbeit so kreativ und gleichzeitig konstruktiv mit einem Thema umgeht, wie Timo. Chapeau!“ 
+*Martina Kuscheck, Freie Lektorin für „Kosmo&Klax“*
 
-"Es ist bemerkenswert, mit welcher Leichtigkeit Timo Becker alle Figuren rund um Kosmo und Klax  gestalterisch zum Leben erweckt. Ein echter Glücksfall!"
-<br />*Sebastian Zembol, Verleger (Mixtvision*
+„Es ist bemerkenswert, mit welcher Leichtigkeit Timo Becker alle Figuren rund um Kosmo und Klax  gestalterisch zum Leben erweckt. Ein echter Glücksfall!“ 
+*Sebastian Zembol, Verleger (Mixtvision*
