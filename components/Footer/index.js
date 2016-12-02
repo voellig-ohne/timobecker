@@ -10,8 +10,6 @@ export default class Footer extends React.Component {
     render() {
         const { next, prev } = this.props
 
-        console.log(next)
-
         return (
             <footer className={style.container}>
                 { prev ? 
