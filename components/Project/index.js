@@ -30,9 +30,6 @@ export default class Project extends React.Component {
         const gallery = (
             <ul className={style.gallery}>
                 { map(images, (image, idx) => Image(image, idx, currentPath)) }
-                { nextPrev.next ? 
-                    <NextPrev {...nextPrev} /> : null 
-                }
             </ul>
         )
 
@@ -52,29 +49,6 @@ function Image (image, idx, currentPath) {
                 location={ currentPath } 
                 className={ style.image } />
         </li>
-    )
-}
-
-function NextPrev ({ next, prev }) {
-    return (
-        <div className={style.nextPrev}>
-            <Link to={prev.path} className={style.nextPrev_link}>
-                <div className={style.nextPrev_label}>
-                    vorheriges
-                </div>            
-                <div className={style.nextPrev_title}>
-                    {prev.data.title}
-                </div>
-            </Link>
-            <Link to={next.path} className={style.nextPrev_link}>
-                <div className={style.nextPrev_label}>
-                    nächstes
-                </div>     
-                <div className={style.nextPrev_title}>
-                    {next.data.title}
-                </div>
-            </Link>
-        </div>
     )
 }
 

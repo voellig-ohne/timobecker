@@ -3,6 +3,8 @@ import { Link } from 'react-router'
 import { prefixLink } from 'gatsby-helpers'
 import classNames from 'classnames'
 import ResponsiveImage from 'components/ResponsiveImage' 
+import Footer from 'components/Footer' 
+import { filter, includes } from 'lodash'
 
 import style from './style.module.less'
 
@@ -24,6 +26,22 @@ export default class Article extends React.Component {
         const currentPath = this.props.children.props.route.path
 
         const subTitle = publisher
+
+        const parentPath = '/' + currentPath.split('/')[1] + '/'
+        let nextPrev = {}
+
+        const siblingPages = filter(this.props.children.props.route.pages, (page) => {
+            return page.path !== parentPath &&
+                includes(page.path, parentPath)
+        })
+
+        siblingPages.forEach((page, index) => {
+            if (page.path === currentPath) {
+                nextPrev.prev = siblingPages[mod((index - 1), siblingPages.length)]
+                nextPrev.next = siblingPages[(index + 1) % siblingPages.length]
+                return false;
+            }
+        })
 
         return (
             <article className="page">
@@ -52,7 +70,13 @@ export default class Article extends React.Component {
                         { gallery }
                     </div> : null
                 }
+
+                <Footer next={nextPrev.next} prev={nextPrev.prev} />
             </article>
         )
     }
+}
+
+function mod(n, m) {
+        return ((n % m) + m) % m;
 }
