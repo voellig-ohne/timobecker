@@ -25,15 +25,18 @@ export default class Footer extends React.Component {
                     </Link> : null 
                 }
                 <div className={style.content}>
-                    <a href="https://www.facebook.com/timo.becker.54" className={style.icon}>
+                    <a href="https://www.facebook.com/timo.becker.54" className={style.icon} title="Facebook">
                         <Illustration illustration="icons_facebook" />
                     </a>
-                    <a href="mailto:mail@timobecker.com" className={style.icon}>
+                    <a href="mailto:mail@timobecker.com" className={style.icon} title="Schick 'ne mail!">
                         <Illustration illustration="icons_mail" />
                     </a>
-                    <a href="https://volligohne.de" className={style.icon}>
+                    <a href="https://volligohne.de" className={style.icon} title="Völlig Ohne">
                         <Illustration illustration="icons_vo" />
                     </a>
+                    <Link to="/impressum" className={style.icon} title="Impressum">
+                        <Illustration illustration="icons_impressum" />
+                    </Link>
                 </div>
                 { next ?
                     <Link to={next.path} className={style.nextPrev_link}>
