@@ -32,7 +32,7 @@ export default class Footer extends React.Component {
                     <a href="https://volligohne.de" className={style.icon} title="Völlig Ohne">
                         <Illustration illustration="icons_vo" />
                     </a>
-                    <Link to="/impressum" className={style.icon} title="Impressum">
+                    <Link to="/impressum/" className={style.icon} title="Impressum">
                         <Illustration illustration="icons_impressum" />
                     </Link>
                 </div>
