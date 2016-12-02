@@ -27,6 +27,7 @@ build/Release
 node_modules
 .gatsby-context.js
 .sass-cache/
+.DS_Store
 
 public
 webfonts
