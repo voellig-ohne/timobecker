@@ -6,8 +6,49 @@
     width: 100%;
     position: fixed;
     background: black;
+
+    @media print {
+        display: block;
+        background: white;
+    }
 }
 
 .painting {
     background: white;
+    transform: scaleY(.99) scaleX(.99) translateY(-1px) translateX(-1px);
+
+    @media print {
+        width: 300px;
+        height: 300px;
+        margin-bottom: 2rem;
+    }
+}
+
+.printStuff {
+    display: none;
+    font-size: 10pt;
+
+    @media print {
+        display: block;
+    }
+}
+
+.title {
+    // font-weight: bold;
+}
+
+.foo {
+    display: flex;
+
+    > * {
+        flex-grow: 1;
+
+        &:last-child {
+            text-align: right;
+        }
+    }
+}
+
+.vo {
+    text-align: center;
 }

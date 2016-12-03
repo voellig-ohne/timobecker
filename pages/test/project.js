@@ -48,12 +48,37 @@ export default class Projection extends React.Component {
                 <div className={style.container}>
                     <Logo className={style.painting}
                             points={POINTS}
-                            size={720}
+                            size={700}
                             margin={20}
                             showLabels={false}
                             mode="connect"
                             ref="logo"
                             typing={true} />
+
+                    <div className={style.printStuff}>
+                        <div className={style.foo}>
+                            <div>
+                                <div className={style.title}>
+                                    Timo Becker
+                                </div>
+                                <p>
+                                    +49 176 8111 4552<br />
+                                    mail@timobecker.com
+                                </p>
+                                <p>
+                                    timobecker.com
+                                </p>
+                            </div>
+                            <div>
+                                Launch Party**<br />
+                                03/12/16
+                            </div>
+                        </div>
+                        <div className={style.vo}>
+                            <p>**</p>
+                            <p>ww.völligohne.de</p>
+                        </div>
+                    </div>
                 </div>
             </DocumentTitle>
         )

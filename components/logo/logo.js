@@ -77,7 +77,9 @@ module.exports = React.createClass({
             this.init()
 
             this.PaperScope.view.onResize = this.setCanvasSize
-        }, 100)
+            this.setCanvasSize();
+
+        }, 100)        
     },
 
     componentDidUpdate(nextProps) {
@@ -309,6 +311,14 @@ module.exports = React.createClass({
 
                     if (idx === this.paintGroup.children.length - 1) {
                         this.currentlyPainting = false
+                        if (this.props.typing) {
+                            setTimeout(() => {
+                                window.print()
+                                this.reset()
+                                console.log('resetting')
+                                location.reload();
+                            }, 5000)
+                        }
                     }
                 }, idx * 100)
             })
