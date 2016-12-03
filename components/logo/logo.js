@@ -73,7 +73,7 @@ module.exports = React.createClass({
             this.init()
 
             this.PaperScope.view.onResize = this.setCanvasSize
-        })
+        }, 100)
     },
 
     componentDidUpdate(nextProps) {
