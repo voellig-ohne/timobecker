@@ -9,10 +9,11 @@ import style from './style.module.less'
 export default class Footer extends React.Component {
     render() {
         const { next, prev } = this.props
+        const nextPrevSame = prev && prev.data.title === next.data.title
 
         return (
             <footer className={style.container}>
-                { prev ? 
+                { prev && !nextPrevSame ? 
                     <Link to={prev.path} className={style.nextPrev_link}>
                         <div className={style.nextPrev_label}>
                             vorheriges
@@ -36,7 +37,7 @@ export default class Footer extends React.Component {
                         <Illustration illustration="icons_impressum" />
                     </Link>
                 </div>
-                { next ?
+                { next && !nextPrevSame ?
                     <Link to={next.path} className={style.nextPrev_link}>
                         <div className={style.nextPrev_label}>
                             nächstes
