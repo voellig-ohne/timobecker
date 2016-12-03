@@ -56,6 +56,7 @@ module.exports = React.createClass({
         this.SIZES_RELATIVE = _.mapValues(SIZES, (size) => {
             return this.getRelativeValue(size)
         })
+
         this.relativeMargin = this.getRelativeValue(this.props.margin)
 
         this.points = this.props.points.map((point) => {
@@ -94,6 +95,7 @@ module.exports = React.createClass({
 
     componentWillUnmount() {
         document.ontouchmove = undefined
+        this.PaperScope.remove()
     },
 
     setCanvasSize() {
