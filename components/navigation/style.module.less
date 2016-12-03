@@ -11,6 +11,10 @@
     font-weight: 200;
     text-shadow: 0 0 5px rgba(255,255,255,.1);
 
+    @media (max-width: @break) {
+        font-size: inherit;
+    }
+
     &:after {
         content: '';
         display: block;
