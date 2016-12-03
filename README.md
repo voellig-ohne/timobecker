@@ -1,4 +1,7 @@
-# gatsby-starter-default
-The default Gatsby starter
+# Timo Becker
 
-Install this starter (assuming Gatsby is installed) by running from your CLI: gatsby new gatsby-example-site
+Portfolio website for Timo Becker. Design & code by [völlig ohne](https://volligohne.de). 
+
+[timobecker.com](http://timobecker.com)
+
+Using [gatsby.js](https://github.com/gatsbyjs/gatsby). 
