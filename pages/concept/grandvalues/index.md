@@ -14,7 +14,6 @@ images:
  - src: 3b
  - src: 4
  - src: 4b
- - src: 13
 
 
 ---
