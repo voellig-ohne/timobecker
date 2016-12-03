@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-starter-default",
-  "description": "Gatsby default starter",
+  "name": "timo-becker-website",
+  "description": "Timo Becker Website",
   "version": "1.0.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Timur Celikel",
   "dependencies": {
     "babel-plugin-add-module-exports": "^0.2.0",
     "babel-preset-es2015": "^6.6.0",
@@ -43,7 +43,7 @@
   "keywords": [
     "gatsby"
   ],
-  "license": "MIT",
+  "license": "see LICENCE file",
   "main": "n/a",
   "scripts": {
     "lint": "./node_modules/.bin/eslint --ext .js,.jsx --ignore-pattern public .",
