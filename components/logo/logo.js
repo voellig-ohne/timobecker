@@ -49,6 +49,9 @@ module.exports = React.createClass({
     },
 
     componentDidMount() {
+        document.ontouchmove = function(event){
+            event.preventDefault();
+        }
 
         this.SIZES_RELATIVE = _.mapValues(SIZES, (size) => {
             return this.getRelativeValue(size)
@@ -87,6 +90,10 @@ module.exports = React.createClass({
         if (this.props.canvasSize !== nextProps.canvasSize) {
             this.setCanvasSize(nextProps.canvasSize)
         }
+    },
+
+    componentWillUnmount() {
+        document.ontouchmove = undefined
     },
 
     setCanvasSize() {
@@ -133,7 +140,7 @@ module.exports = React.createClass({
 
         const connectionDot = new p.Path.Circle({
         	center: [0, 0],
-        	radius: this.SIZES_RELATIVE.POINT_RADIUS * 2,
+        	radius: this.SIZES_RELATIVE.POINT_RADIUS * 4,
         	fillColor: 'rgba(0,0,0,0)',
             blendMode: BLEND_MODE
         })
@@ -155,6 +162,7 @@ module.exports = React.createClass({
             if (this.props.mode === 'connect') {
                 const connectionDotPlaced = connectionSymbol.place(point)
                 connectionDotPlaced.onMouseEnter = this.addConnectionDot.bind(this, point, index)
+                connectionDotPlaced.onMouseDown = this.addConnectionDot.bind(this, point, index)
                 this.masterGroup.addChild(connectionDotPlaced)
                 this.placedDots.push(connectionDotPlaced)
             }
@@ -174,7 +182,7 @@ module.exports = React.createClass({
             this.line.add(new p.Point(position))
             this.connectOrder.push(index)
 
-            if (!this.props.typing) {
+            if (this.mouseLineInitHappened) {
                 if (this.mouseLine.segments.length === 1) {
                     this.mouseLine.add(new this.PaperScope.Point(position))
                 } else {
@@ -188,11 +196,12 @@ module.exports = React.createClass({
     },
 
     dotConnectionFinished () {
-        if (!this.props.typing) {
+        if (this.mouseLineInitHappened) {
             this.mouseLine.lastSegment.remove()
         }
 
         this.line.closed = true
+        this.currentlyPainting = true
         const drawingIndex = PATHS.byKey[this.connectOrder.join('')]
 
         const paintingsLink = require('!file-loader!./paintingsSingle/' + drawingIndex + '.json')        
@@ -235,14 +244,17 @@ module.exports = React.createClass({
             this.mouseLine.strokeCap = 'round'
             this.mouseLine.sendToBack()
 
-            if (!this.props.typing) {
-                this.mouseLine.add(new this.PaperScope.Point(0, 0))
-                this.PaperScope.view.onMouseMove = (event) => {
-                    this.mouseLine.firstSegment.point = event.point
+            this.PaperScope.view.onMouseMove = (event) => {
+                if (!this.mouseLineInitHappened) {
+                    this.mouseLine.add(new this.PaperScope.Point(0, 0))
+                    this.mouseLineInitHappened = true;
                 }
+
+                this.mouseLine.firstSegment.point = event.point
             }
+
         } else if (this.props.mode === 'connect') {
-            if (this.mouseLine.segments.length !== 1 && !this.props.typing) {
+            if (this.mouseLine.segments.length !== 1 && this.mouseLineInitHappened) {
                 this.mouseLine.lastSegment.remove()
             }
         }
@@ -250,7 +262,9 @@ module.exports = React.createClass({
         this.connectOrder = []
 
         this.PaperScope.project.view.onMouseDown = () => {
-            this.reset()
+            if (this.line.closed && !this.currentlyPainting) {
+                this.reset()
+            }
         }
     },
 
@@ -290,6 +304,10 @@ module.exports = React.createClass({
                     child.opacity = 1
                     this.setCanvasSize()
                     this.PaperScope.view.draw()
+
+                    if (idx === this.paintGroup.children.length - 1) {
+                        this.currentlyPainting = false
+                    }
                 }, idx * 100)
             })
         }
