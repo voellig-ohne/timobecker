@@ -1,5 +1,6 @@
 import React from 'react'
 import _ from 'lodash'
+import 'whatwg-fetch'
 
 import { prefixLink } from 'gatsby-helpers'
 import { config } from 'config'
