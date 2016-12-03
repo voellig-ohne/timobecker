@@ -49,24 +49,6 @@ module.exports = React.createClass({
 
     componentDidMount() {
 
-        const paintingsLink = require('!file-loader!./paintings.json')
-
-        if (this.props.mode === 'connect') {
-            fetch(paintingsLink)
-                .then((response) => {
-                    return response.json()
-                }).then((json) => {
-                    this.paintings = json
-                    if (this.waitingIndex) {
-                        this.initPaint(this.paintings[this.waitingIndex])
-                        this.waitingIndex = undefined
-                    }
-                }).catch((ex) => {
-                    console.log('parsing failed', ex)
-                })
-        }
-        
-
         this.SIZES_RELATIVE = _.mapValues(SIZES, (size) => {
             return this.getRelativeValue(size)
         })
@@ -212,11 +194,16 @@ module.exports = React.createClass({
         this.line.closed = true
         const drawingIndex = PATHS.byKey[this.connectOrder.join('')]
 
-        if (this.paintings) {
-            this.initPaint(this.paintings[drawingIndex])
-        } else {
-            this.waitingIndex = drawingIndex
-        }
+        const paintingsLink = require('!file-loader!./paintingsSingle/' + drawingIndex + '.json')        
+
+        fetch(paintingsLink)
+            .then((response) => {
+                return response.json()
+            }).then((painting) => {
+                this.initPaint(painting)
+            }).catch((ex) => {
+                console.log('parsing failed', ex)
+            })
     },
 
     getRelativeValue (value) {
@@ -302,7 +289,7 @@ module.exports = React.createClass({
                     child.opacity = 1
                     this.setCanvasSize()
                     this.PaperScope.view.draw()
-                }, idx * 100 + 200)
+                }, idx * 100)
             })
         }
 
