@@ -1,9 +1,15 @@
+@import '../../style/vars';
+
 .container {
     width: 100%;
     display: flex;
     padding: 5rem 0 8rem;
     background: white;
     align-items: center;
+
+    @media (max-width: @break) {
+        flex-wrap: wrap;
+    }
 }
 
 .nextPrev {
@@ -11,6 +17,10 @@
         text-decoration: none;
         padding: 1rem;
         flex: 0 1 50%;
+
+        @media (max-width: @break) {
+            order: 0;
+        }
 
         &:first-child {
             text-align: right;
@@ -47,4 +57,10 @@
     display: flex;
     justify-content: center;
     margin: 0 1rem;
+
+    @media (max-width: @break) {
+        order: 2;
+        width: 100%;
+        margin: 0;
+    }
 }
