@@ -48,7 +48,7 @@ export default class Projection extends React.Component {
                 <div className={style.container}>
                     <Logo className={style.painting}
                             points={POINTS}
-                            size={750}
+                            size={720}
                             margin={20}
                             showLabels={false}
                             mode="connect"
