@@ -312,8 +312,8 @@ module.exports = React.createClass({
                     if (idx === this.paintGroup.children.length - 1) {
                         this.currentlyPainting = false
                         if (this.props.typing) {
+                            window.print()
                             setTimeout(() => {
-                                window.print()
                                 this.reset()
                                 console.log('resetting')
                                 location.reload();
