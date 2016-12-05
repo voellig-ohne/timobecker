@@ -99,7 +99,7 @@ module.exports = React.createClass({
     componentWillUnmount() {
         document.ontouchmove = undefined
         this.PaperScope.remove()
-        window._paq.push(['trackEvent', 'connectionCount', this.connectionCount])
+        window._paq.push(['trackEvent', 'painting', 'connected', this.connectionCount])
     },
 
     setCanvasSize() {
@@ -221,7 +221,7 @@ module.exports = React.createClass({
                 console.log('parsing failed', ex)
             })
 
-        window._paq.push(['trackEvent', 'Connected', drawingIndex])
+        window._paq.push(['trackEvent', 'painting', 'connected', drawingIndex])
         this.connectionCount = this.connectionCount + 1
     },
 
