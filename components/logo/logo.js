@@ -99,7 +99,7 @@ module.exports = React.createClass({
     componentWillUnmount() {
         document.ontouchmove = undefined
         this.PaperScope.remove()
-        window._paq.push(['trackEvent', 'painting', 'connected', this.connectionCount])
+        window._paq.push(['trackEvent', 'painting', 'connectionCount', this.connectionCount])
     },
 
     setCanvasSize() {
