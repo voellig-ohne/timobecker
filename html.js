@@ -15,6 +15,8 @@ module.exports = React.createClass({
   },
   render () {
     const title = DocumentTitle.rewind()
+    
+    const piwikSetup = buildPiwikSetup();
 
     let css
     if (process.env.NODE_ENV === 'production') {
@@ -37,8 +39,31 @@ module.exports = React.createClass({
         <body>
           <div id="react-mount" dangerouslySetInnerHTML={{ __html: this.props.body }} />
           <script src={prefixLink(`/bundle.js?t=${BUILD_TIME}`)} />
+          { piwikSetup }
         </body>
       </html>
     )
   },
 })
+
+function buildPiwikSetup() {
+  const js = `
+  var _paq = _paq || [];
+  _paq.push(["setCookieDomain", "*.timobecker.com"]);
+  _paq.push(["setDomains", ["*.timobecker.com"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//piwik.timobecker.com/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+  `;
+
+  return <script
+    type="text/javascript"
+    dangerouslySetInnerHTML={{ __html: js }}
+  />;
+}

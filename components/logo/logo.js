@@ -39,6 +39,7 @@ module.exports = React.createClass({
         }
         if (this.props.mode === 'connect') {
             this.initConnectionLine()
+            this.connectionCount = 0;
         }
 
         if (this.props.canvasResize) {
@@ -98,6 +99,7 @@ module.exports = React.createClass({
     componentWillUnmount() {
         document.ontouchmove = undefined
         this.PaperScope.remove()
+        window._paq.push(['trackEvent', 'connectionCount', this.connectionCount])
     },
 
     setCanvasSize() {
@@ -218,6 +220,9 @@ module.exports = React.createClass({
             }).catch((ex) => {
                 console.log('parsing failed', ex)
             })
+
+        window._paq.push(['trackEvent', 'Connected', drawingIndex])
+        this.connectionCount = this.connectionCount + 1
     },
 
     getRelativeValue (value) {
@@ -315,7 +320,6 @@ module.exports = React.createClass({
                             window.print()
                             setTimeout(() => {
                                 this.reset()
-                                console.log('resetting')
                                 location.reload();
                             }, 5000)
                         }
