@@ -4,4 +4,7 @@ Portfolio website for Timo Becker. Design & code by [völlig ohne](https://volli
 
 [timobecker.com](http://timobecker.com)
 
-Using [gatsby.js](https://github.com/gatsbyjs/gatsby). 
+Frameworks: 
+
+ * Static magic: [gatsby.js](https://github.com/gatsbyjs/gatsby)
+ * Painting magic: [paper.js](http://paperjs.org/)
