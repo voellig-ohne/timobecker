@@ -6,16 +6,13 @@ layout: article
 
 ---
 
-Ich bin begeisterter Zeichner, Forscher, Papa, Designer, Illustrator. 
-
+Ich bin begeisterter Zeichner, Forscher, Papa, Designer, Illustrator.  
 */ I love sketching, exploring, designing and fooling around.*
 
 • 
 
-<br><br><br><br>
 
-Bei Fragen melden Sie sich gern bei mir.
-
+Bei Fragen melden Sie sich gern bei mir.  
 */ Feel free to contact me.*
 
 mail@timobecker.com  
@@ -23,7 +20,6 @@ mail@timobecker.com
 
 • 
 
-<br><br><br><br>
 
 **1988:** geboren in Bad Pyrmont, Niedersachsen  
 */ Born in Bad Pyrmont, Germany*
@@ -49,13 +45,13 @@ Studied Design at University of Applied Sciences Hildesheim*
 **2013:** Bachelor of Arts an der FH Münster, Beste Abschlussarbeit „Sabotage Haywood“  
 */ Bachelor of Arts at University of Applied Sciences Münster, Best Thesis "Sabotage Haywood"(Concept Art Project)*
 
-**2014–2015:** Lead Artist für Bearhands in Berlin. Visual Development des Projektes „Grand Values: Monaco“ 
+**2014–2015:** 2D Artist / Visual Development des Projektes „Grand Values: Monaco“ (Bearhands in Berlin) 
  */ 2D Artist at Bearhands in Berlin – Visual Development of "Grand Values: Monaco"*
 
-**2015:** Instructor beim D+D Berlin LifeDrawing  
+**2015:** Instructor beim Drink+Draw Berlin LifeDrawing  
 */ Instructor at Drink+Draw Berlin LifeDrawing*
 
-**2016:** Launch der Buchreihe „Kosmo&Klax“ beim Mixtvision Verlag; Auszeichnung des Buches „Kosmo&Klax – Jahreszeiten Geschichten“ als „Buch des Monats“ durch die Deutsche Akademie für Kinder- und Jugendliteratur e.V.  
+**2016:** Launch der Buchreihe „Kosmo&Klax“ (Mixtvision); Auszeichnung des Buches „Kosmo&Klax – Jahreszeiten Geschichten“ als „Buch des Monats“ durch die Deutsche Akademie für Kinder- und Jugendliteratur e.V.    
 */ Launch of the children book series "Kosmo&Klax" (Mixtvision); "Kosmo&Klax – Seasons Tales" got the "Book of the Month Award" by the German 
 Academy for Children´s and Juvenile Literature*
 
