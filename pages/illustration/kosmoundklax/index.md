@@ -34,7 +34,6 @@ Since March 2015 I illustrate these book series and I´m not planning to drop it
 • 
 
 
-<br><br><br>
 „Ich kenne keinen Illustrator, der in der Zusammenarbeit so kreativ und gleichzeitig konstruktiv mit einem Thema umgeht, wie Timo. Chapeau!  
 */ I don’t know any illustrator exposing with such creativity and constructiveness. Chapeau!*“  
 *– Martina Kuscheck, Freie Lektorin für „Kosmo&Klax“*
