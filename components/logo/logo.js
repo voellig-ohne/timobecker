@@ -111,7 +111,7 @@ module.exports = React.createClass({
 
         this.masterGroup.position = new this.PaperScope.Point(size.width / 2, size.height / 2)
 
-        if (this.paintGroup) {
+        if (this.paintGroup && this.paintGroup.children.length) {
             if (!this.paintGroupPositionTmp) {
                 this.paintGroupPositionTmp = this.paintGroup.position
             }
