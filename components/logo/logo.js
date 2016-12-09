@@ -147,7 +147,7 @@ module.exports = React.createClass({
         const connectionDot = new p.Path.Circle({
         	center: [0, 0],
         	radius: this.SIZES_RELATIVE.POINT_RADIUS * 4,
-        	fillColor: 'rgba(0,0,0,0)',
+        	fillColor: 'rgba(255,255,255,1)',
             blendMode: BLEND_MODE
         })
 
