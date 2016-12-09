@@ -39,7 +39,7 @@ module.exports = React.createClass({
         <body>
           <div id="react-mount" dangerouslySetInnerHTML={{ __html: this.props.body }} />
           <script src={prefixLink(`/bundle.js?t=${BUILD_TIME}`)} />
-          { piwikSetup }
+          { process.env.NODE_ENV === 'production' ? piwikSetup : null }
         </body>
       </html>
     )
