@@ -15,12 +15,16 @@
 
 .painting {
     background: white;
-    transform: scaleY(.99) scaleX(.99) translateY(-1px) translateX(-1px);
+    transform: scaleY(.99) scaleX(.97) translateY(-1px) translateX(0px);
 
     @media print {
         width: 300px;
         height: 300px;
         margin-bottom: 2rem;
+    }
+
+    @media screen {
+        margin: 0px -1px -7px;
     }
 }
 
@@ -46,6 +50,16 @@
         &:last-child {
             text-align: right;
         }
+    }
+}
+
+.canvasContainer {
+
+    @media screen {
+        background: white;
+        padding: 2px 0px 0;
+        overflow: hidden;
+        transform: translateY(-3px) translateX(1px);
     }
 }
 

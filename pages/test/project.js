@@ -46,14 +46,16 @@ export default class Projection extends React.Component {
         return (
             <DocumentTitle title={config.siteTitle}>
                 <div className={style.container}>
-                    <Logo className={style.painting}
-                            points={POINTS}
-                            size={700}
-                            margin={20}
-                            showLabels={false}
-                            mode="connect"
-                            ref="logo"
-                            typing={true} />
+                    <div className={style.canvasContainer}>
+                        <Logo className={style.painting}
+                                points={POINTS}
+                                size={700}
+                                margin={20}
+                                showLabels={false}
+                                mode="connect"
+                                ref="logo"
+                                typing={true} />
+                    </div>
 
                     <div className={style.printStuff}>
                         <div className={style.foo}>
@@ -76,7 +78,7 @@ export default class Projection extends React.Component {
                         </div>
                         <div className={style.vo}>
                             <p>**</p>
-                            <p>ww.völligohne.de</p>
+                            <p>www.völligohne.de</p>
                         </div>
                     </div>
                 </div>
