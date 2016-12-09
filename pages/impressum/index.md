@@ -21,7 +21,7 @@ mail@timobecker.com
 Gestaltung & Programmierung, Fotos (bis auf Portrait):  
 */ Design & Code, Photos (except portrait):*
 
-[Völlig Ohne](https//volligohne.de)
+<a href="https://volligohne.de" target="_blank">Völlig Ohne</a>
 
 • 
 

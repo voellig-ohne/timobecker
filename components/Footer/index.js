@@ -24,13 +24,13 @@ export default class Footer extends React.Component {
                     </Link> : null 
                 }
                 <div className={style.content}>
-                    <a href="https://www.facebook.com/timo.becker.54" className={style.icon} title="Facebook">
+                    <a href="https://www.facebook.com/timo.becker.54" className={style.icon} title="Facebook" target="_blank">
                         <Illustration illustration="icons_facebook" />
                     </a>
                     <a href="mailto:mail@timobecker.com" className={style.icon} title="Mail">
                         <Illustration illustration="icons_mail" />
                     </a>
-                    <a href="http://volligohne.de/projekte/timobecker/" className={style.icon} title="Völlig Ohne">
+                    <a href="http://volligohne.de/projekte/timobecker/" className={style.icon} title="Völlig Ohne" target="_blank">
                         <Illustration illustration="icons_vo" />
                     </a>
                     <Link to="/impressum/" className={style.icon} title="Impressum / Kontakt">
