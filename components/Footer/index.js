@@ -30,7 +30,7 @@ export default class Footer extends React.Component {
                     <a href="mailto:mail@timobecker.com" className={style.icon} title="Mail">
                         <Illustration illustration="icons_mail" />
                     </a>
-                    <a href="https://volligohne.de" className={style.icon} title="Völlig Ohne">
+                    <a href="http://volligohne.de/projekte/timobecker/" className={style.icon} title="Völlig Ohne">
                         <Illustration illustration="icons_vo" />
                     </a>
                     <Link to="/impressum/" className={style.icon} title="Impressum / Kontakt">
