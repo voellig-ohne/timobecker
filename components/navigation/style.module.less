@@ -1,6 +1,6 @@
 @import '../../style/vars';
 
-@thickness: .4rem;
+@thickness: .3em;
 
 .navigation {
     @padding: 1rem;
@@ -46,6 +46,7 @@
 
         .nav_link {
             padding-left: .5em;
+            position: relative;
 
             &_active, &:hover {
                 &:after {
@@ -61,11 +62,8 @@
 }
 
 .nav_link {
-    position: relative;
-
     &_active, &:hover {
         color: black;
-        position: relative;
 
         &:after {
             content: '';
