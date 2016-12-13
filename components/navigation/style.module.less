@@ -1,5 +1,7 @@
 @import '../../style/vars';
 
+@thickness: .4rem;
+
 .navigation {
     @padding: 1rem;
 
@@ -44,6 +46,12 @@
 
         .nav_link {
             padding-left: .5em;
+
+            &_active, &:hover {
+                &:after {
+                    width: ~"calc(100% - .5em)";
+                }
+            }
         }
     }
 
@@ -53,13 +61,23 @@
 }
 
 .nav_link {
-    &_active {
-        font-weight: bold;
-    }
+    position: relative;
 
-    &:hover {
+    &_active, &:hover {
         color: black;
-        font-weight: bold;
+        position: relative;
+
+        &:after {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: @thickness;
+            bottom: -@thickness;
+            border-radius: (@thickness / 2);
+            right: 0;
+            background: black;
+        }
     }
 }
 
