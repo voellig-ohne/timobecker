@@ -16,7 +16,7 @@ Bei Fragen melden Sie sich gern bei mir.
 */ Feel free to contact me.*
 
 mail@timobecker.com  
-+49.176.8111 4552
++49.176.8111.4552
 
 • 
 
@@ -30,8 +30,8 @@ Academy for Children´s and Juvenile Literature*
 **2015:** Instructor beim Drink+Draw Berlin LifeDrawing  
 */ Instructor at Drink+Draw Berlin LifeDrawing*
 
-**2014–2015:** 2D Artist / Visual Development des Projektes „Grand Values: Monaco“ (Bearhands in Berlin) 
- */ 2D Artist at Bearhands in Berlin – Visual Development of "Grand Values: Monaco"*
+**2014–2015:** Senior 2D Artist / Visual Development des Projektes „Grand Values: Monaco“ (Bearhands in Berlin)  
+ */ Senior 2D Artist at Bearhands in Berlin – Visual Development of "Grand Values: Monaco"*
 
  **2013:** Bachelor of Arts an der FH Münster, Beste Abschlussarbeit „Sabotage Haywood“  
 */ Bachelor of Arts at University of Applied Sciences Münster, Best Thesis "Sabotage Haywood"(Concept Art Project)*
@@ -45,10 +45,10 @@ Academy for Children´s and Juvenile Literature*
 **2009+:** Designstudium an der Fachhochschule Münster (Schwerpunkt Illustration)  
 */ Studied design at University of Applied Sciences Münster (Focus on Illustration)*
 
-**2008:** Designstudium an der Hochschule für Angewandte Wissenschaft und Kunst in Hildesheim */  
-Studied Design at University of Applied Sciences Hildesheim*
+**2008:** Designstudium an der Hochschule für Angewandte Wissenschaft und Kunst in Hildesheim  
+*/ Studied Design at University of Applied Sciences Hildesheim*
 
-**2007-2008:** Zivildienst (Paritätische Dienste Hameln)  
+**2007–2008:** Zivildienst (Paritätische Dienste Hameln)  
 */ Civil Service*
 
 **2007:** Abitur (Humboldt-Gymnasium Bad Pyrmont)  
