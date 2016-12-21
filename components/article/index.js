@@ -4,6 +4,7 @@ import { prefixLink } from 'gatsby-helpers'
 import classNames from 'classnames'
 import ResponsiveImage from 'components/ResponsiveImage' 
 import Footer from 'components/Footer' 
+import Illustration from 'components/Illustration' 
 import { filter, includes, reduce, flow, sortBy } from 'lodash'
 
 import style from './style.module.less'
@@ -66,6 +67,11 @@ export default class Article extends React.Component {
                             }
                         </div>
                     </div>
+                    { gallery ? 
+                        <Illustration className={style.scroll_hint} 
+                            illustration="scroll_arrow" />
+                        : null
+                    }
                 </header>
 
                 { gallery ? 
@@ -81,5 +87,5 @@ export default class Article extends React.Component {
 }
 
 function mod(n, m) {
-        return ((n % m) + m) % m;
+    return ((n % m) + m) % m;
 }
