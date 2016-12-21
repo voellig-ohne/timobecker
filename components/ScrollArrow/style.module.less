@@ -1,0 +1,57 @@
+@size: 2rem;
+@stroke: .3rem;
+@color: black;
+
+.container {
+    height: @size;
+    width: @size;
+    transform: rotate(-135deg);
+
+    &:before, &:after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: @stroke;
+        background: @color;
+        border-radius: (@stroke / 2);
+        top: 0;
+        position: absolute;
+        animation-duration: 2s;
+        animation-name: open1;
+    }
+
+    &:before {
+        right: 0;
+    }
+
+    &:after {
+        left: 0;
+        transform: rotate(90deg) translateY(-100%);
+        transform-origin: top left;
+        animation-name: open2;
+    }
+}
+
+@keyframes open2 {
+    0% {
+        width: 0%;
+    }
+    75% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes open1 {
+    0% {
+        width: 0%;
+    }
+    50% {
+        width: 0%;
+    }
+    75% {
+        width: 100%;
+    }
+}
