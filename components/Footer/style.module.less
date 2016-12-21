@@ -3,12 +3,24 @@
 .container {
     width: 100%;
     display: flex;
-    padding: 5rem 0 8rem;
-    background: white;
     align-items: center;
 
     @media (max-width: @break) {
         flex-wrap: wrap;
+    }
+}
+
+.container_outer {
+    padding: 5rem 0 8rem;
+    background: white;
+}
+
+.vo_hint {
+    text-align: center;
+    margin-top: .5rem;
+    
+    @media (max-width: @break) {
+        margin-top: 1rem;
     }
 }
 
