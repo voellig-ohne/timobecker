@@ -18,41 +18,41 @@
         position: absolute;
         animation-duration: 2s;
         animation-name: open1;
+        left: 0;
     }
 
     &:before {
-        right: 0;
+        transform-origin: top right;
     }
 
     &:after {
-        left: 0;
-        transform: rotate(90deg) translateY(-100%);
         transform-origin: top left;
+        transform: rotate(90deg) translateY(-100%);
         animation-name: open2;
-    }
-}
-
-@keyframes open2 {
-    0% {
-        width: 0%;
-    }
-    75% {
-        width: 0%;
-    }
-    100% {
-        width: 100%;
     }
 }
 
 @keyframes open1 {
     0% {
-        width: 0%;
+        transform: scaleX(0);
     }
     50% {
-        width: 0%;
+        transform: scaleX(0);
     }
     75% {
-        width: 100%;
+        transform: scaleX(1);
+    }
+}
+
+@keyframes open2 {
+    0% {
+        transform: rotate(90deg) translateY(-100%) scaleX(0);
+    }
+    75% {
+        transform: rotate(90deg) translateY(-100%) scaleX(0);
+    }
+    100% {
+        transform: rotate(90deg) translateY(-100%) scaleX(1);
     }
 }
 
