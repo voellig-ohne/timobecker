@@ -55,3 +55,26 @@
         width: 100%;
     }
 }
+
+.dot {
+    height: @stroke;
+    width: @stroke;
+    border-radius: 50%;
+    position: absolute;
+    background: @color;
+
+    &_1 {
+        top: 0;
+        right: 0;
+    }
+
+    &_2 {
+        top: 0;
+        left: 0;
+    }
+
+    &_3 {
+        bottom: 0;
+        left: 0;
+    }
+}

@@ -9,6 +9,9 @@ export default class ScrollArrow extends React.Component {
 
         return (
             <div className={classNames(className, style.container)}>
+                <div className={classNames(style.dot, style.dot_1)} />
+                <div className={classNames(style.dot, style.dot_2)} />
+                <div className={classNames(style.dot, style.dot_3)} />
             </div>
         )
     }
