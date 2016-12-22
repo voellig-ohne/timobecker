@@ -50,7 +50,7 @@ export default class Footer extends React.Component {
                     }
                 </div>
                 <div className={style.vo_hint}>
-                    website by <a href="https://volligohne.de">völlig ohne</a>
+                    website by <a href="http://volligohne.de/projekte/timobecker/">völlig ohne</a>
                 </div>
             </footer>
         )
