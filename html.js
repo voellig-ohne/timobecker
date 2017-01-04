@@ -33,6 +33,7 @@ module.exports = React.createClass({
             content="width=device-width, initial-scale=1.0 maximum-scale=1.0"
           />
           <link rel="shortcut icon" href="/favicon.png" />
+          <meta name="description" content="Portfolio of Timo Becker. Illustrator based in Berlin." />
           <title>{title}</title>
           {css}
         </head>
