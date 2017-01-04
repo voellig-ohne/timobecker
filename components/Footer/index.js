@@ -28,6 +28,12 @@ export default class Footer extends React.Component {
                         <a href="https://www.facebook.com/timo.becker.54" className={style.icon} title="Facebook" target="_blank">
                             <Illustration illustration="icons_facebook" />
                         </a>
+                        <a href="https://de.linkedin.com/in/timobecker-design" className={style.icon} title="LinkedIn" target="_blank">
+                            <Illustration illustration="icons_linkedin" />
+                        </a>
+                        <a href="https://www.artstation.com/artist/timo_becker" className={style.icon} title="ArtStation" target="_blank">
+                            <Illustration illustration="icons_artstation" />
+                        </a>
                         <a href="mailto:mail@timobecker.com" className={style.icon} title="Mail">
                             <Illustration illustration="icons_mail" />
                         </a>
