@@ -1,11 +1,13 @@
 @import '../../style/vars';
 
+@breakFooter: 680px;
+
 .container {
     width: 100%;
     display: flex;
     align-items: center;
 
-    @media (max-width: @break) {
+    @media (max-width: @breakFooter) {
         flex-wrap: wrap;
     }
 }
@@ -19,7 +21,7 @@
     text-align: center;
     margin-top: .5rem;
     
-    @media (max-width: @break) {
+    @media (max-width: @breakFooter) {
         margin-top: 1rem;
     }
 }
@@ -30,7 +32,7 @@
         padding: 1rem;
         flex: 0 1 50%;
 
-        @media (max-width: @break) {
+        @media (max-width: @breakFooter) {
             order: 0;
         }
 
@@ -70,7 +72,7 @@
     justify-content: center;
     margin: 0 1rem;
 
-    @media (max-width: @break) {
+    @media (max-width: @breakFooter) {
         order: 2;
         width: 100%;
         margin: 0;
