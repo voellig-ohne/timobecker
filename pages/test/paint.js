@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 import { prefixLink } from 'gatsby-helpers'
-import DocumentTitle from 'react-document-title'
+import Helmet from 'react-helmet'
 import { config } from 'config'
 import Logo from 'components/logo/logo'
 import POINTS from 'components/logo/points'
@@ -97,48 +97,47 @@ export default class Index extends React.Component {
         const activePath = (this.state.activePath) ? this.state.activePath.join('') : 'nichts'
 
         return (
-            <DocumentTitle title={config.siteTitle}>
-                <div>
-                    <h1>Malen, Timo.</h1>
-                    ausgewählt: {activePath} ({this.getActivePathIndex()} von {PATHS.uniques.length})
-                    <br />
+            <div>
+                <Helmet title={config.siteTitle} />
+                <h1>Malen, Timo.</h1>
+                ausgewählt: {activePath} ({this.getActivePathIndex()} von {PATHS.uniques.length})
+                <br />
 
-                    <div className="logo_container">
-                        <Logo className="tb_logo"
-                                points={POINTS}
-                                order={this.state.activePath}
-                                painting={this.state.activePath && this.paintings[this.state.activePath.join('')]}
-                                size={800}
-                                margin={20}
-                                showLabels={false}
-                                painted={this.handlePaint.bind(this)}
-                                mode="paint" />
-                    </div>
-                    <br />
-                    <button onClick={this.deletePainting.bind(this)}>
-                        aktuelles löschen
-                    </button>
-                    <hr />
-                    <button onClick={this.openPrev.bind(this)}>
-                        vorheriges
-                    </button>
-                    <button onClick={this.openNext.bind(this)}>
-                        nächstes
-                    </button>
-                    <hr />
-                    <h2>exportieren:</h2>
-                    <button onClick={this.exportPaintings.bind(this)}>
-                        export
-                    </button>
-                    <h2>importieren:</h2>
-                    <input type="file" id="files" name="files[]" onChange={this.handleImport.bind(this)} />
-                    <h2>Liste aller Kombinationen:</h2>
-                    <ul className="paint-list">
-                        {pathList}
-                    </ul>
-
+                <div className="logo_container">
+                    <Logo className="tb_logo"
+                            points={POINTS}
+                            order={this.state.activePath}
+                            painting={this.state.activePath && this.paintings[this.state.activePath.join('')]}
+                            size={800}
+                            margin={20}
+                            showLabels={false}
+                            painted={this.handlePaint.bind(this)}
+                            mode="paint" />
                 </div>
-            </DocumentTitle>
+                <br />
+                <button onClick={this.deletePainting.bind(this)}>
+                    aktuelles löschen
+                </button>
+                <hr />
+                <button onClick={this.openPrev.bind(this)}>
+                    vorheriges
+                </button>
+                <button onClick={this.openNext.bind(this)}>
+                    nächstes
+                </button>
+                <hr />
+                <h2>exportieren:</h2>
+                <button onClick={this.exportPaintings.bind(this)}>
+                    export
+                </button>
+                <h2>importieren:</h2>
+                <input type="file" id="files" name="files[]" onChange={this.handleImport.bind(this)} />
+                <h2>Liste aller Kombinationen:</h2>
+                <ul className="paint-list">
+                    {pathList}
+                </ul>
+
+            </div>
         )
     }
 }

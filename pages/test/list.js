@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 import { prefixLink } from 'gatsby-helpers'
-import DocumentTitle from 'react-document-title'
+import Helmet from 'react-helmet'
 import { config } from 'config'
 import Logo from 'components/logo/logo'
 import POINTS from 'components/logo/points'
@@ -38,12 +38,11 @@ export default class Index extends React.Component {
         })
 
         return (
-            <DocumentTitle title={config.siteTitle}>
-                <div>
-                    <h1>{POINTS.length} POINTS, {uniques.length} variations: </h1>
-                    {logos}
-                </div>
-            </DocumentTitle>
+            <div>
+                <Helmet title={config.siteTitle} />
+                <h1>{POINTS.length} POINTS, {uniques.length} variations: </h1>
+                {logos}
+            </div>
         )
     }
 }

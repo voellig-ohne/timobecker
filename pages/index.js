@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 import { prefixLink } from 'gatsby-helpers'
-import DocumentTitle from 'react-document-title'
+import Helmet from 'react-helmet';
 import { config } from 'config'
 import Logo from 'components/logo/logo'
 import POINTS from 'components/logo/points'
@@ -21,19 +21,23 @@ module.exports = React.createClass({
     },
 
     render () {
+        const meta = [{
+            name: 'description',
+            content: 'Portfolio of Timo Becker. Illustrator based in Berlin.'
+        }]
+
         return (
-            <DocumentTitle title={config.siteTitle}>
-                <div className={style.intro}>
-                    <Logo className={style.logo}
-                            points={POINTS}
-                            size={400}
-                            margin={20}
-                            showLabels={false}
-                            mode="connect"
-                            ref="logo"
-                            canvasResize={true} />
-                </div>
-            </DocumentTitle>
+            <div className={style.intro}>
+                <Logo className={style.logo}
+                        points={POINTS}
+                        size={400}
+                        margin={20}
+                        showLabels={false}
+                        mode="connect"
+                        ref="logo"
+                        canvasResize={true} />
+                <Helmet title={config.siteTitle} meta={meta} />
+            </div>
         )
     }
 })

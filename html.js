@@ -1,5 +1,5 @@
 import React from 'react'
-import DocumentTitle from 'react-document-title'
+import Helmet from 'react-helmet';
 
 import { prefixLink } from 'gatsby-helpers'
 
@@ -14,8 +14,7 @@ module.exports = React.createClass({
     }
   },
   render () {
-    const title = DocumentTitle.rewind()
-    
+    const head = Helmet.rewind();
     const piwikSetup = buildPiwikSetup();
 
     let css
@@ -33,8 +32,8 @@ module.exports = React.createClass({
             content="width=device-width, initial-scale=1.0 maximum-scale=1.0"
           />
           <link rel="shortcut icon" href="/favicon.png" />
-          <meta name="description" content="Portfolio of Timo Becker. Illustrator based in Berlin." />
-          <title>{title}</title>
+          {head.title.toComponent()}
+          {head.meta.toComponent()}
           {css}
         </head>
         <body>
