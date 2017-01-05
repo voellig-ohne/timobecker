@@ -3,6 +3,7 @@ import { Link } from 'react-router'
 import { prefixLink } from 'gatsby-helpers'
 import classNames from 'classnames'
 import ResponsiveImage from 'components/ResponsiveImage' 
+import ImageHelmet from 'components/ImageHelmet' 
 import Footer from 'components/Footer' 
 import ScrollArrow from 'components/ScrollArrow' 
 import { filter, includes, reduce, flow, sortBy } from 'lodash'
@@ -80,6 +81,7 @@ export default class Article extends React.Component {
                 }
 
                 <Footer next={nextPrev.next} prev={nextPrev.prev} />
+                <ImageHelmet source={backgroundImage} location={currentPath} />
             </article>
         )
     }
