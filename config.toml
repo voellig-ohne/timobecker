@@ -1,2 +1,3 @@
-siteTitle="Timos Website"
+siteTitle = "Timos Website"
+siteDescription = "Portfolio of Timo Becker. Illustrator based in Berlin."
 linkPrefix = "/gatsby-starter-default"

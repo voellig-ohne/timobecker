@@ -5,7 +5,9 @@ import Navigation from 'components/Navigation'
 import Article from 'components/Article'
 import Project from 'components/Project'
 import ProjectList from 'components/ProjectList'
+import Helmet from 'react-helmet';
 import { startsWith } from 'lodash'
+import { config } from 'config'
 
 module.exports = React.createClass({
     propTypes () {
@@ -15,6 +17,11 @@ module.exports = React.createClass({
     },
     render () {
         const isTest = startsWith(this.props.children.props.route.path, '/test/')
+        
+        const meta = [{
+            name: 'description',
+            content: config.siteDescription
+        }]
 
         return (
             <div>
@@ -28,7 +35,7 @@ module.exports = React.createClass({
                     <Navigation currentPath={this.props.location.pathname}/> : 
                     null
                 }
-                
+                <Helmet meta={meta} />         
             </div>
         )
     },

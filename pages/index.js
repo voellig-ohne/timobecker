@@ -21,11 +21,6 @@ module.exports = React.createClass({
     },
 
     render () {
-        const meta = [{
-            name: 'description',
-            content: 'Portfolio of Timo Becker. Illustrator based in Berlin.'
-        }]
-
         return (
             <div className={style.intro}>
                 <Logo className={style.logo}
@@ -36,7 +31,7 @@ module.exports = React.createClass({
                         mode="connect"
                         ref="logo"
                         canvasResize={true} />
-                <Helmet title={config.siteTitle} meta={meta} />
+                <Helmet title={config.siteTitle} />
             </div>
         )
     }
