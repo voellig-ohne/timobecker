@@ -20,7 +20,11 @@ exports.onRouteUpdate = state => {
   if (first) {
     first = false;
     window._paq.push(['trackEvent', 'javascript', 'load', 'duration', getDuration()]);
-  }
+    console.log(
+      'Curios how its done? We are using paper.js and gatsby.js.', 
+      'Some behind the scenes: http://volligohne.de/projekte/timobecker/.', 
+      'Check out the source code https://github.com/voellig-ohne/timobecker'
+    )}
   else {
     window._paq.push(['setCustomUrl', state.pathname]);
     window._paq.push(['setDocumentTitle', state.pathname]);
