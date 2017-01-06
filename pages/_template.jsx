@@ -21,6 +21,12 @@ module.exports = React.createClass({
         const meta = [{
             name: 'description',
             content: config.siteDescription
+        }, {
+            property: 'og:url',
+            content: config.siteUrl + this.props.location.pathname
+        }, {
+            property: 'og:description',
+            content: config.siteDescription
         }]
 
         return (
