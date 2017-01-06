@@ -21,6 +21,14 @@ module.exports = React.createClass({
     },
 
     render () {
+        const meta = [{
+            property: 'og:image',
+            content: config.siteUrl + '/og-image.png'
+        }, {
+            property: 'og:title',
+            content: config.siteTitle
+        }]
+
         return (
             <div className={style.intro}>
                 <Logo className={style.logo}
@@ -31,7 +39,7 @@ module.exports = React.createClass({
                         mode="connect"
                         ref="logo"
                         canvasResize={true} />
-                <Helmet title={config.siteTitle} />
+                <Helmet title={config.siteTitle + ' | Illustrator'} meta={meta} />
             </div>
         )
     }
