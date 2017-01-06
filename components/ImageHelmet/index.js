@@ -1,5 +1,6 @@
 import React from 'react'
 import Helmet from 'react-helmet';
+import { config } from 'config'
 
 export default class ImageHelmet extends React.Component {
     render () {
@@ -10,7 +11,7 @@ export default class ImageHelmet extends React.Component {
 
             const meta = [{
                 property: 'og:image',
-                content: require('!file!scale?size=2000!../.././pages/' + path + source + '.jpg')
+                content: config.siteUrl + require('!file!scale?size=2000!../.././pages/' + path + source + '.jpg')
             }]
 
             return (
