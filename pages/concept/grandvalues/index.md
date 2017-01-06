@@ -3,17 +3,19 @@
 title: "Grand Values: Monaco"
 publisher: Bearhands
 layout: project
-background: 0_groß
-thumbnail: kleine vorschau
+background: _gv_0_startbild2
+thumbnail: _gv__vorschau2
 images:
+ - src: _gv_1
+ - src: _gv_2
  - src: 1
- - src: 1b
+ - src: _gv_3
  - src: 2
- - src: 2b
+ - src: _gv_4
  - src: 3
- - src: 3b
+ - src: _gv_5
  - src: 4
- - src: 4b
+ - src: _gv_6
 
 
 ---
