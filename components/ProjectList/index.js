@@ -4,6 +4,7 @@ import { prefixLink } from 'gatsby-helpers'
 import Article from 'components/Article'
 import { filter, includes, flow, map, sortBy } from 'lodash'
 import ResponsiveImage from 'components/ResponsiveImage' 
+import classNames from 'classnames'
 
 import style from './style.module.less'
 
@@ -42,7 +43,12 @@ function Project( project ) {
     const imageProps = {
         source: project.data.thumbnail || project.data.background,
         location: path,
-        className: style.projectImage
+        className: classNames(
+            style.projectImage,
+            {
+                [style.projectImage__topAlgin]: project.data.thumbnailTopAlign
+            }
+        )
     }
 
     return (

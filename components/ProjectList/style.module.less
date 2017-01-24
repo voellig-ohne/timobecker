@@ -11,6 +11,10 @@
     &:hover {
         .projectImage {
             transform: translateY(~"calc(-50% + @{imageHeightHalf})") scale(1.05);
+
+            &__topAlgin {
+                transform: scale(1.05);
+            }
         }
     }
 }
@@ -19,6 +23,10 @@
     transition: .2s all;
     width: 100%;
     transform: translateY(~"calc(-50% + @{imageHeightHalf})");
+
+    &__topAlgin {
+        transform: none;
+    }
 }
 
 .projectImage_container {
