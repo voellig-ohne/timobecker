@@ -6,7 +6,7 @@ layout: article
 
 ---
 
-Ich bin begeisterter Zeichner, Forscher, Lehrer, Designer, Illustrator.
+Ich bin begeisterter Zeichner, Forscher, Lehrer, Designer, Illustrator.  
 */ I love sketching, exploring, designing and teaching.*
 
 • 
