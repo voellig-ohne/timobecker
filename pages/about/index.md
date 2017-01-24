@@ -6,8 +6,8 @@ layout: article
 
 ---
 
-Ich bin begeisterter Zeichner, Forscher, Papa, Designer, Illustrator.  
-*/ I love sketching, exploring, designing and fooling around.*
+Ich bin begeisterter Zeichner, Forscher, Lehrer, Designer, Illustrator.
+*/ I love sketching, exploring, designing and teaching.*
 
 • 
 
