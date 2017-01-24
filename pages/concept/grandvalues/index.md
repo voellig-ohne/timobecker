@@ -5,6 +5,7 @@ publisher: Bearhands
 layout: project
 background: _gv_0_startbild2
 thumbnail: _gv__vorschau2
+thumbnailTopAlign: true
 images:
  - src: _gv_1
  - src: _gv_2
