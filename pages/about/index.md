@@ -20,6 +20,12 @@ mail@timobecker.com
 
 • 
 
+**2017+:** Lehrauftrag an der AID Berlin (Akademie für Illustration und Design)    
+*/ Lecturer at AID Berlin (Academy for Illustration and Design)*
+
+**2017:** Concept Artist bei Wooga in Berlin (Character Key Artist, Environment Artist)    
+*/ Concept Artist at Wooga in Berlin (Character Key Artist, Environment Artist)*
+
 **2016+:** Lehrauftrag an der Kunsthochschule Kassel; Projektbetreuende Workshops „Konzeption und Visualisierung“  
 */ University Lecturer at Art College Kassel; Project Supervising Workshops "Conception and Visualization"*
 
