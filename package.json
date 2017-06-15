@@ -49,6 +49,7 @@
     "lint": "./node_modules/.bin/eslint --ext .js,.jsx --ignore-pattern public .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "gatsby develop",
+    "serve-build": "gatsby serve-build",
     "build": "gatsby build",
     "deploy": "rsync -avzc --del public/ timo@eltanin.uberspace.de:/home/timo/html",
     "deployTest": "rsync -avzc --del public/ timo@eltanin.uberspace.de:/var/www/virtual/timo/test.timobecker.com"
