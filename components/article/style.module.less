@@ -37,6 +37,18 @@
     left: 0;
     object-fit: cover;
     z-index: -1;
+
+    &_mobile {
+        @media (min-width: @break) {
+            display: none;
+        }
+    }
+
+    &_desktop {
+        @media (max-width: @break) {
+            display: none;
+        }
+    }
 }
 
 .sub_title {

@@ -13,7 +13,8 @@ import style from './style.module.less'
 export default class Article extends React.Component {
     render () {
         const { 
-            background, 
+            background,
+            background_mobile,
             title, 
             publisher,
             descriptionSecondary
@@ -51,7 +52,18 @@ export default class Article extends React.Component {
         return (
             <article className="page">
                 <header className={classNames(style.header, {[style['header--no_gallery']]: !gallery})}>
-                    <ResponsiveImage source={backgroundImage} location={currentPath} className={style.background}/>
+                    {
+                        background_mobile
+                        ? (
+                            <div>
+                                <ResponsiveImage source={background_mobile} location={currentPath} 
+                                    className={classNames(style.background, style.background_mobile)}/>
+                                <ResponsiveImage source={background} location={currentPath} 
+                                    className={classNames(style.background, style.background_desktop)}/>
+                            </div>
+                        ) 
+                        : <ResponsiveImage source={background} location={currentPath} className={style.background}/>
+                    }
                     <div className={style.text}>
                         <div className={style.main}>
                             <h1>{title}</h1>
@@ -81,7 +93,7 @@ export default class Article extends React.Component {
                 }
 
                 <Footer next={nextPrev.next} prev={nextPrev.prev} />
-                <ImageHelmet source={backgroundImage} location={currentPath} />
+                <ImageHelmet source={background_mobile || background} location={currentPath} />
             </article>
         )
     }
