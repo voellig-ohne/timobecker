@@ -25,6 +25,10 @@ Gestaltung & Programmierung, Fotos (bis auf Portrait):
 
 • 
 
+Portraitfoto: Norman Z
+
+• 
+
 We are using <a href="https://github.com/gatsbyjs/gatsby" target="_blank">gatsby.js</a> and <a href="http://paperjs.org/" target="_blank">paper.js</a> to make this website possible. Thanks to all contributers of these projects!
 
 • 
