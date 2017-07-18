@@ -38,7 +38,8 @@
     "react-helmet": "^3.3.0",
     "sharp": "^0.16.2",
     "svg-inline-loader": "^0.7.1",
-    "whatwg-fetch": "^2.0.1"
+    "whatwg-fetch": "^2.0.1",
+    "prettier": "1.5.2"
   },
   "keywords": [
     "gatsby"
@@ -52,7 +53,11 @@
     "serve-build": "gatsby serve-build",
     "build": "gatsby build",
     "deploy": "rsync -avzc --del public/ timo@eltanin.uberspace.de:/home/timo/html",
-    "deployTest": "rsync -avzc --del public/ timo@eltanin.uberspace.de:/var/www/virtual/timo/test.timobecker.com"
+    "deployTest": "rsync -avzc --del public/ timo@eltanin.uberspace.de:/var/www/virtual/timo/test.timobecker.com",
+    "prettier-default": "prettier --single-quote --tab-width 4 --print-width 120 --trailing-comma es5",
+    "prettier-all": "npm run prettier-default -- '{*.js,!(node_modules|public)/**/!(*.min).js}'",
+    "prettier-write": "npm run prettier-default -- --write",
+    "format": "npm run prettier-all -- --write"
   },
   "babel": {
     "plugins": [
