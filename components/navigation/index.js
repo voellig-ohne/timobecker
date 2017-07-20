@@ -1,60 +1,58 @@
-import React from 'react'
-import { Link } from 'react-router'
-import { prefixLink } from 'gatsby-helpers'
-import classNames from 'classnames'
-import { includes } from 'lodash'
+import React from 'react';
+import { Link } from 'react-router';
+import { prefixLink } from 'gatsby-helpers';
+import classNames from 'classnames';
+import { includes } from 'lodash';
 
-
-import style from './style.module.less'
+import style from './style.module.less';
 
 export default class Navigation extends React.Component {
-    render () {
+    render() {
         const navLinks = [
             {
                 link: '/illustration/',
-                title: 'Illustration'
-            },{
-                link: '/concept/',
-                title: 'Concept'
-            },{
-                link: '/sketches/',
-                title: 'Sketches'
+                title: 'Illustration',
             },
-        ]
+            {
+                link: '/concept/',
+                title: 'Concept',
+            },
+            {
+                link: '/sketches/',
+                title: 'Sketches',
+            },
+        ];
 
         const currentPath = this.props.currentPath;
 
         return (
             <span>
-                { this.props.currentPath !== '/' &&
-                    <Link to={prefixLink('/')} className={style.home}></Link>
-                }
+                {this.props.currentPath !== '/' && <Link to={prefixLink('/')} className={style.home} />}
 
                 <header className={style.navigation}>
-                    <Link to={prefixLink('/about/')} className={
-                            classNames(style.navigation_about, style.nav_link, {[style.nav_link_active]: includes(currentPath, '/about/')})
-                        }>
+                    <Link
+                        to={prefixLink('/about/')}
+                        className={classNames(style.navigation_about, style.nav_link, {
+                            [style.nav_link_active]: includes(currentPath, '/about/'),
+                        })}
+                    >
                         Timo Becker
                     </Link>
                     <nav className={style.navigation_main}>
                         {navLinks.map((link, index) => {
-                            const active = includes(currentPath, link.link)
-                            const className = classNames(style.nav_link, {[style.nav_link_active]: active})
+                            const active = includes(currentPath, link.link);
+                            const className = classNames(style.nav_link, { [style.nav_link_active]: active });
 
                             return (
-                                <Link to={prefixLink(link.link)}
-                                        key={index}
-                                        className={className}>
+                                <Link to={prefixLink(link.link)} key={index} className={className}>
                                     {link.title}
                                 </Link>
-                            )
+                            );
                         })}
                     </nav>
                 </header>
-                <div className={style.force_load_font}>
-                    t
-                </div>
-        </span>
-        )
+                <div className={style.force_load_font}>t</div>
+            </span>
+        );
     }
 }

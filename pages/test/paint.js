@@ -1,100 +1,100 @@
-import React from 'react'
-import { Link } from 'react-router'
-import { prefixLink } from 'gatsby-helpers'
-import Helmet from 'react-helmet'
-import { config } from 'config'
-import Logo from 'components/logo/logo'
-import POINTS from 'components/logo/points'
-import PATHS from 'components/logo/renderedPaths7.json'
+import React from 'react';
+import { Link } from 'react-router';
+import { prefixLink } from 'gatsby-helpers';
+import Helmet from 'react-helmet';
+import { config } from 'config';
+import Logo from 'components/logo/logo';
+import POINTS from 'components/logo/points';
+import PATHS from 'components/logo/renderedPaths7.json';
 
-import 'style/main.less'
-import './paint.less'
+import 'style/main.less';
+import './paint.less';
 
 export default class Index extends React.Component {
     constructor() {
         super();
         this.state = {
-            activePath: undefined
-        }
+            activePath: undefined,
+        };
         this.handleClick = this.handleClick.bind(this);
-        this.paintings = {}
+        this.paintings = {};
     }
     handleClick(path) {
-        this.setState({activePath: path});
+        this.setState({ activePath: path });
     }
     openNext() {
         if (this.state.activePath) {
-            const current = this.getActivePathIndex()
-            this.setState({activePath: PATHS.uniques[current + 1]})
+            const current = this.getActivePathIndex();
+            this.setState({ activePath: PATHS.uniques[current + 1] });
         } else {
-            this.setState({activePath: PATHS.uniques[0]})
+            this.setState({ activePath: PATHS.uniques[0] });
         }
     }
     openPrev() {
         if (this.state.activePath) {
-            const current = this.getActivePathIndex()
-            this.setState({activePath: PATHS.uniques[current - 1]})
+            const current = this.getActivePathIndex();
+            this.setState({ activePath: PATHS.uniques[current - 1] });
         } else {
-            this.setState({activePath: PATHS.uniques[0]})
+            this.setState({ activePath: PATHS.uniques[0] });
         }
     }
-    getActivePathIndex () {
+    getActivePathIndex() {
         if (this.state.activePath) {
-            return PATHS.uniques.map((path) => {
-                return path.join('')
-            }).indexOf(this.state.activePath.join(''))
+            return PATHS.uniques
+                .map(path => {
+                    return path.join('');
+                })
+                .indexOf(this.state.activePath.join(''));
         } else {
-            return -1
+            return -1;
         }
     }
     handlePaint(paths) {
         if (this.state.activePath) {
-            this.paintings[this.state.activePath.join('')] = paths
-            this.forceUpdate()
+            this.paintings[this.state.activePath.join('')] = paths;
+            this.forceUpdate();
         }
     }
-    exportPaintings () {
-        const downloadElement = document.createElement("a")
-        const file = new Blob([JSON.stringify(this.paintings)], {type: 'text/plain'})
-        downloadElement.href = URL.createObjectURL(file)
+    exportPaintings() {
+        const downloadElement = document.createElement('a');
+        const file = new Blob([JSON.stringify(this.paintings)], { type: 'text/plain' });
+        downloadElement.href = URL.createObjectURL(file);
         downloadElement.download = 'paintings.json';
         downloadElement.click();
     }
-    handleImport (event) {
-        const reader = new FileReader()
-        const file = event.target.files[0]
+    handleImport(event) {
+        const reader = new FileReader();
+        const file = event.target.files[0];
         const that = this;
 
         reader.onload = (function() {
             return function(e) {
-                const imported = JSON.parse(e.target.result)
-                that.paintings = imported
-                that.forceUpdate()
+                const imported = JSON.parse(e.target.result);
+                that.paintings = imported;
+                that.forceUpdate();
             };
         })(file);
 
-        reader.readAsText(file)
+        reader.readAsText(file);
     }
-    deletePainting () {
-        delete this.paintings[this.state.activePath.join('')]
-        this.forceUpdate()
+    deletePainting() {
+        delete this.paintings[this.state.activePath.join('')];
+        this.forceUpdate();
     }
-    render () {
-        const pathList = PATHS.uniques.map((path) => {
-            const boundClick = this.handleClick.bind(null, path)
-            let className = 'paint-list_item' + ((this.state.activePath === path) ? ' paint-list_item--active' : '')
-            className += this.paintings[path.join('')] ? ' paint-list_item--painted' : ''
+    render() {
+        const pathList = PATHS.uniques.map(path => {
+            const boundClick = this.handleClick.bind(null, path);
+            let className = 'paint-list_item' + (this.state.activePath === path ? ' paint-list_item--active' : '');
+            className += this.paintings[path.join('')] ? ' paint-list_item--painted' : '';
 
             return (
-                <li key={path}
-                        onClick={boundClick}
-                        className={className}>
+                <li key={path} onClick={boundClick} className={className}>
                     {path}
                 </li>
-            )
-        })
+            );
+        });
 
-        const activePath = (this.state.activePath) ? this.state.activePath.join('') : 'nichts'
+        const activePath = this.state.activePath ? this.state.activePath.join('') : 'nichts';
 
         return (
             <div>
@@ -102,42 +102,32 @@ export default class Index extends React.Component {
                 <h1>Malen, Timo.</h1>
                 ausgewählt: {activePath} ({this.getActivePathIndex()} von {PATHS.uniques.length})
                 <br />
-
                 <div className="logo_container">
-                    <Logo className="tb_logo"
-                            points={POINTS}
-                            order={this.state.activePath}
-                            painting={this.state.activePath && this.paintings[this.state.activePath.join('')]}
-                            size={800}
-                            margin={20}
-                            showLabels={false}
-                            painted={this.handlePaint.bind(this)}
-                            mode="paint" />
+                    <Logo
+                        className="tb_logo"
+                        points={POINTS}
+                        order={this.state.activePath}
+                        painting={this.state.activePath && this.paintings[this.state.activePath.join('')]}
+                        size={800}
+                        margin={20}
+                        showLabels={false}
+                        painted={this.handlePaint.bind(this)}
+                        mode="paint"
+                    />
                 </div>
                 <br />
-                <button onClick={this.deletePainting.bind(this)}>
-                    aktuelles löschen
-                </button>
+                <button onClick={this.deletePainting.bind(this)}>aktuelles löschen</button>
                 <hr />
-                <button onClick={this.openPrev.bind(this)}>
-                    vorheriges
-                </button>
-                <button onClick={this.openNext.bind(this)}>
-                    nächstes
-                </button>
+                <button onClick={this.openPrev.bind(this)}>vorheriges</button>
+                <button onClick={this.openNext.bind(this)}>nächstes</button>
                 <hr />
                 <h2>exportieren:</h2>
-                <button onClick={this.exportPaintings.bind(this)}>
-                    export
-                </button>
+                <button onClick={this.exportPaintings.bind(this)}>export</button>
                 <h2>importieren:</h2>
                 <input type="file" id="files" name="files[]" onChange={this.handleImport.bind(this)} />
                 <h2>Liste aller Kombinationen:</h2>
-                <ul className="paint-list">
-                    {pathList}
-                </ul>
-
+                <ul className="paint-list">{pathList}</ul>
             </div>
-        )
+        );
     }
 }

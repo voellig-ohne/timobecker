@@ -1,53 +1,50 @@
-import React from 'react'
+import React from 'react';
 import Helmet from 'react-helmet';
 
-import { prefixLink } from 'gatsby-helpers'
+import { prefixLink } from 'gatsby-helpers';
 
-const BUILD_TIME = new Date().getTime()
+const BUILD_TIME = new Date().getTime();
 
-require('file?name=.htaccess!./.htaccess')
+require('file?name=.htaccess!./.htaccess');
 
 module.exports = React.createClass({
-  propTypes () {
-    return {
-      title: React.PropTypes.string,
-    }
-  },
-  render () {
-    const head = Helmet.rewind();
-    const piwikSetup = buildPiwikSetup();
+    propTypes() {
+        return {
+            title: React.PropTypes.string,
+        };
+    },
+    render() {
+        const head = Helmet.rewind();
+        const piwikSetup = buildPiwikSetup();
 
-    let css
-    if (process.env.NODE_ENV === 'production') {
-      css = <style dangerouslySetInnerHTML={{ __html: require('!raw!./public/styles.css') }} />
-    }
+        let css;
+        if (process.env.NODE_ENV === 'production') {
+            css = <style dangerouslySetInnerHTML={{ __html: require('!raw!./public/styles.css') }} />;
+        }
 
-    return (
-      <html lang="de">
-        <head>
-          <meta charSet="utf-8" />
-          <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0 maximum-scale=1.0"
-          />
-          <link rel="shortcut icon" href="/favicon.png" />
-          {head.title.toComponent()}
-          {head.meta.toComponent()}
-          {css}
-        </head>
-        <body>
-          <div id="react-mount" dangerouslySetInnerHTML={{ __html: this.props.body }} />
-          <script src={prefixLink(`/bundle.js?t=${BUILD_TIME}`)} />
-          { process.env.NODE_ENV === 'production' ? piwikSetup : null }
-        </body>
-      </html>
-    )
-  },
-})
+        return (
+            <html lang="de">
+                <head>
+                    <meta charSet="utf-8" />
+                    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0" />
+                    <link rel="shortcut icon" href="/favicon.png" />
+                    {head.title.toComponent()}
+                    {head.meta.toComponent()}
+                    {css}
+                </head>
+                <body>
+                    <div id="react-mount" dangerouslySetInnerHTML={{ __html: this.props.body }} />
+                    <script src={prefixLink(`/bundle.js?t=${BUILD_TIME}`)} />
+                    {process.env.NODE_ENV === 'production' ? piwikSetup : null}
+                </body>
+            </html>
+        );
+    },
+});
 
 function buildPiwikSetup() {
-  const js = `
+    const js = `
   var _paq = _paq || [];
   _paq.push(["setCookieDomain", "*.timobecker.com"]);
   _paq.push(["setDomains", ["*.timobecker.com"]]);
@@ -62,8 +59,5 @@ function buildPiwikSetup() {
   })();
   `;
 
-  return <script
-    type="text/javascript"
-    dangerouslySetInnerHTML={{ __html: js }}
-  />;
+    return <script type="text/javascript" dangerouslySetInnerHTML={{ __html: js }} />;
 }
