@@ -52,7 +52,7 @@
     "start": "gatsby develop",
     "serve-build": "gatsby serve-build",
     "build": "gatsby build",
-    "deploy": "rsync -avzc --del public/ timo@eltanin.uberspace.de:/home/timo/html",
+    "deploy": "rsync -avzc --del public/ timo@eltanin.uberspace.de:/home/timo/timobecker.com",
     "deployTest": "rsync -avzc --del public/ timo@eltanin.uberspace.de:/var/www/virtual/timo/test.timobecker.com",
     "prettier-default": "prettier --single-quote --tab-width 4 --print-width 120 --trailing-comma es5",
     "prettier-all": "npm run prettier-default -- '{*.js,!(node_modules|public)/**/!(*.min).js}'",
