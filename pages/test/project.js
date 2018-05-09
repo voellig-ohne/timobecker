@@ -5,6 +5,7 @@ import Helmet from 'react-helmet';
 import { config } from 'config';
 import Logo from 'components/logo/logo';
 import POINTS from 'components/logo/points';
+import sternchen from '!svg-inline-loader!./sternchen.svg';
 
 import 'style/main.less';
 import style from './project.module.less';
@@ -59,23 +60,22 @@ export default class Projection extends React.Component {
                 </div>
 
                 <div className={style.printStuff}>
-                    <div className={style.foo}>
-                        <div>
-                            <div className={style.title}>Timo Becker</div>
-                            <p>
-                                +49 176 8111 4552<br />
-                                mail@timobecker.com
-                            </p>
-                            <p>timobecker.com</p>
-                        </div>
-                        <div>
-                            Launch Party**<br />
-                            03/12/16
-                        </div>
+                    <div className={style.timo}>
+                        <p>
+                            IDENTITÄT FÜR TIMO BECKER / TIMOBECKER.COM<br />
+                            logo, website, installation
+                        </p>
+                        <p>
+                            idee & umsetzung: völlig ohne <br />
+                            illustration: timo becker
+                        </p>
                     </div>
                     <div className={style.vo}>
-                        <p>**</p>
-                        <p>www.völligohne.de</p>
+                        <p>
+                            <div className={style.logo} dangerouslySetInnerHTML={{ __html: sternchen }} />
+                            völlig ohne werkschau 2017 <br />
+                            völligohne.de
+                        </p>
                     </div>
                 </div>
             </div>

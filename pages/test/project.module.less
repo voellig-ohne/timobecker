@@ -31,25 +31,24 @@
 .printStuff {
     display: none;
     font-size: 10pt;
+    text-align: center;    
+    font-family: Courier New, Courier, monospace;
+    font-size: 11px;
+    margin-top: 1rem;
+
+    p {
+        margin-bottom: 1em;
+    }
 
     @media print {
         display: block;
     }
 }
 
-.title {
-    // font-weight: bold;
-}
-
-.foo {
-    display: flex;
-
-    > * {
-        flex-grow: 1;
-
-        &:last-child {
-            text-align: right;
-        }
+.logo {
+    svg {
+        margin: .5rem;
+        width: 1.5rem;
     }
 }
 
@@ -64,5 +63,5 @@
 }
 
 .vo {
-    text-align: center;
+    margin-top: 20px;
 }
