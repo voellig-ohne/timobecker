@@ -21,7 +21,7 @@ exports.onRouteUpdate = state => {
         first = false;
         window._paq.push(['trackEvent', 'javascript', 'load', 'duration', getDuration()]);
         console.log(
-            'Curios how its done? We are using paper.js and gatsby.js.',
+            'Curious how its done? We are using paper.js and gatsby.js.',
             'Some behind the scenes: http://volligohne.de/projekte/timobecker/.',
             'Check out the source code https://github.com/voellig-ohne/timobecker'
         );
