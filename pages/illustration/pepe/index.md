@@ -4,16 +4,16 @@ title: Pepe und der Pups-Roboter
 publisher: Willegoos
 layout: project
 order: 2
-background: 159
-thumbnail: 164-2
+background: "./159.jpg"
+thumbnail: "./164-2.jpg"
 images:
- - src: 119
- - src: 122
- - src: 121
- - src: 164
- - src: 167
- - src: 168
- - src: 120
+ - src: "./119.jpg"
+ - src: "./122.jpg"
+ - src: "./121.jpg"
+ - src: "./164.jpg"
+ - src: "./167.jpg"
+ - src: "./168.jpg"
+ - src: "./120.jpg"
 
 ---
 

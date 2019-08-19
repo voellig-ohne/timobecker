@@ -4,20 +4,20 @@ title: Kosmo&Klax
 publisher: Mixtvision
 layout: project
 order: 1
-background: 176
-thumbnail: 189-2
+background: "./176.jpg"
+thumbnail: "./189-2.jpg"
 images: 
- - src: 188
- - src: 189
- - src: 112
- - src: 113
- - src: 185
- - src: 179
- - src: 182
- - src: 190
- - src: 111
- - src: 192
- - src: 186
+ - src: "./188.jpg"
+ - src: "./189.jpg"
+ - src: "./112.jpg"
+ - src: "./113.jpg"
+ - src: "./185.jpg"
+ - src: "./179.jpg"
+ - src: "./182.jpg"
+ - src: "./190.jpg"
+ - src: "./111.jpg"
+ - src: "./192.jpg"
+ - src: "./186.jpg"
 
 ---
 
