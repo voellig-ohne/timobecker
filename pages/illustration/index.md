@@ -2,7 +2,7 @@
 
 title: Illustration
 layout: projectList
-background: coverIllustration
+background: "./coverIllustration.jpg"
 
 ---
 
