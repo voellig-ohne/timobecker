@@ -4,7 +4,6 @@ module.exports = {
         siteDescription:
             'Berlin based illustrator and designer. Gladly illustrating books, magazines and events. Also developing character and environment concepts.',
         siteUrl: 'https://timobecker.com',
-        linkPrefix: '/gatsby-starter-default',
     },
     plugins: [
         {
