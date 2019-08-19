@@ -33,10 +33,5 @@
     "build": "gatsby build",
     "deploy": "rsync -avzc --del public/ timo@eltanin.uberspace.de:/var/www/virtual/timo/timobecker.com",
     "deployTest": "rsync -avzc --del public/ timo@eltanin.uberspace.de:/var/www/virtual/timo/test.timobecker.com"
-  },
-  "babel": {
-    "plugins": [
-      "whatwg-fetch"
-    ]
   }
 }
