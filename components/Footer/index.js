@@ -8,17 +8,16 @@ import style from './style.module.less';
 export default class Footer extends React.Component {
     render() {
         const { next, prev } = this.props;
-        const nextPrevSame = prev && prev.data.title === next.data.title;
 
         return (
             <footer className={style.container_outer}>
                 <div className={style.container}>
-                    {prev && !nextPrevSame ? (
-                        <Link to={prev.path} className={style.nextPrev_link}>
+                    {prev && (
+                        <Link to={prev.fields.slug} className={style.nextPrev_link}>
                             <div className={style.nextPrev_label}>vorheriges</div>
-                            <div className={style.nextPrev_title}>{prev.data.title}</div>
+                            <div className={style.nextPrev_title}>{prev.frontmatter.title}</div>
                         </Link>
-                    ) : null}
+                    )}
                     <div className={style.content}>
                         {/*
                         <a
@@ -71,12 +70,12 @@ export default class Footer extends React.Component {
                             <Illustration illustration="icons_impressum" />
                         </Link>
                     </div>
-                    {next && !nextPrevSame ? (
-                        <Link to={next.path} className={style.nextPrev_link}>
+                    {next && (
+                        <Link to={next.fields.slug} className={style.nextPrev_link}>
                             <div className={style.nextPrev_label}>nächstes</div>
-                            <div className={style.nextPrev_title}>{next.data.title}</div>
+                            <div className={style.nextPrev_title}>{next.frontmatter.title}</div>
                         </Link>
-                    ) : null}
+                    )}
                 </div>
                 <div className={style.vo_hint}>
                     website by <a href="http://volligohne.de/projekte/timobecker/">völlig ohne</a>

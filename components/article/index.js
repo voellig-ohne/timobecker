@@ -10,7 +10,10 @@ import style from './style.module.less';
 
 export default class Article extends React.Component {
     render() {
-        console.log(this.props.data);
+        console.log(this.props);
+        const { title, publisher } = this.props.data.markdownRemark.frontmatter;
+        const { html, next, previous } = this.props.pageContext;
+
         // const {
         //     background,
         //     background_mobile,
@@ -22,38 +25,11 @@ export default class Article extends React.Component {
 
         // const currentPath = this.props.children.props.route.path;
 
-        // const subTitle = publisher;
-
-        // const parentPath = '/' + currentPath.split('/')[1] + '/';
-
-        // const nextPrev = flow(
-        //     pages =>
-        //         filter(pages, page => {
-        //             return page.path !== parentPath && includes(page.path, parentPath);
-        //         }),
-        //     pages =>
-        //         sortBy(pages, page => {
-        //             return page.data.order;
-        //         }),
-        //     pages =>
-        //         reduce(
-        //             pages,
-        //             (o, page, idx) => {
-        //                 if (page.path === currentPath) {
-        //                     o.prev = pages[mod(idx - 1, pages.length)];
-        //                     o.next = pages[(idx + 1) % pages.length];
-        //                 }
-        //                 return o;
-        //             },
-        //             {}
-        //         )
-        // )(this.props.children.props.route.pages);
-
         return (
             <article className="page">
-                huhu
-                {/* <header className={classNames(style.header, { [style['header--no_gallery']]: !gallery })}>
-                    {background_mobile ? (
+                {/* <header className={classNames(style.header, { [style['header--no_gallery']]: !gallery })}> */}
+                <header className={classNames(style.header)}>
+                    {/* {background_mobile ? (
                         <div>
                             <ResponsiveImage
                                 source={background_mobile}
@@ -68,29 +44,23 @@ export default class Article extends React.Component {
                         </div>
                     ) : (
                         <ResponsiveImage source={background} location={currentPath} className={style.background} />
-                    )}
+                    )} */}
                     <div className={style.text}>
                         <div className={style.main}>
                             <h1>{title}</h1>
-                            {subTitle ? <p className={style.sub_title}>{subTitle}</p> : null}
-                            {this.props.children}
-                            {mainAddition ? <div>{mainAddition}</div> : null}
+                            {publisher ? <p className={style.sub_title}>{publisher}</p> : null}
+                            <div dangerouslySetInnerHTML={{ __html: html }} />
+                            {/* {mainAddition ? <div>{mainAddition}</div> : null} */}
                         </div>
                     </div>
-                    {gallery ? <ScrollArrow className={style.scroll_hint} /> : null}
+                    {/* {gallery ? <ScrollArrow className={style.scroll_hint} /> : null} */}
                 </header>
-
-                {gallery ? <div>{gallery}</div> : null}
-
-                <Footer next={nextPrev.next} prev={nextPrev.prev} />
-                <ImageHelmet source={background_mobile || background} location={currentPath} /> */}
+                {/* {gallery ? <div>{gallery}</div> : null} */}
+                <Footer next={next} prev={previous} />
+                {/* <ImageHelmet source={background_mobile || background} location={currentPath} /> */}
             </article>
         );
     }
-}
-
-function mod(n, m) {
-    return ((n % m) + m) % m;
 }
 
 export const pageQuery = graphql`
@@ -109,15 +79,15 @@ export const pageQuery = graphql`
                 layout
                 background {
                     childImageSharp {
-                        resize(width: 2000) {
-                            src
+                        fluid(maxWidth: 2500) {
+                            ...GatsbyImageSharpFluid
                         }
-                        fluid(maxWidth: 3000, srcSetBreakpoints: [800, 1500, 2000, 3000]) {
-                            base64
-                            src
-                            srcSet
-                            aspectRatio
-                            sizes
+                    }
+                }
+                background_mobile {
+                    childImageSharp {
+                        fluid(maxWidth: 2500) {
+                            ...GatsbyImageSharpFluid
                         }
                     }
                 }
