@@ -1,8 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router';
-import { prefixLink } from 'gatsby-helpers';
 import Helmet from 'react-helmet';
-import { config } from 'config';
+// import { config } from 'config';
 import Logo from 'components/logo/logo';
 import POINTS from 'components/logo/points';
 
@@ -21,16 +19,16 @@ module.exports = React.createClass({
     },
 
     render() {
-        const meta = [
-            {
-                property: 'og:image',
-                content: config.siteUrl + '/og-image.png',
-            },
-            {
-                property: 'og:title',
-                content: config.siteTitle,
-            },
-        ];
+        // const meta = [
+        //     {
+        //         property: 'og:image',
+        //         content: config.siteUrl + '/og-image.png',
+        //     },
+        //     {
+        //         property: 'og:title',
+        //         content: config.siteTitle,
+        //     },
+        // ];
 
         return (
             <div className={style.intro}>
@@ -44,7 +42,7 @@ module.exports = React.createClass({
                     ref="logo"
                     canvasResize={true}
                 />
-                <Helmet title={config.siteTitle + ' | Illustrator'} meta={meta} />
+                {/* <Helmet title={config.siteTitle + ' | Illustrator'} meta={meta} /> */}
             </div>
         );
     },

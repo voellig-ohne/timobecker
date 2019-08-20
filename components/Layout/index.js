@@ -5,7 +5,7 @@ import Project from './Project';
 import ProjectList from './ProjectList';
 import Helmet from 'react-helmet';
 import { startsWith } from 'lodash';
-import { config } from 'config';
+// import { config } from 'config';
 
 module.exports = React.createClass({
     propTypes() {
@@ -16,26 +16,26 @@ module.exports = React.createClass({
     render() {
         const isTest = startsWith(this.props.children.props.route.path, '/test/');
 
-        const meta = [
-            {
-                name: 'description',
-                content: config.siteDescription,
-            },
-            {
-                property: 'og:url',
-                content: config.siteUrl + this.props.location.pathname,
-            },
-            {
-                property: 'og:description',
-                content: config.siteDescription,
-            },
-        ];
+        // const meta = [
+        //     {
+        //         name: 'description',
+        //         content: config.siteDescription,
+        //     },
+        //     {
+        //         property: 'og:url',
+        //         content: config.siteUrl + this.props.location.pathname,
+        //     },
+        //     {
+        //         property: 'og:description',
+        //         content: config.siteDescription,
+        //     },
+        // ];
 
         return (
             <div>
                 <main className="main_content">{chooseTemplate(this.props.children)}</main>
                 {!isTest ? <Navigation currentPath={this.props.location.pathname} /> : null}
-                <Helmet meta={meta} />
+                {/* <Helmet meta={meta} /> */}
             </div>
         );
     },

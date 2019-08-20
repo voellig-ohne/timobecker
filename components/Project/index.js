@@ -1,9 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router';
-import { prefixLink } from 'gatsby-helpers';
-import Article from 'components/Article';
+import Article from '../Article';
 import { map } from 'lodash';
-import ResponsiveImage from 'components/ResponsiveImage';
+import ResponsiveImage from '../ResponsiveImage';
 
 import style from './style.module.less';
 
@@ -13,16 +11,10 @@ export default class Project extends React.Component {
         const currentPath = this.props.children.props.route.path;
 
         const gallery = (
-            <ul className={style.gallery}>
-                {map(images, (image, idx) => Image(image, idx, currentPath))}
-            </ul>
+            <ul className={style.gallery}>{map(images, (image, idx) => Image(image, idx, currentPath))}</ul>
         );
 
-        return (
-            <Article gallery={gallery}>
-                {this.props.children}
-            </Article>
-        );
+        return <Article gallery={gallery}>{this.props.children}</Article>;
     }
 }
 

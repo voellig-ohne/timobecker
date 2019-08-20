@@ -2,9 +2,6 @@ import React from 'react';
 import _ from 'lodash';
 import 'whatwg-fetch';
 
-import { prefixLink } from 'gatsby-helpers';
-import { config } from 'config';
-
 const BLEND_MODE = 'multiply';
 
 const COLOR_PEN = '#e80101';
@@ -63,7 +60,7 @@ module.exports = React.createClass({
         this.points = this.props.points.map(point => {
             return point.map(position => {
                 const withoutMargin = this.getRelativeValue(position);
-                return this.relativeMargin + withoutMargin / 100 * (100 - this.props.margin * 2);
+                return this.relativeMargin + (withoutMargin / 100) * (100 - this.props.margin * 2);
             });
         });
 
@@ -227,7 +224,7 @@ module.exports = React.createClass({
     },
 
     getRelativeValue(value) {
-        return value / 100 * this.props.size;
+        return (value / 100) * this.props.size;
     },
 
     initConnectionLine() {

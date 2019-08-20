@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router';
-import { prefixLink } from 'gatsby-helpers';
+import { Link } from 'gatsby';
 import classNames from 'classnames';
-import Illustration from 'components/Illustration';
+import Illustration from '../Illustration';
 
 import style from './style.module.less';
 
@@ -14,14 +13,12 @@ export default class Footer extends React.Component {
         return (
             <footer className={style.container_outer}>
                 <div className={style.container}>
-                    {prev && !nextPrevSame
-                        ? <Link to={prev.path} className={style.nextPrev_link}>
-                              <div className={style.nextPrev_label}>vorheriges</div>
-                              <div className={style.nextPrev_title}>
-                                  {prev.data.title}
-                              </div>
-                          </Link>
-                        : null}
+                    {prev && !nextPrevSame ? (
+                        <Link to={prev.path} className={style.nextPrev_link}>
+                            <div className={style.nextPrev_label}>vorheriges</div>
+                            <div className={style.nextPrev_title}>{prev.data.title}</div>
+                        </Link>
+                    ) : null}
                     <div className={style.content}>
                         {/*
                         <a
@@ -74,14 +71,12 @@ export default class Footer extends React.Component {
                             <Illustration illustration="icons_impressum" />
                         </Link>
                     </div>
-                    {next && !nextPrevSame
-                        ? <Link to={next.path} className={style.nextPrev_link}>
-                              <div className={style.nextPrev_label}>nächstes</div>
-                              <div className={style.nextPrev_title}>
-                                  {next.data.title}
-                              </div>
-                          </Link>
-                        : null}
+                    {next && !nextPrevSame ? (
+                        <Link to={next.path} className={style.nextPrev_link}>
+                            <div className={style.nextPrev_label}>nächstes</div>
+                            <div className={style.nextPrev_title}>{next.data.title}</div>
+                        </Link>
+                    ) : null}
                 </div>
                 <div className={style.vo_hint}>
                     website by <a href="http://volligohne.de/projekte/timobecker/">völlig ohne</a>

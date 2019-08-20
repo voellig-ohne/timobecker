@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
-import { prefixLink } from 'gatsby-helpers';
+import { Link } from 'gatsby';
 import classNames from 'classnames';
 import { includes } from 'lodash';
 
@@ -27,11 +26,11 @@ export default class Navigation extends React.Component {
 
         return (
             <span>
-                {this.props.currentPath !== '/' && <Link to={prefixLink('/')} className={style.home} />}
+                {this.props.currentPath !== '/' && <Link to={'/'} className={style.home} />}
 
                 <header className={style.navigation}>
                     <Link
-                        to={prefixLink('/about/')}
+                        to={'/about/'}
                         className={classNames(style.navigation_about, style.nav_link, {
                             [style.nav_link_active]: includes(currentPath, '/about/'),
                         })}

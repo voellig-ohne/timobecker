@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router';
-import { prefixLink } from 'gatsby-helpers';
-import Article from 'components/Article';
+import { Link } from 'gatsby';
+import Article from '../Article';
 import { filter, includes, flow, map, sortBy } from 'lodash';
-import ResponsiveImage from 'components/ResponsiveImage';
+import ResponsiveImage from '../ResponsiveImage';
 import classNames from 'classnames';
 
 import style from './style.module.less';
@@ -19,17 +18,9 @@ export default class ProjectList extends React.Component {
             pages => map(pages, Project)
         )(pages);
 
-        const mainAdditions = (
-            <div>
-                {projects}
-            </div>
-        );
+        const mainAdditions = <div>{projects}</div>;
 
-        return (
-            <Article mainAddition={mainAdditions}>
-                {this.props.children}
-            </Article>
-        );
+        return <Article mainAddition={mainAdditions}>{this.props.children}</Article>;
     }
 }
 
