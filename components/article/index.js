@@ -6,6 +6,7 @@ import Footer from '../Footer';
 import ScrollArrow from '../ScrollArrow';
 import { filter, includes, reduce, flow, sortBy } from 'lodash';
 
+import '../style/main.less';
 import style from './style.module.less';
 
 export default class Article extends React.Component {
