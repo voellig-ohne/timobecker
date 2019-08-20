@@ -24,7 +24,7 @@ exports.createPages = ({ graphql, actions }) => {
             graphql(
                 `
                     {
-                        allMarkdownRemark(sort: { fields: [frontmatter___order], order: DESC }, limit: 1000) {
+                        allMarkdownRemark(sort: { fields: [frontmatter___order], order: ASC }, limit: 1000) {
                             edges {
                                 node {
                                     fields {
@@ -55,7 +55,9 @@ exports.createPages = ({ graphql, actions }) => {
                 const posts = result.data.allMarkdownRemark.edges;
 
                 const postsSplit = posts.reduce((postsSplit, post) => {
-                    const parent = post.node.fields.slug.split('/')[1];
+                    const pathSplit = post.node.fields.slug.split('/');
+                    const parent = pathSplit[pathSplit.length - 3];
+                    console.log(post.node.fields.slug, pathSplit, pathSplit[pathSplit.length - 3]);
 
                     if (!postsSplit[parent]) {
                         postsSplit[parent] = [];
@@ -67,8 +69,10 @@ exports.createPages = ({ graphql, actions }) => {
 
                 forEach(postsSplit, posts => {
                     posts.forEach((post, index) => {
-                        const next = index === posts.length - 1 ? null : posts[index + 1].node;
-                        const previous = index === 0 ? null : posts[index - 1].node;
+                        const shouldHaveNextPrevious = post.node.fields.slug.split('/').length === 4;
+                        const next =
+                            shouldHaveNextPrevious && (index === posts.length - 1 ? null : posts[index + 1].node);
+                        const previous = shouldHaveNextPrevious && (index === 0 ? null : posts[index - 1].node);
 
                         createPage({
                             path: post.node.fields.slug,
