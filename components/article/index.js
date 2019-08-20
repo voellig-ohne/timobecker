@@ -12,8 +12,8 @@ import style from './style.module.less';
 export default class Article extends React.Component {
     render() {
         console.log(this.props);
-        const { title, publisher } = this.props.data.markdownRemark.frontmatter;
-        const { html, next, previous } = this.props.pageContext;
+        const { html } = this.props.data.markdownRemark;
+        const { next, previous } = this.props.pageContext;
 
         return (
             <article className="page">
@@ -67,6 +67,7 @@ export const pageQuery = graphql`
             frontmatter {
                 title
                 layout
+                publisher
                 background {
                     childImageSharp {
                         fluid(maxWidth: 2500) {
