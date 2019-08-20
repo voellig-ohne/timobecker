@@ -15,17 +15,6 @@ export default class Article extends React.Component {
         const { title, publisher } = this.props.data.markdownRemark.frontmatter;
         const { html, next, previous } = this.props.pageContext;
 
-        // const {
-        //     background,
-        //     background_mobile,
-        //     title,
-        //     publisher,
-        // } = this.props.children.props.route.page.data;
-
-        // const { mainAddition, gallery } = this.props;
-
-        // const currentPath = this.props.children.props.route.path;
-
         return (
             <article className="page">
                 {/* <header className={classNames(style.header, { [style['header--no_gallery']]: !gallery })}> */}
