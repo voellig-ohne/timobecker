@@ -19,44 +19,24 @@ export default class Footer extends React.Component {
                         </Link>
                     )}
                     <div className={style.content}>
-                        {/*
-                        <a
-                            href="https://www.facebook.com/timo.becker.54"
-                            className={style.icon}
-                            title="Facebook"
-                            target="_blank"
-                        >
-                            <Illustration illustration="icons_facebook" />
-                        </a>
-                        */}
                         <a
                             href="https://de.linkedin.com/in/timobecker-design"
                             className={style.icon}
                             title="LinkedIn"
                             target="_blank"
                         >
-                            <Illustration illustration="icons_linkedin" />
+                            <img src={require('./icons_linkedin.svg')} />
                         </a>
-                        {/*
-                        <a
-                            href="https://www.artstation.com/artist/timo_becker"
-                            className={style.icon}
-                            title="ArtStation"
-                            target="_blank"
-                        >
-                            <Illustration illustration="icons_artstation" />
-                        </a>
-                        */}
                         <a
                             href="https://www.instagram.com/timo_becker_/"
                             className={style.icon}
                             title="Instagram"
                             target="_blank"
                         >
-                            <Illustration illustration="icons_instagram" />
+                            <img src={require('./icons_instagram.svg')} />
                         </a>
                         <a href="mailto:mail@timobecker.com" className={style.icon} title="Mail">
-                            <Illustration illustration="icons_mail" />
+                            <img src={require('./icons_mail.svg')} />
                         </a>
                         <a
                             href="http://volligohne.de/projekte/timobecker/"
@@ -64,10 +44,10 @@ export default class Footer extends React.Component {
                             title="Völlig Ohne"
                             target="_blank"
                         >
-                            <Illustration illustration="icons_vo" />
+                            <img src={require('./icons_vo.svg')} />
                         </a>
                         <Link to="/impressum/" className={style.icon} title="Impressum / Kontakt">
-                            <Illustration illustration="icons_impressum" />
+                            <img src={require('./icons_impressum.svg')} />
                         </Link>
                     </div>
                     {next && (
