@@ -16,6 +16,7 @@ export default class Article extends React.Component {
         const { title, publisher, background, background_mobile } = this.props.data.markdownRemark.frontmatter;
         const { html } = this.props.data.markdownRemark;
         const { next, previous } = this.props.pageContext;
+        const children = this.props.data.children.edges;
 
         return (
             <>
@@ -92,6 +93,21 @@ export const pageQuery = graphql`
                                 ...GatsbyImageSharpFluid
                             }
                         }
+                    }
+                }
+            }
+        }
+        children: allMarkdownRemark(
+            filter: { fields: { slug: { regex: $slug, ne: $slug } } }
+            sort: { order: ASC, fields: frontmatter___order }
+        ) {
+            edges {
+                node {
+                    fields {
+                        slug
+                    }
+                    frontmatter {
+                        title
                     }
                 }
             }
