@@ -1,7 +1,5 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import classNames from 'classnames';
-import Illustration from '../Illustration';
 
 import style from './style.module.less';
 
@@ -19,36 +17,27 @@ export default class Footer extends React.Component {
                         </Link>
                     )}
                     <div className={style.content}>
-                        <a
+                        <LinkIcon
                             href="https://de.linkedin.com/in/timobecker-design"
-                            className={style.icon}
                             title="LinkedIn"
-                            target="_blank"
-                        >
-                            <img src={require('./icons_linkedin.svg')} />
-                        </a>
-                        <a
+                            img={require('./icons_linkedin.svg')}
+                        />
+                        <LinkIcon
                             href="https://www.instagram.com/timo_becker_/"
-                            className={style.icon}
                             title="Instagram"
-                            target="_blank"
-                        >
-                            <img src={require('./icons_instagram.svg')} />
-                        </a>
-                        <a href="mailto:mail@timobecker.com" className={style.icon} title="Mail">
-                            <img src={require('./icons_mail.svg')} />
-                        </a>
-                        <a
+                            img={require('./icons_instagram.svg')}
+                        />
+                        <LinkIcon href="mailto:mail@timobecker.com" title="Mail" img={require('./icons_mail.svg')} />
+                        <LinkIcon
                             href="http://volligohne.de/projekte/timobecker/"
-                            className={style.icon}
                             title="Völlig Ohne"
-                            target="_blank"
-                        >
-                            <img src={require('./icons_vo.svg')} />
-                        </a>
-                        <Link to="/impressum/" className={style.icon} title="Impressum / Kontakt">
-                            <img src={require('./icons_impressum.svg')} />
-                        </Link>
+                            img={require('./icons_vo.svg')}
+                        />
+                        <LinkIcon
+                            href="/impressum/"
+                            title="Impressum / Kontakt"
+                            img={require('./icons_impressum.svg')}
+                        />
                     </div>
                     {next && (
                         <Link to={next.fields.slug} className={style.nextPrev_link}>
@@ -63,4 +52,12 @@ export default class Footer extends React.Component {
             </footer>
         );
     }
+}
+
+function LinkIcon({ href, title, img }) {
+    return (
+        <a href={href} className={style.icon} title={title}>
+            <img src={img} />
+        </a>
+    );
 }
