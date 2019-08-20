@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import Img from 'gatsby-image';
 // import ResponsiveImage from '../ResponsiveImage';
 import ImageHelmet from '../ImageHelmet';
 import Footer from '../Footer';
@@ -12,6 +13,7 @@ import style from './style.module.less';
 export default class Article extends React.Component {
     render() {
         console.log(this.props);
+        const { title, publisher, background, background_mobile } = this.props.data.markdownRemark.frontmatter;
         const { html } = this.props.data.markdownRemark;
         const { next, previous } = this.props.pageContext;
 
@@ -19,22 +21,20 @@ export default class Article extends React.Component {
             <article className="page">
                 {/* <header className={classNames(style.header, { [style['header--no_gallery']]: !gallery })}> */}
                 <header className={classNames(style.header)}>
-                    {/* {background_mobile ? (
+                    {background_mobile ? (
                         <div>
-                            <ResponsiveImage
-                                source={background_mobile}
-                                location={currentPath}
+                            <Img
+                                fluid={background_mobile.childImageSharp.fluid}
                                 className={classNames(style.background, style.background_mobile)}
                             />
-                            <ResponsiveImage
-                                source={background}
-                                location={currentPath}
+                            <Img
+                                fluid={background.childImageSharp.fluid}
                                 className={classNames(style.background, style.background_desktop)}
                             />
                         </div>
                     ) : (
-                        <ResponsiveImage source={background} location={currentPath} className={style.background} />
-                    )} */}
+                        <Img fluid={background.childImageSharp.fluid} className={style.background} />
+                    )}
                     <div className={style.text}>
                         <div className={style.main}>
                             <h1>{title}</h1>
