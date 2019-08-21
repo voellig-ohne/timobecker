@@ -110,7 +110,7 @@ export const pageQuery = graphql`
                 background {
                     childImageSharp {
                         fluid(maxWidth: 2500) {
-                            ...GatsbyImageSharpFluid
+                            ...GatsbyImageSharpFluid_noBase64
                         }
                     }
                 }
@@ -123,8 +123,8 @@ export const pageQuery = graphql`
                 }
                 background_mobile {
                     childImageSharp {
-                        fluid(maxWidth: 2500) {
-                            ...GatsbyImageSharpFluid
+                        fluid(maxWidth: 1000) {
+                            ...GatsbyImageSharpFluid_noBase64
                         }
                     }
                 }
@@ -132,7 +132,7 @@ export const pageQuery = graphql`
                     src {
                         childImageSharp {
                             fluid(maxWidth: 2500) {
-                                ...GatsbyImageSharpFluid
+                                ...GatsbyImageSharpFluid_noBase64
                             }
                         }
                     }
