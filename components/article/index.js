@@ -19,6 +19,7 @@ export default class Article extends React.Component {
         const { html } = this.props.data.markdownRemark;
         const { next, previous } = this.props.pageContext;
         const children = this.props.data.children.edges;
+        const hasGallery = !!(images && images.length);
 
         return (
             <>
@@ -47,9 +48,9 @@ export default class Article extends React.Component {
                                 <ProjectList projects={children} />
                             </div>
                         </div>
-                        {images.length && <ScrollArrow className={style.scroll_hint} />}
+                        {hasGallery && <ScrollArrow className={style.scroll_hint} />}
                     </header>
-                    <Gallery images={images} />
+                    {hasGallery && <Gallery images={images} />}
                     <Footer next={next} prev={previous} />
                     {/* <ImageHelmet source={background_mobile || background} location={currentPath} /> */}
                 </article>
