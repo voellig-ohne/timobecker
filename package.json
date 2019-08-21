@@ -5,6 +5,7 @@
   "author": "Timur Celikel",
   "dependencies": {
     "classnames": "^2.2.6",
+    "file-loader": "^4.2.0",
     "gatsby": "^2.13.67",
     "gatsby-image": "^2.2.8",
     "gatsby-plugin-less": "^2.1.2",
@@ -17,7 +18,7 @@
     "less": "^3.9.0",
     "lodash": "^4.13.1",
     "object-assign": "^4.1.1",
-    "paper": "^0.10.2",
+    "paper": "^0.12.3",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-helmet": "^5.2.0",
@@ -30,7 +31,7 @@
   "main": "n/a",
   "scripts": {
     "start": "gatsby develop",
-    "serve-build": "gatsby serve-build",
+    "serve": "gatsby serve",
     "build": "gatsby build",
     "deploy": "rsync -avzc --del public/ timo@eltanin.uberspace.de:/var/www/virtual/timo/timobecker.com",
     "deployTest": "rsync -avzc --del public/ timo@eltanin.uberspace.de:/var/www/virtual/timo/test.timobecker.com"
