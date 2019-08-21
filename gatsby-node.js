@@ -1,15 +1,3 @@
-// var Webpack = require('webpack');
-
-// exports.modifyWebpackConfig = function(config, stage) {
-//     config.plugin('webpack-define', Webpack.DefinePlugin, [
-//         {
-//             PRODUCTION: process.env.NODE_ENV === 'production',
-//             STATIC: stage === 'build-html',
-//         },
-//     ]);
-//     return config;
-// };
-
 const Promise = require('bluebird');
 const webpack = require('webpack');
 const path = require('path');
@@ -58,7 +46,6 @@ exports.createPages = ({ graphql, actions }) => {
                 const postsSplit = posts.reduce((postsSplit, post) => {
                     const pathSplit = post.node.fields.slug.split('/');
                     const parent = pathSplit[pathSplit.length - 3];
-                    console.log(post.node.fields.slug, pathSplit, pathSplit[pathSplit.length - 3]);
 
                     if (!postsSplit[parent]) {
                         postsSplit[parent] = [];
