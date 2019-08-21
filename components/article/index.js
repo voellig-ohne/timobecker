@@ -23,12 +23,26 @@ export default class Article extends React.Component {
             background_mobile,
             images,
             layout,
+            og_image,
         } = this.props.data.markdownRemark.frontmatter;
         const { html } = this.props.data.markdownRemark;
-        const { siteTitle } = this.props.data.site.siteMetadata;
+        const { siteTitle, siteDescription, siteUrl } = this.props.data.site.siteMetadata;
         const { next, previous } = this.props.pageContext;
         const children = this.props.data.children.edges;
         const hasGallery = !!(images && images.length);
+
+        const metaTags = [
+            { name: 'description', content: siteDescription },
+            { property: 'og:description', content: siteDescription },
+            { property: 'og:url', content: siteUrl + this.props.path },
+        ];
+
+        if (og_image) {
+            metaTags.push({
+                property: 'og:image',
+                content: og_image.childImageSharp.fixed.src,
+            });
+        }
 
         return (
             <>
@@ -68,11 +82,7 @@ export default class Article extends React.Component {
                     </article>
                 )}
                 <Navigation currentPath={this.props.path} />
-
-                <Helmet
-                    //   meta={metaTags}
-                    title={`${siteTitle} • ${title}`}
-                >
+                <Helmet meta={metaTags} title={`${siteTitle} • ${title}`}>
                     <link rel="shortcut icon" type="image/png" href="/favicon.png" />
                 </Helmet>
             </>
@@ -86,6 +96,7 @@ export const pageQuery = graphql`
             siteMetadata {
                 siteTitle
                 siteUrl
+                siteDescription
             }
         }
         markdownRemark(fields: { slug: { eq: $slug } }) {
@@ -100,6 +111,13 @@ export const pageQuery = graphql`
                     childImageSharp {
                         fluid(maxWidth: 2500) {
                             ...GatsbyImageSharpFluid
+                        }
+                    }
+                }
+                og_image: background {
+                    childImageSharp {
+                        fixed(width: 1000) {
+                            src
                         }
                     }
                 }
