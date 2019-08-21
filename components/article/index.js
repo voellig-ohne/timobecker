@@ -1,4 +1,5 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 import classNames from 'classnames';
 import Img from 'gatsby-image';
 import Footer from '../Footer';
@@ -14,6 +15,7 @@ import style from './style.module.less';
 export default class Article extends React.Component {
     render() {
         console.log(this.props);
+
         const {
             title,
             publisher,
@@ -23,6 +25,7 @@ export default class Article extends React.Component {
             layout,
         } = this.props.data.markdownRemark.frontmatter;
         const { html } = this.props.data.markdownRemark;
+        const { siteTitle } = this.props.data.site.siteMetadata;
         const { next, previous } = this.props.pageContext;
         const children = this.props.data.children.edges;
         const hasGallery = !!(images && images.length);
@@ -65,6 +68,13 @@ export default class Article extends React.Component {
                     </article>
                 )}
                 <Navigation currentPath={this.props.path} />
+
+                <Helmet
+                    //   meta={metaTags}
+                    title={`${siteTitle} • ${title}`}
+                >
+                    <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+                </Helmet>
             </>
         );
     }
