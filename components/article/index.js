@@ -47,7 +47,7 @@ export default class Article extends React.Component {
                                 <ProjectList projects={children} />
                             </div>
                         </div>
-                        {/* {gallery ? <ScrollArrow className={style.scroll_hint} /> : null} */}
+                        {images.length && <ScrollArrow className={style.scroll_hint} />}
                     </header>
                     <Gallery images={images} />
                     <Footer next={next} prev={previous} />
