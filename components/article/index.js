@@ -135,14 +135,14 @@ export const pageQuery = graphql`
                         thumbnailTopAlign
                         background {
                             childImageSharp {
-                                fluid(maxWidth: 2500) {
+                                fluid(maxWidth: 500) {
                                     ...GatsbyImageSharpFluid
                                 }
                             }
                         }
                         thumbnail {
                             childImageSharp {
-                                fluid(maxWidth: 2500) {
+                                fluid(maxWidth: 500) {
                                     ...GatsbyImageSharpFluid
                                 }
                             }
