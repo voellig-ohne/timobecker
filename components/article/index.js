@@ -62,7 +62,7 @@ export default class Article extends React.Component {
                         <Footer next={next} prev={previous} />
                     </article>
                 )}
-                <Navigation />
+                <Navigation currentPath={this.props.path} />
             </>
         );
     }
