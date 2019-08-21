@@ -1,6 +1,8 @@
 import React from 'react';
 import _ from 'lodash';
 import 'whatwg-fetch';
+import PATHS from './renderedPaths7.json';
+const paper = require('paper');
 
 const BLEND_MODE = 'multiply';
 
@@ -17,16 +19,7 @@ const SIZES = {
     LINE_STROKE_WIDTH: 2,
 };
 
-import PATHS from './renderedPaths7.json';
-
-// only conditionally import paperjs for static page building
-let paper;
-
-if (!STATIC) {
-    paper = require('paper');
-}
-
-module.exports = React.createClass({
+export default class Logo extends React.Component {
     init() {
         if (this.props.order) {
             this.drawLine(this.PaperScope, this.points, this.props.order);
@@ -44,7 +37,7 @@ module.exports = React.createClass({
         }
 
         this.PaperScope.view.draw();
-    },
+    }
 
     componentDidMount() {
         document.ontouchmove = function(event) {
@@ -77,7 +70,7 @@ module.exports = React.createClass({
             this.PaperScope.view.onResize = this.setCanvasSize;
             this.setCanvasSize();
         }, 100);
-    },
+    }
 
     componentDidUpdate(nextProps) {
         const currentOrder = this.props.order && this.props.order.join();
@@ -90,13 +83,13 @@ module.exports = React.createClass({
         if (this.props.canvasSize !== nextProps.canvasSize) {
             this.setCanvasSize(nextProps.canvasSize);
         }
-    },
+    }
 
     componentWillUnmount() {
         document.ontouchmove = undefined;
         this.PaperScope.remove();
         window._paq.push(['trackEvent', 'painting', 'connectionCount', this.connectionCount]);
-    },
+    }
 
     setCanvasSize() {
         const size = this.PaperScope.view.viewSize;
@@ -118,7 +111,7 @@ module.exports = React.createClass({
         }
 
         this.PaperScope.view.draw();
-    },
+    }
 
     drawLine(p, points, order) {
         this.initConnectionLine();
@@ -128,7 +121,7 @@ module.exports = React.createClass({
         });
 
         this.line.add(new p.Point(points[order[0]]));
-    },
+    }
 
     drawPoints(p, points) {
         const color = new p.Color(COLOR_DOT);
@@ -169,7 +162,7 @@ module.exports = React.createClass({
                 this.placedDots.push(connectionDotPlaced);
             }
         });
-    },
+    }
 
     addConnectionDot(point, index, connectionDotPlaced) {
         const position = this.placedDots[index].position;
@@ -195,7 +188,7 @@ module.exports = React.createClass({
         if (this.connectOrder.length === this.points.length) {
             this.dotConnectionFinished();
         }
-    },
+    }
 
     dotConnectionFinished() {
         if (this.mouseLineInitHappened) {
@@ -206,7 +199,7 @@ module.exports = React.createClass({
         this.currentlyPainting = true;
         const drawingIndex = PATHS.byKey[this.connectOrder.join('')];
 
-        const paintingsLink = require('!file-loader!./paintingsSingle/' + drawingIndex + '.json');
+        const paintingsLink = require('./paintingsSingle/' + drawingIndex + '.json');
 
         fetch(paintingsLink)
             .then(response => {
@@ -221,11 +214,11 @@ module.exports = React.createClass({
 
         window._paq.push(['trackEvent', 'painting', 'connected', drawingIndex]);
         this.connectionCount = this.connectionCount + 1;
-    },
+    }
 
     getRelativeValue(value) {
         return (value / 100) * this.props.size;
-    },
+    }
 
     initConnectionLine() {
         if (this.line) {
@@ -272,7 +265,7 @@ module.exports = React.createClass({
                 this.reset();
             }
         };
-    },
+    }
 
     initPaint(painting) {
         const p = this.PaperScope;
@@ -316,7 +309,7 @@ module.exports = React.createClass({
                             window.print();
                             setTimeout(() => {
                                 this.reset();
-                                location.reload();
+                                // location.reload();
                             }, 5000);
                         }
                     }
@@ -350,18 +343,18 @@ module.exports = React.createClass({
             that.paintGroup.addChild(paths[paths.length - 1]);
             that.props.painted(that.paintGroup.exportJSON());
         }
-    },
+    }
 
     reset() {
         this.initConnectionLine();
         this.initPaint();
         this.PaperScope.view.draw();
-    },
+    }
 
     connect(dot) {
         this.addConnectionDot('foo', dot);
         this.PaperScope.view.draw();
-    },
+    }
 
     render() {
         return (
@@ -373,5 +366,5 @@ module.exports = React.createClass({
                 data-paper-resize="true"
             />
         );
-    },
-});
+    }
+}
