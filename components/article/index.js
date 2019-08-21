@@ -5,6 +5,7 @@ import Img from 'gatsby-image';
 import ImageHelmet from '../ImageHelmet';
 import Footer from '../Footer';
 import ScrollArrow from '../ScrollArrow';
+import Gallery from '../Gallery';
 import Navigation from '../Navigation';
 import ProjectList from '../ProjectList';
 
@@ -14,7 +15,7 @@ import style from './style.module.less';
 export default class Article extends React.Component {
     render() {
         console.log(this.props);
-        const { title, publisher, background, background_mobile } = this.props.data.markdownRemark.frontmatter;
+        const { title, publisher, background, background_mobile, images } = this.props.data.markdownRemark.frontmatter;
         const { html } = this.props.data.markdownRemark;
         const { next, previous } = this.props.pageContext;
         const children = this.props.data.children.edges;
@@ -48,7 +49,7 @@ export default class Article extends React.Component {
                         </div>
                         {/* {gallery ? <ScrollArrow className={style.scroll_hint} /> : null} */}
                     </header>
-                    {/* {gallery ? <div>{gallery}</div> : null} */}
+                    <Gallery images={images} />
                     <Footer next={next} prev={previous} />
                     {/* <ImageHelmet source={background_mobile || background} location={currentPath} /> */}
                 </article>
