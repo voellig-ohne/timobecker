@@ -54,17 +54,23 @@ export default class Article extends React.Component {
                             {background_mobile ? (
                                 <div>
                                     <Img
+                                        durationFadeIn={100}
                                         fluid={background_mobile.childImageSharp.fluid}
                                         className={classNames(style.background, style.background_mobile)}
                                     />
                                     <Img
+                                        durationFadeIn={100}
                                         fluid={background.childImageSharp.fluid}
                                         className={classNames(style.background, style.background_desktop)}
                                     />
                                 </div>
                             ) : (
                                 background && (
-                                    <Img fluid={background.childImageSharp.fluid} className={style.background} />
+                                    <Img
+                                        durationFadeIn={100}
+                                        fluid={background.childImageSharp.fluid}
+                                        className={style.background}
+                                    />
                                 )
                             )}
                             <div className={style.text}>

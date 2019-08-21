@@ -8,7 +8,7 @@ export default function Gallery({ images }) {
         <ul className={style.gallery}>
             {images.map((image, idx) => (
                 <li key={idx} className={style.imageContainer}>
-                    <Img fluid={image.src.childImageSharp.fluid} className={style.image} />
+                    <Img durationFadeIn={100} fluid={image.src.childImageSharp.fluid} className={style.image} />
                 </li>
             ))}
         </ul>
