@@ -11,6 +11,7 @@
 // };
 
 const Promise = require('bluebird');
+const webpack = require('webpack');
 const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
 const { forEach } = require('lodash');
@@ -103,7 +104,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     }
 };
 
-exports.onCreateWebpackConfig = ({ actions }) => {
+exports.onCreateWebpackConfig = ({ actions, stage }) => {
     actions.setWebpackConfig({
         module: {
             rules: [
@@ -119,5 +120,12 @@ exports.onCreateWebpackConfig = ({ actions }) => {
                 },
             ],
         },
+        plugins: [
+            new webpack.DefinePlugin({
+                'process.env': {
+                    STATIC: stage === 'build-html',
+                },
+            }),
+        ],
     });
 };

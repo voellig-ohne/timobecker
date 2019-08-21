@@ -46,7 +46,9 @@ export default class Article extends React.Component {
                                     />
                                 </div>
                             ) : (
-                                <Img fluid={background.childImageSharp.fluid} className={style.background} />
+                                background && (
+                                    <Img fluid={background.childImageSharp.fluid} className={style.background} />
+                                )
                             )}
                             <div className={style.text}>
                                 <div className={style.main}>

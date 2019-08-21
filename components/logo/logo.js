@@ -2,7 +2,12 @@ import React from 'react';
 import _ from 'lodash';
 import 'whatwg-fetch';
 import PATHS from './renderedPaths7.json';
-const paper = require('paper');
+
+let paper;
+
+if (!process.env.STATIC) {
+    paper = require('paper');
+}
 
 const BLEND_MODE = 'multiply';
 
