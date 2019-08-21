@@ -6,6 +6,7 @@ import ImageHelmet from '../ImageHelmet';
 import Footer from '../Footer';
 import ScrollArrow from '../ScrollArrow';
 import Navigation from '../Navigation';
+import ProjectList from '../ProjectList';
 
 import '../style/main.less';
 import style from './style.module.less';
@@ -42,7 +43,7 @@ export default class Article extends React.Component {
                                 <h1>{title}</h1>
                                 {publisher ? <p className={style.sub_title}>{publisher}</p> : null}
                                 <div dangerouslySetInnerHTML={{ __html: html }} />
-                                {/* {mainAddition ? <div>{mainAddition}</div> : null} */}
+                                <ProjectList projects={children} />
                             </div>
                         </div>
                         {/* {gallery ? <ScrollArrow className={style.scroll_hint} /> : null} */}
@@ -108,6 +109,21 @@ export const pageQuery = graphql`
                     }
                     frontmatter {
                         title
+                        thumbnailTopAlign
+                        background {
+                            childImageSharp {
+                                fluid(maxWidth: 2500) {
+                                    ...GatsbyImageSharpFluid
+                                }
+                            }
+                        }
+                        thumbnail {
+                            childImageSharp {
+                                fluid(maxWidth: 2500) {
+                                    ...GatsbyImageSharpFluid
+                                }
+                            }
+                        }
                     }
                 }
             }

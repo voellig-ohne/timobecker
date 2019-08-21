@@ -1,48 +1,39 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import Article from '../Article';
-import { filter, includes, flow, map, sortBy } from 'lodash';
-import ResponsiveImage from '../ResponsiveImage';
+import Img from 'gatsby-image';
 import classNames from 'classnames';
 
 import style from './style.module.less';
 
-export default class ProjectList extends React.Component {
-    render() {
-        const currentPath = this.props.children.props.route.path;
-        const pages = this.props.children.props.route.pages;
-
-        const projects = flow(
-            pages => filter(pages, page => isProject(page, currentPath)),
-            pages => sortBy(pages, page => page.data.order),
-            pages => map(pages, Project)
-        )(pages);
-
-        const mainAdditions = <div>{projects}</div>;
-
-        return <Article mainAddition={mainAdditions}>{this.props.children}</Article>;
+export default function ProjectList({ projects }) {
+    if (projects.length === 0) {
+        return null;
     }
+
+    return (
+        <>
+            {projects.map(project => (
+                <Project key={project.node.fields.slug} project={project} />
+            ))}
+        </>
+    );
 }
 
-function isProject(page, currentPath) {
-    return page.path !== currentPath && includes(page.path, currentPath);
-}
+function Project({ project }) {
+    const frontmatter = project.node.frontmatter;
 
-function Project(project) {
-    const { path } = project;
     const imageProps = {
-        source: project.data.thumbnail || project.data.background,
-        location: path,
+        fluid: frontmatter.thumbnail.childImageSharp.fluid || frontmatter.background.childImageSharp.fluid,
         className: classNames(style.projectImage, {
-            [style.projectImage__topAlgin]: project.data.thumbnailTopAlign,
+            [style.projectImage__topAlgin]: frontmatter.thumbnailTopAlign,
         }),
     };
 
     return (
-        <Link to={path} key={path} className={style.projectLink}>
-            {project.data.title}
+        <Link to={project.node.fields.slug} className={style.projectLink}>
+            {frontmatter.title}
             <div className={style.projectImage_container}>
-                <ResponsiveImage {...imageProps} />
+                <Img {...imageProps} />
             </div>
         </Link>
     );
