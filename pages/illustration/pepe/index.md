@@ -2,7 +2,6 @@
 
 title: Pepe und der Pups-Roboter
 publisher: Willegoos
-layout: project
 order: 2
 background: "./159.jpg"
 thumbnail: "./164-2.jpg"

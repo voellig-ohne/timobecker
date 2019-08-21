@@ -2,7 +2,6 @@
 
 title: Kosmo&Klax
 publisher: Mixtvision
-layout: project
 order: 1
 background: "./176.jpg"
 thumbnail: "./189-2.jpg"

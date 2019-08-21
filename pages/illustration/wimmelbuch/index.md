@@ -2,7 +2,6 @@
 
 title: Wimmelbuch Deutschland
 publisher: Compact
-layout: project
 order: 3
 background: "./124.jpg"
 thumbnail: "./124.jpg"

@@ -1,7 +1,6 @@
 ---
 
 title: Sketches
-layout: project
 background: "./074.jpg"
 images:
  - src: "./055.jpg"

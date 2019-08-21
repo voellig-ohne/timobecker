@@ -1,7 +1,6 @@
 ---
 
 title: Impressum
-layout: article
 background: "./047.jpg"
 
 ---

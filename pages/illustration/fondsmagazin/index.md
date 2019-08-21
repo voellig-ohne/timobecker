@@ -2,7 +2,6 @@
 
 title: fondsmagazin
 publisher: KD1 Designagentur/Deutscher Sparkassen-Verlag
-layout: project
 order: 4
 background: "./225.jpg"
 thumbnail: "./118-2.jpg"

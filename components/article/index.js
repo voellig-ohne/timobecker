@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
 import Img from 'gatsby-image';
-// import ResponsiveImage from '../ResponsiveImage';
 import ImageHelmet from '../ImageHelmet';
 import Footer from '../Footer';
 import ScrollArrow from '../ScrollArrow';
