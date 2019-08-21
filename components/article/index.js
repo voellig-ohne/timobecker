@@ -1,7 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import classNames from 'classnames';
-import Img from 'gatsby-image';
 import Footer from '../Footer';
 import ScrollArrow from '../ScrollArrow';
 import Gallery from '../Gallery';
@@ -53,23 +52,23 @@ export default class Article extends React.Component {
                         <header className={classNames(style.header)}>
                             {background_mobile ? (
                                 <div>
-                                    <Img
-                                        durationFadeIn={100}
-                                        fluid={background_mobile.childImageSharp.fluid}
+                                    <img
+                                        loading="eager"
                                         className={classNames(style.background, style.background_mobile)}
+                                        {...background_mobile.childImageSharp.fluid}
                                     />
-                                    <Img
-                                        durationFadeIn={100}
-                                        fluid={background.childImageSharp.fluid}
+                                    <img
+                                        loading="eager"
                                         className={classNames(style.background, style.background_desktop)}
+                                        {...background.childImageSharp.fluid}
                                     />
                                 </div>
                             ) : (
                                 background && (
-                                    <Img
-                                        durationFadeIn={100}
-                                        fluid={background.childImageSharp.fluid}
+                                    <img
+                                        loading="eager"
                                         className={style.background}
+                                        {...background.childImageSharp.fluid}
                                     />
                                 )
                             )}
@@ -116,7 +115,8 @@ export const pageQuery = graphql`
                 background {
                     childImageSharp {
                         fluid(maxWidth: 1500) {
-                            ...GatsbyImageSharpFluid_noBase64
+                            src
+                            srcSet
                         }
                     }
                 }
@@ -130,7 +130,8 @@ export const pageQuery = graphql`
                 background_mobile {
                     childImageSharp {
                         fluid(maxWidth: 1000) {
-                            ...GatsbyImageSharpFluid_noBase64
+                            src
+                            srcSet
                         }
                     }
                 }
@@ -138,7 +139,8 @@ export const pageQuery = graphql`
                     src {
                         childImageSharp {
                             fluid(maxWidth: 1500) {
-                                ...GatsbyImageSharpFluid_noBase64
+                                src
+                                srcSet
                             }
                         }
                     }
