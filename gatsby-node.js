@@ -102,3 +102,22 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         });
     }
 };
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+    actions.setWebpackConfig({
+        module: {
+            rules: [
+                {
+                    type: 'javascript/auto',
+                    test: /\.json$/,
+                    include: [path.resolve(__dirname, 'components/logo/paintingsSingle')],
+                    use: [
+                        {
+                            loader: 'file-loader',
+                        },
+                    ],
+                },
+            ],
+        },
+    });
+};

@@ -27,8 +27,6 @@ export default class Article extends React.Component {
         const children = this.props.data.children.edges;
         const hasGallery = !!(images && images.length);
 
-        console.log('foo', layout);
-
         return (
             <>
                 {layout === 'intro' ? (

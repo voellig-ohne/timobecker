@@ -10,7 +10,6 @@ export default class Intro extends React.Component {
     }
 
     render() {
-        console.log('hey, intro');
         return (
             <div className={style.intro}>
                 <Logo

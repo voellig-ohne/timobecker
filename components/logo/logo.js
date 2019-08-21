@@ -88,7 +88,7 @@ export default class Logo extends React.Component {
     componentWillUnmount() {
         document.ontouchmove = undefined;
         this.PaperScope.remove();
-        window._paq.push(['trackEvent', 'painting', 'connectionCount', this.connectionCount]);
+        // window._paq.push(['trackEvent', 'painting', 'connectionCount', this.connectionCount]);
     }
 
     setCanvasSize() {
@@ -212,7 +212,7 @@ export default class Logo extends React.Component {
                 console.log('parsing failed', ex);
             });
 
-        window._paq.push(['trackEvent', 'painting', 'connected', drawingIndex]);
+        // window._paq.push(['trackEvent', 'painting', 'connected', drawingIndex]);
         this.connectionCount = this.connectionCount + 1;
     }
 
