@@ -115,7 +115,7 @@ export const pageQuery = graphql`
                 layout
                 background {
                     childImageSharp {
-                        fluid(maxWidth: 2500) {
+                        fluid(maxWidth: 1500) {
                             ...GatsbyImageSharpFluid_noBase64
                         }
                     }
@@ -137,7 +137,7 @@ export const pageQuery = graphql`
                 images {
                     src {
                         childImageSharp {
-                            fluid(maxWidth: 2500) {
+                            fluid(maxWidth: 1500) {
                                 ...GatsbyImageSharpFluid_noBase64
                             }
                         }
