@@ -23,6 +23,7 @@ export default class Article extends React.Component {
             images,
             layout,
             og_image,
+            badge,
         } = this.props.data.markdownRemark.frontmatter;
         const { html } = this.props.data.markdownRemark;
         const { siteTitle, siteDescription, siteUrl } = this.props.data.site.siteMetadata;
@@ -75,6 +76,7 @@ export default class Article extends React.Component {
                             <div className={style.text}>
                                 <div className={style.main}>
                                     <h1>{title}</h1>
+                                    {badge && <img className={style.badge} src={badge.childImageSharp.original.src} />}
                                     {publisher ? <p className={style.sub_title}>{publisher}</p> : null}
                                     <div dangerouslySetInnerHTML={{ __html: html }} />
                                     <ProjectList projects={children} />
@@ -142,6 +144,13 @@ export const pageQuery = graphql`
                                 src
                                 srcSet
                             }
+                        }
+                    }
+                }
+                badge {
+                    childImageSharp {
+                        original {
+                            src
                         }
                     }
                 }
