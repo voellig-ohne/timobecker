@@ -54,11 +54,13 @@ export default class Article extends React.Component {
                                     <img
                                         loading="eager"
                                         className={classNames(style.background, style.background_mobile)}
+                                        alt=""
                                         {...background_mobile.childImageSharp.fluid}
                                     />
                                     <img
                                         loading="eager"
                                         className={classNames(style.background, style.background_desktop)}
+                                        alt=""
                                         {...background.childImageSharp.fluid}
                                     />
                                 </div>
@@ -66,6 +68,7 @@ export default class Article extends React.Component {
                                 background && (
                                     <img
                                         loading="eager"
+                                        alt=""
                                         className={style.background}
                                         {...background.childImageSharp.fluid}
                                     />
@@ -74,7 +77,9 @@ export default class Article extends React.Component {
                             <div className={style.text}>
                                 <div className={style.main}>
                                     <h1>{title}</h1>
-                                    {badge && <img className={style.badge} src={badge.childImageSharp.original.src} />}
+                                    {badge && (
+                                        <img className={style.badge} src={badge.childImageSharp.original.src} alt="" />
+                                    )}
                                     {publisher ? <p className={style.sub_title}>{publisher}</p> : null}
                                     <div dangerouslySetInnerHTML={{ __html: html }} />
                                     <ProjectList projects={children} />

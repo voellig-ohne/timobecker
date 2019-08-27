@@ -57,7 +57,7 @@ export default class Footer extends React.Component {
 function LinkIcon({ href, title, img }) {
     return (
         <a href={href} className={style.icon} title={title}>
-            <img src={img} />
+            <img alt={title} src={img} />
         </a>
     );
 }
