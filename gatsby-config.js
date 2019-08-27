@@ -16,17 +16,7 @@ module.exports = {
         {
             resolve: `gatsby-transformer-remark`,
             options: {
-                plugins: [
-                    // {
-                    //     resolve: `gatsby-remark-images`,
-                    //     options: {
-                    //         maxWidth: 3000,
-                    //         linkImagesToOriginal: false,
-                    //     },
-                    // },
-                    'gatsby-remark-copy-linked-files',
-                    // 'gatsby-remark-smartypants',
-                ],
+                plugins: ['gatsby-remark-copy-linked-files'],
             },
         },
         `gatsby-transformer-sharp`,
@@ -36,14 +26,14 @@ module.exports = {
                 defaultQuality: 80,
             },
         },
-        // {
-        //     resolve: 'gatsby-plugin-matomo',
-        //     options: {
-        //         siteId: '1',
-        //         matomoUrl: 'https://piwik.volligohne.de',
-        //         siteUrl: 'https://volligohne.de',
-        //     },
-        // },
+        {
+            resolve: 'gatsby-plugin-matomo',
+            options: {
+                siteId: '1',
+                matomoUrl: 'https://piwik.timobecker.com',
+                siteUrl: 'https://timobecker.com',
+            },
+        },
         `gatsby-plugin-react-helmet`,
         `gatsby-plugin-less`,
     ],

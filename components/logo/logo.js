@@ -217,7 +217,9 @@ export default class Logo extends React.Component {
                 console.log('parsing failed', ex);
             });
 
-        // window._paq.push(['trackEvent', 'painting', 'connected', drawingIndex]);
+        if (window._paq) {
+            window._paq.push(['trackEvent', 'painting', 'connected', drawingIndex]);
+        }
         this.connectionCount = this.connectionCount + 1;
     }
 
