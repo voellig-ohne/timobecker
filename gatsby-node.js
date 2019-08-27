@@ -58,9 +58,12 @@ exports.createPages = ({ graphql, actions }) => {
                 forEach(postsSplit, posts => {
                     posts.forEach((post, index) => {
                         const shouldHaveNextPrevious = post.node.fields.slug.split('/').length === 4;
-                        const next =
-                            shouldHaveNextPrevious && (index === posts.length - 1 ? null : posts[index + 1].node);
-                        const previous = shouldHaveNextPrevious && (index === 0 ? null : posts[index - 1].node);
+                        const next = shouldHaveNextPrevious
+                            ? index === posts.length - 1
+                                ? null
+                                : posts[index + 1].node
+                            : null;
+                        const previous = shouldHaveNextPrevious ? (index === 0 ? null : posts[index - 1].node) : null;
 
                         createPage({
                             path: post.node.fields.slug,
