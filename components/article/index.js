@@ -13,8 +13,6 @@ import style from './style.module.less';
 
 export default class Article extends React.Component {
     render() {
-        console.log(this.props);
-
         const {
             title,
             publisher,
