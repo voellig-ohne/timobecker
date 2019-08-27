@@ -11,8 +11,8 @@ export default function Gallery({ images }) {
                     <Img
                         loading="lazy"
                         durationFadeIn={100}
-                        fluid={image.src.childImageSharp.fluid}
                         className={style.image}
+                        fluid={image.src.childImageSharp.fluid}
                     />
                 </li>
             ))}
