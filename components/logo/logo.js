@@ -72,7 +72,7 @@ export default class Logo extends React.Component {
 
             this.init();
 
-            this.PaperScope.view.onResize = this.setCanvasSize;
+            this.PaperScope.view.onResize = () => this.setCanvasSize();
             this.setCanvasSize();
         }, 100);
     }
