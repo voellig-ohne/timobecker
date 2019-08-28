@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router';
-import { prefixLink } from 'gatsby-helpers';
+import { Link } from 'gatsby';
 import Helmet from 'react-helmet';
-import { config } from 'config';
+// import { config } from 'config';
 import Logo from 'components/logo/logo';
 import POINTS from 'components/logo/points';
 import PATHS from 'components/logo/renderedPaths7.json';
@@ -98,7 +97,7 @@ export default class Index extends React.Component {
 
         return (
             <div>
-                <Helmet title={config.siteTitle} />
+                {/* <Helmet title={config.siteTitle} /> */}
                 <h1>Malen, Timo.</h1>
                 ausgewählt: {activePath} ({this.getActivePathIndex()} von {PATHS.uniques.length})
                 <br />

@@ -31,3 +31,4 @@ node_modules
 
 public
 webfonts
+.cache

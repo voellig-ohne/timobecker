@@ -1,8 +1,7 @@
 ---
 
 title: Concept
-layout: projectList
-background: 00_START
+background: "./00_START.jpg"
 
 ---
 

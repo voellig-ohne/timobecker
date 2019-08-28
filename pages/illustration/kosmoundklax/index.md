@@ -2,28 +2,26 @@
 
 title: Kosmo&Klax
 publisher: Mixtvision
-layout: project
 order: 1
-background: 176
-thumbnail: 189-2
+background: "./176.jpg"
+thumbnail: "./189-2.jpg"
+badge: "./BUCHPREIS.png"
 images: 
- - src: 188
- - src: 189
- - src: 112
- - src: 113
- - src: 185
- - src: 179
- - src: 182
- - src: 190
- - src: 111
- - src: 192
- - src: 186
+ - src: "./188.jpg"
+ - src: "./189.jpg"
+ - src: "./112.jpg"
+ - src: "./113.jpg"
+ - src: "./185.jpg"
+ - src: "./179.jpg"
+ - src: "./182.jpg"
+ - src: "./190.jpg"
+ - src: "./111.jpg"
+ - src: "./192.jpg"
+ - src: "./186.jpg"
 
 ---
 
-<img class="buchpreis" alt="Buchpreis" src="BUCHPREIS.png" />
-
-<br>
+<br> 
 
 > „Ich kenne keinen Illustrator, der in der Zusammenarbeit so kreativ und gleichzeitig konstruktiv mit einem Thema umgeht, wie Timo. Chapeau!  
 > */ I don’t know any illustrator exposing with such creativity and constructiveness. Chapeau!*“ 

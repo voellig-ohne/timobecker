@@ -1,9 +1,8 @@
 ---
 
 title: Timo Becker
-background: timo_becker
-background_mobile: timo_becker_mobile
-layout: article
+background: "./timo_becker.jpg"
+background_mobile: "./timo_becker_mobile.jpg"
 
 ---
 
