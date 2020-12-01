@@ -2,7 +2,6 @@ const Promise = require('bluebird');
 const webpack = require('webpack');
 const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
-const { forEach } = require('lodash');
 
 exports.createPages = ({ graphql, actions }) => {
     const { createPage } = actions;
@@ -35,7 +34,7 @@ exports.createPages = ({ graphql, actions }) => {
                         }
                     }
                 `
-            ).then(result => {
+            ).then((result) => {
                 if (result.errors) {
                     console.log(result.errors);
                     reject(result.errors);
@@ -55,7 +54,7 @@ exports.createPages = ({ graphql, actions }) => {
                     return postsSplit;
                 }, {});
 
-                forEach(postsSplit, posts => {
+                Object.entries(postsSplit).forEach(([, posts]) => {
                     posts.forEach((post, index) => {
                         const shouldHaveNextPrevious = post.node.fields.slug.split('/').length === 4;
                         const next = shouldHaveNextPrevious

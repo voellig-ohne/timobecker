@@ -1,6 +1,4 @@
 import React from 'react';
-import _ from 'lodash';
-// import 'whatwg-fetch';
 import PATHS from './renderedPaths7.json';
 
 let paper;
@@ -49,9 +47,10 @@ export default class Logo extends React.Component {
             event.preventDefault();
         };
 
-        this.SIZES_RELATIVE = _.mapValues(SIZES, (size) => {
-            return this.getRelativeValue(size);
-        });
+        this.SIZES_RELATIVE = Object.entries(SIZES).reduce((a, [key, value]) => {
+            a[key] = this.getRelativeValue(value);
+            return a;
+        }, {});
 
         this.relativeMargin = this.getRelativeValue(this.props.margin);
 
@@ -178,7 +177,7 @@ export default class Logo extends React.Component {
 
         const p = this.PaperScope;
 
-        if (!_.includes(this.connectOrder, index)) {
+        if (!this.connectOrder.includes(index)) {
             this.line.add(new p.Point(position));
             this.connectOrder.push(index);
 

@@ -17,7 +17,6 @@
     "gatsby-transformer-remark": "^2.11.1",
     "gatsby-transformer-sharp": "^2.7.0",
     "less": "^3.12.2",
-    "lodash": "^4.17.20",
     "object-assign": "^4.1.1",
     "paper": "^0.12.11",
     "react": "^17.0.1",
