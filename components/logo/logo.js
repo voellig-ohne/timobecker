@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
-import 'whatwg-fetch';
+// import 'whatwg-fetch';
 import PATHS from './renderedPaths7.json';
 
 let paper;
@@ -45,18 +45,18 @@ export default class Logo extends React.Component {
     }
 
     componentDidMount() {
-        document.ontouchmove = function(event) {
+        document.ontouchmove = function (event) {
             event.preventDefault();
         };
 
-        this.SIZES_RELATIVE = _.mapValues(SIZES, size => {
+        this.SIZES_RELATIVE = _.mapValues(SIZES, (size) => {
             return this.getRelativeValue(size);
         });
 
         this.relativeMargin = this.getRelativeValue(this.props.margin);
 
-        this.points = this.props.points.map(point => {
-            return point.map(position => {
+        this.points = this.props.points.map((point) => {
+            return point.map((position) => {
                 const withoutMargin = this.getRelativeValue(position);
                 return this.relativeMargin + (withoutMargin / 100) * (100 - this.props.margin * 2);
             });
@@ -121,7 +121,7 @@ export default class Logo extends React.Component {
     drawLine(p, points, order) {
         this.initConnectionLine();
 
-        order.forEach(index => {
+        order.forEach((index) => {
             this.line.add(new p.Point(points[index]));
         });
 
@@ -206,14 +206,14 @@ export default class Logo extends React.Component {
 
         const paintingsLink = require('./paintingsSingle/' + drawingIndex + '.json');
 
-        fetch(paintingsLink)
-            .then(response => {
+        fetch(paintingsLink.default)
+            .then((response) => {
                 return response.json();
             })
-            .then(painting => {
+            .then((painting) => {
                 this.initPaint(painting);
             })
-            .catch(ex => {
+            .catch((ex) => {
                 console.log('parsing failed', ex);
             });
 
@@ -251,7 +251,7 @@ export default class Logo extends React.Component {
             this.mouseLine.strokeCap = 'round';
             this.mouseLine.sendToBack();
 
-            this.PaperScope.view.onMouseMove = event => {
+            this.PaperScope.view.onMouseMove = (event) => {
                 if (!this.mouseLineInitHappened) {
                     this.mouseLine.add(new this.PaperScope.Point(0, 0));
                     this.mouseLineInitHappened = true;
@@ -366,7 +366,7 @@ export default class Logo extends React.Component {
     render() {
         return (
             <canvas
-                ref={c => (this._canvas = c)}
+                ref={(c) => (this._canvas = c)}
                 className={this.props.className}
                 width={this.props.size}
                 height={this.props.size}
