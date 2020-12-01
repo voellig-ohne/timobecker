@@ -12,7 +12,11 @@ exports.createPages = ({ graphql, actions }) => {
             graphql(
                 `
                     {
-                        allMarkdownRemark(sort: { fields: [frontmatter___order], order: ASC }, limit: 1000) {
+                        allMarkdownRemark(
+                            filter: { fields: { slug: { ne: null } } }
+                            sort: { fields: [frontmatter___order], order: ASC }
+                            limit: 1000
+                        ) {
                             edges {
                                 node {
                                     fields {
@@ -83,10 +87,10 @@ exports.createPages = ({ graphql, actions }) => {
 exports.onCreateNode = ({ node, actions, getNode }) => {
     const { createNodeField } = actions;
 
-    if (node.internal.type === `MarkdownRemark`) {
+    if (node.internal.type === 'MarkdownRemark' && node.fileAbsolutePath) {
         const value = createFilePath({ node, getNode });
         createNodeField({
-            name: `slug`,
+            name: 'slug',
             node,
             value,
         });
