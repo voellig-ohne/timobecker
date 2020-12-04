@@ -11,93 +11,91 @@ import Intro from '../Intro';
 import '../style/main.less';
 import style from './style.module.less';
 
-export default class Article extends React.Component {
-    render() {
-        const {
-            title,
-            publisher,
-            background,
-            background_mobile,
-            images,
-            layout,
-            og_image,
-            badge,
-        } = this.props.data.markdownRemark.frontmatter;
-        const { html } = this.props.data.markdownRemark;
-        const { siteTitle, siteDescription, siteUrl } = this.props.data.site.siteMetadata;
-        const { next, previous } = this.props.pageContext;
-        const children = this.props.data.children.edges;
-        const hasGallery = !!(images && images.length);
+export default function ({ data, pageContext, path }) {
+    const {
+        title,
+        publisher,
+        background,
+        background_mobile,
+        images,
+        layout,
+        og_image,
+        badge,
+    } = data.markdownRemark.frontmatter;
+    const { html } = data.markdownRemark;
+    const { siteTitle, siteDescription, siteUrl } = data.site.siteMetadata;
+    const { next, previous } = pageContext;
+    const children = data.children.edges;
+    const hasGallery = !!(images && images.length);
 
-        const metaTags = [
-            { name: 'description', content: siteDescription },
-            { property: 'og:description', content: siteDescription },
-            { property: 'og:url', content: siteUrl + this.props.path },
-        ];
+    const metaTags = [
+        { name: 'description', content: siteDescription },
+        { property: 'og:description', content: siteDescription },
+        { property: 'og:url', content: siteUrl + path },
+    ];
 
-        if (og_image) {
-            metaTags.push({
-                property: 'og:image',
-                content: og_image.childImageSharp.fixed.src,
-            });
-        }
-
-        return (
-            <>
-                {layout === 'intro' ? (
-                    <Intro />
-                ) : (
-                    <article className="page">
-                        <header className={classNames(style.header)}>
-                            {background_mobile ? (
-                                <div>
-                                    <img
-                                        loading="eager"
-                                        className={classNames(style.background, style.background_mobile)}
-                                        alt=""
-                                        {...background_mobile.childImageSharp.fluid}
-                                    />
-                                    <img
-                                        loading="eager"
-                                        className={classNames(style.background, style.background_desktop)}
-                                        alt=""
-                                        {...background.childImageSharp.fluid}
-                                    />
-                                </div>
-                            ) : (
-                                background && (
-                                    <img
-                                        loading="eager"
-                                        alt=""
-                                        className={style.background}
-                                        {...background.childImageSharp.fluid}
-                                    />
-                                )
-                            )}
-                            <div className={style.text}>
-                                <div className={style.main}>
-                                    <h1>{title}</h1>
-                                    {badge && (
-                                        <img className={style.badge} src={badge.childImageSharp.original.src} alt="" />
-                                    )}
-                                    {publisher ? <p className={style.sub_title}>{publisher}</p> : null}
-                                    <div dangerouslySetInnerHTML={{ __html: html }} />
-                                    <ProjectList projects={children} />
-                                </div>
-                            </div>
-                            {hasGallery && <ScrollArrow className={style.scroll_hint} />}
-                        </header>
-                        {hasGallery && <Gallery images={images} />}
-                        <Footer next={next} prev={previous} />
-                    </article>
-                )}
-                <Navigation currentPath={this.props.path} />
-                <Helmet meta={metaTags} title={`${siteTitle} • ${title}`}>
-                    <link rel="shortcut icon" type="image/png" href="/favicon.png" />
-                </Helmet>
-            </>
-        );
+    if (og_image) {
+        metaTags.push({
+            property: 'og:image',
+            content: og_image.childImageSharp.fixed.src,
+        });
     }
+
+    return (
+        <>
+            {layout === 'intro' ? (
+                <Intro />
+            ) : (
+                <article className="page">
+                    <header className={classNames(style.header)}>
+                        {background_mobile ? (
+                            <div>
+                                <img
+                                    loading="eager"
+                                    className={classNames(style.background, style.background_mobile)}
+                                    alt=""
+                                    {...background_mobile.childImageSharp.fluid}
+                                />
+                                <img
+                                    loading="eager"
+                                    className={classNames(style.background, style.background_desktop)}
+                                    alt=""
+                                    {...background.childImageSharp.fluid}
+                                />
+                            </div>
+                        ) : (
+                            background && (
+                                <img
+                                    loading="eager"
+                                    alt=""
+                                    className={style.background}
+                                    {...background.childImageSharp.fluid}
+                                />
+                            )
+                        )}
+                        <div className={style.text}>
+                            <div className={style.main}>
+                                <h1>{title}</h1>
+                                {badge && (
+                                    <img className={style.badge} src={badge.childImageSharp.original.src} alt="" />
+                                )}
+                                {publisher ? <p className={style.sub_title}>{publisher}</p> : null}
+                                <div dangerouslySetInnerHTML={{ __html: html }} />
+                                <ProjectList projects={children} />
+                            </div>
+                        </div>
+                        {hasGallery && <ScrollArrow className={style.scroll_hint} />}
+                    </header>
+                    {hasGallery && <Gallery images={images} />}
+                    <Footer next={next} prev={previous} />
+                </article>
+            )}
+            <Navigation currentPath={path} />
+            <Helmet meta={metaTags} title={`${siteTitle} • ${title}`}>
+                <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+            </Helmet>
+        </>
+    );
 }
 
 export const pageQuery = graphql`
