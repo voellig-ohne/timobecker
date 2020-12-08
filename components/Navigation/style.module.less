@@ -1,0 +1,102 @@
+@import '../style/vars';
+
+@thickness: .3em;
+
+.navigation {
+    @padding: 1rem;
+
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    font-size: @font-size-l;
+    font-weight: 200;
+    text-shadow: 0 0 5px rgba(255,255,255,.1);
+
+    @media (max-width: @break) {
+        font-size: inherit;
+        background: rgba(255,255,255,.95);
+        height: 3rem;
+    }
+
+    &:after {
+        content: '';
+        display: block;
+        height: 7rem;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(to top, rgba(255,255,255,.1) 0%,rgba(255,255,255,.1)  3rem,rgba(255,255,255,.0)  100%);
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    &_main, &_about {
+        position: absolute;
+        bottom: @padding;
+    }
+
+    &_about {
+        left: @padding;
+    }
+
+    &_main {
+        right: @padding;
+
+        .nav_link {
+            padding-left: .5em;
+            position: relative;
+
+            &_active, &:hover {
+                &:after {
+                    width: ~"calc(100% - .5em)";
+                }
+            }
+        }
+    }
+
+    a {
+        text-decoration: none;
+    }
+}
+
+.nav_link {
+    &_active, &:hover {
+        color: black;
+
+        &:after {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: @thickness;
+            bottom: -@thickness;
+            border-radius: (@thickness / 2);
+            right: 0;
+            background: black;
+        }
+    }
+}
+
+.home {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 1rem;
+
+    &:after {
+        content: '';
+        display: block;
+        border-radius: 50%;
+        height: .5rem;
+        width: .5rem;
+        background: @primary-color;
+    }
+}
+
+.force_load_font {
+    font-weight: bold;
+    position: absolute;
+    top: -100%;
+}
