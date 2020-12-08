@@ -5,27 +5,46 @@ import Footer from '../Footer';
 import ScrollArrow from '../ScrollArrow';
 import Gallery from '../Gallery';
 import Navigation from '../Navigation';
-import ProjectList from '../ProjectList';
 import Intro from '../Intro';
 
 import '../style/main.less';
 import style from './style.module.less';
+import { graphql, useStaticQuery } from 'gatsby';
 
-export default function ({ data, pageContext, path }) {
-    const {
-        title,
-        publisher,
-        background,
-        background_mobile,
-        images,
-        layout,
-        og_image,
-        badge,
-    } = data.markdownRemark.frontmatter;
-    const { html } = data.markdownRemark;
-    const { siteTitle, siteDescription, siteUrl } = data.site.siteMetadata;
+export default function ({
+    pageContext,
+    path,
+    children,
+    title,
+    layout,
+    og_image,
+    background,
+    background_mobile,
+    images,
+}) {
+    const staticPageData = useStaticQuery(graphql`
+        query MyQuery {
+            site {
+                siteMetadata {
+                    siteTitle
+                    siteUrl
+                    siteDescription
+                }
+            }
+        }
+    `);
+    // const staticPageData = {
+    //     site: {
+    //         siteMetadata: {
+    //             siteTitle: 'foo',
+    //             siteDescription: 'foo',
+    //             siteUrl: 'foo',
+    //         },
+    //     },
+    // };
+
+    const { siteTitle, siteDescription, siteUrl } = staticPageData.site.siteMetadata;
     const { next, previous } = pageContext;
-    const children = data.children.edges;
     const hasGallery = !!(images && images.length);
 
     const metaTags = [
@@ -37,7 +56,7 @@ export default function ({ data, pageContext, path }) {
     if (og_image) {
         metaTags.push({
             property: 'og:image',
-            content: og_image.childImageSharp.fixed.src,
+            content: og_image,
         });
     }
 
@@ -76,12 +95,7 @@ export default function ({ data, pageContext, path }) {
                         <div className={style.text}>
                             <div className={style.main}>
                                 <h1>{title}</h1>
-                                {badge && (
-                                    <img className={style.badge} src={badge.childImageSharp.original.src} alt="" />
-                                )}
-                                {publisher ? <p className={style.sub_title}>{publisher}</p> : null}
-                                <div dangerouslySetInnerHTML={{ __html: html }} />
-                                <ProjectList projects={children} />
+                                {children}
                             </div>
                         </div>
                         {hasGallery && <ScrollArrow className={style.scroll_hint} />}
@@ -97,94 +111,3 @@ export default function ({ data, pageContext, path }) {
         </>
     );
 }
-
-export const pageQuery = graphql`
-    query PostsBySlug($slug: String!) {
-        site {
-            siteMetadata {
-                siteTitle
-                siteUrl
-                siteDescription
-            }
-        }
-        markdownRemark(fields: { slug: { eq: $slug } }) {
-            id
-            html
-            frontmatter {
-                title
-                layout
-                publisher
-                layout
-                background {
-                    childImageSharp {
-                        fluid(maxWidth: 1500) {
-                            src
-                            srcSet
-                        }
-                    }
-                }
-                og_image: background {
-                    childImageSharp {
-                        fixed(width: 1000) {
-                            src
-                        }
-                    }
-                }
-                background_mobile {
-                    childImageSharp {
-                        fluid(maxWidth: 1000) {
-                            src
-                            srcSet
-                        }
-                    }
-                }
-                images {
-                    src {
-                        childImageSharp {
-                            fluid(maxWidth: 1500) {
-                                ...GatsbyImageSharpFluid
-                            }
-                        }
-                    }
-                }
-                badge {
-                    childImageSharp {
-                        original {
-                            src
-                        }
-                    }
-                }
-            }
-        }
-        children: allMarkdownRemark(
-            filter: { fields: { slug: { regex: $slug, ne: $slug } } }
-            sort: { order: ASC, fields: frontmatter___order }
-        ) {
-            edges {
-                node {
-                    fields {
-                        slug
-                    }
-                    frontmatter {
-                        title
-                        thumbnailTopAlign
-                        background {
-                            childImageSharp {
-                                fluid(maxWidth: 500) {
-                                    ...GatsbyImageSharpFluid
-                                }
-                            }
-                        }
-                        thumbnail {
-                            childImageSharp {
-                                fluid(maxWidth: 500) {
-                                    ...GatsbyImageSharpFluid
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-`;
