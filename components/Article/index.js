@@ -22,19 +22,19 @@ export default function ({
     background_mobile,
     images,
 }) {
-    // const shouldBeStaticPageData = useStaticQuery(graphql`
-    //     query MyQuery {
-    //         site {
-    //             siteMetadata {
-    //                 siteTitle
-    //                 siteUrl
-    //                 siteDescription
-    //             }
-    //         }
-    //     }
-    // `);
+    const shouldBeStaticPageData = useStaticQuery(graphql`
+        query MyQuery {
+            site {
+                siteMetadata {
+                    siteTitle
+                    siteUrl
+                    siteDescription
+                }
+            }
+        }
+    `);
 
-    // console.log(shouldBeStaticPageData)
+    console.log(shouldBeStaticPageData);
 
     const staticPageData = {
         site: {
