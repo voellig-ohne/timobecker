@@ -37,19 +37,6 @@ exports.createPages = ({ graphql, actions }) => {
                                 }
                             }
                         }
-                        allContentfulShopItem {
-                            edges {
-                                node {
-                                    price
-                                    title
-                                    description {
-                                        childMarkdownRemark {
-                                            html
-                                        }
-                                    }
-                                }
-                            }
-                        }
                     }
                 `
             ).then((result) => {
@@ -57,8 +44,6 @@ exports.createPages = ({ graphql, actions }) => {
                     console.log(result.errors);
                     reject(result.errors);
                 }
-
-                console.log('huhu', result.data);
 
                 const posts = result.data.allMarkdownRemark.edges;
 

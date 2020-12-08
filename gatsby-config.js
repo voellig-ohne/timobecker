@@ -38,13 +38,6 @@ module.exports = {
                 siteUrl: 'https://timobecker.com',
             },
         },
-        {
-            resolve: `gatsby-source-contentful`,
-            options: {
-                spaceId: `bm0poyjx8cis`,
-                accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-            },
-        },
         `gatsby-plugin-react-helmet`,
         `gatsby-plugin-less`,
     ],
