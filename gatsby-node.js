@@ -7,7 +7,8 @@ exports.createPages = ({ graphql, actions }) => {
     const { createPage } = actions;
 
     return new Promise((resolve, reject) => {
-        const Page = path.resolve('./components/Article/index.js');
+        const FilePage = path.resolve('./components/FilePage/index.js');
+        // const ShopItem = path.resolve('./components/Article/index.js');
         resolve(
             graphql(
                 `
@@ -36,6 +37,19 @@ exports.createPages = ({ graphql, actions }) => {
                                 }
                             }
                         }
+                        allContentfulShopItem {
+                            edges {
+                                node {
+                                    price
+                                    title
+                                    description {
+                                        childMarkdownRemark {
+                                            html
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 `
             ).then((result) => {
@@ -43,6 +57,8 @@ exports.createPages = ({ graphql, actions }) => {
                     console.log(result.errors);
                     reject(result.errors);
                 }
+
+                console.log('huhu', result.data);
 
                 const posts = result.data.allMarkdownRemark.edges;
 
@@ -70,7 +86,7 @@ exports.createPages = ({ graphql, actions }) => {
 
                         createPage({
                             path: post.node.fields.slug,
-                            component: Page,
+                            component: FilePage,
                             context: {
                                 slug: post.node.fields.slug,
                                 previous,
