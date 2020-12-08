@@ -22,26 +22,29 @@ export default function ({
     background_mobile,
     images,
 }) {
-    const staticPageData = useStaticQuery(graphql`
-        query MyQuery {
-            site {
-                siteMetadata {
-                    siteTitle
-                    siteUrl
-                    siteDescription
-                }
-            }
-        }
-    `);
-    // const staticPageData = {
-    //     site: {
-    //         siteMetadata: {
-    //             siteTitle: 'foo',
-    //             siteDescription: 'foo',
-    //             siteUrl: 'foo',
-    //         },
-    //     },
-    // };
+    // const shouldBeStaticPageData = useStaticQuery(graphql`
+    //     query MyQuery {
+    //         site {
+    //             siteMetadata {
+    //                 siteTitle
+    //                 siteUrl
+    //                 siteDescription
+    //             }
+    //         }
+    //     }
+    // `);
+
+    // console.log(shouldBeStaticPageData)
+
+    const staticPageData = {
+        site: {
+            siteMetadata: {
+                siteTitle: 'foo',
+                siteDescription: 'foo',
+                siteUrl: 'foo',
+            },
+        },
+    };
 
     const { siteTitle, siteDescription, siteUrl } = staticPageData.site.siteMetadata;
     const { next, previous } = pageContext;
