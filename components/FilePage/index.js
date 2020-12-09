@@ -16,14 +16,16 @@ export default function ({ data, pageContext, path }) {
         badge,
     } = data.markdownRemark.frontmatter;
 
+    const mappedImages = images && images.map((image) => image.src.childImageSharp);
+
     return (
         <Article
             title={title}
             layout={layout}
-            images={images}
+            images={mappedImages}
             og_image={og_image && og_image.childImageSharp.fixed.src}
-            background_mobile={background_mobile}
-            background={background}
+            background_mobile={background_mobile?.childImageSharp}
+            background={background?.childImageSharp}
             pageContext={pageContext}
             path={path}
         >

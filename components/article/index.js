@@ -30,7 +30,7 @@ export default function ({
     };
 
     const { siteTitle, siteDescription, siteUrl } = staticPageData.site.siteMetadata;
-    const { next, previous } = pageContext;
+    const { next, previous } = pageContext || {};
     const hasGallery = !!(images && images.length);
 
     const metaTags = [
@@ -59,23 +59,18 @@ export default function ({
                                     loading="eager"
                                     className={classNames(style.background, style.background_mobile)}
                                     alt=""
-                                    {...background_mobile.childImageSharp.fluid}
+                                    {...background_mobile.fluid}
                                 />
                                 <img
                                     loading="eager"
                                     className={classNames(style.background, style.background_desktop)}
                                     alt=""
-                                    {...background.childImageSharp.fluid}
+                                    {...background.fluid}
                                 />
                             </div>
                         ) : (
                             background && (
-                                <img
-                                    loading="eager"
-                                    alt=""
-                                    className={style.background}
-                                    {...background.childImageSharp.fluid}
-                                />
+                                <img loading="eager" alt="" className={style.background} {...background.fluid} />
                             )
                         )}
                         <div className={style.text}>

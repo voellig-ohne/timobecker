@@ -2,13 +2,15 @@ const Promise = require('bluebird');
 const webpack = require('webpack');
 const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
+const { slugify } = require('./components/util');
 
 exports.createPages = ({ graphql, actions }) => {
     const { createPage } = actions;
 
     return new Promise((resolve, reject) => {
         const FilePage = path.resolve('./components/FilePage/index.js');
-        // const ShopItem = path.resolve('./components/Article/index.js');
+        const ShopItemPage = path.resolve('./components/ShopItemPage/index.js');
+
         resolve(
             graphql(
                 `
@@ -40,7 +42,7 @@ exports.createPages = ({ graphql, actions }) => {
                         allContentfulShopItem {
                             edges {
                                 node {
-                                    price
+                                    id
                                     title
                                     description {
                                         childMarkdownRemark {
@@ -57,8 +59,6 @@ exports.createPages = ({ graphql, actions }) => {
                     console.log(result.errors);
                     reject(result.errors);
                 }
-
-                console.log('huhu', result.data);
 
                 const posts = result.data.allMarkdownRemark.edges;
 
@@ -93,6 +93,16 @@ exports.createPages = ({ graphql, actions }) => {
                                 next,
                             },
                         });
+                    });
+                });
+
+                result.data.allContentfulShopItem.edges.forEach(({ node }) => {
+                    createPage({
+                        path: slugify(node.title),
+                        component: ShopItemPage,
+                        context: {
+                            id: node.id,
+                        },
                     });
                 });
             })
