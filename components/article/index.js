@@ -9,6 +9,8 @@ import Intro from '../Intro';
 
 import '../style/main.less';
 import style from './style.module.less';
+import ShopItemList from '../ShopItemList';
+import { graphql, useStaticQuery } from 'gatsby';
 
 export default function ({
     pageContext,
@@ -21,6 +23,21 @@ export default function ({
     background_mobile,
     images,
 }) {
+    // const items = useStaticQuery(graphql`
+    //     query MyQuery {
+    //         allContentfulShopItem {
+    //             edges {
+    //                 node {
+    //                     price
+    //                     title
+    //                 }
+    //             }
+    //         }
+    //     }
+    // `);
+
+    // console.log(items);
+
     const staticPageData = {
         site: {
             siteMetadata: {
@@ -48,43 +65,50 @@ export default function ({
 
     return (
         <>
-            {layout === 'intro' ? (
-                <Intro />
-            ) : (
-                <article className="page">
-                    <header className={classNames(style.header)}>
-                        {background_mobile ? (
-                            <div>
-                                <img
-                                    loading="eager"
-                                    className={classNames(style.background, style.background_mobile)}
-                                    alt=""
-                                    {...background_mobile.fluid}
-                                />
-                                <img
-                                    loading="eager"
-                                    className={classNames(style.background, style.background_desktop)}
-                                    alt=""
-                                    {...background.fluid}
-                                />
+            {{
+                intro: <Intro />,
+                shop: (
+                    <article className="page">
+                        <ShopItemList />
+                        <Footer next={next} prev={previous} />
+                    </article>
+                ),
+                article: (
+                    <article className="page">
+                        <header className={classNames(style.header)}>
+                            {background_mobile ? (
+                                <div>
+                                    <img
+                                        loading="eager"
+                                        className={classNames(style.background, style.background_mobile)}
+                                        alt=""
+                                        {...background_mobile.fluid}
+                                    />
+                                    <img
+                                        loading="eager"
+                                        className={classNames(style.background, style.background_desktop)}
+                                        alt=""
+                                        {...background.fluid}
+                                    />
+                                </div>
+                            ) : (
+                                background && (
+                                    <img loading="eager" alt="" className={style.background} {...background.fluid} />
+                                )
+                            )}
+                            <div className={style.text}>
+                                <div className={style.main}>
+                                    <h1>{title}</h1>
+                                    {children}
+                                </div>
                             </div>
-                        ) : (
-                            background && (
-                                <img loading="eager" alt="" className={style.background} {...background.fluid} />
-                            )
-                        )}
-                        <div className={style.text}>
-                            <div className={style.main}>
-                                <h1>{title}</h1>
-                                {children}
-                            </div>
-                        </div>
-                        {hasGallery && <ScrollArrow className={style.scroll_hint} />}
-                    </header>
-                    {hasGallery && <Gallery images={images} />}
-                    <Footer next={next} prev={previous} />
-                </article>
-            )}
+                            {hasGallery && <ScrollArrow className={style.scroll_hint} />}
+                        </header>
+                        {hasGallery && <Gallery images={images} />}
+                        <Footer next={next} prev={previous} />
+                    </article>
+                ),
+            }[layout] || <article className="page">{children}</article>}
             <Navigation currentPath={path} />
             <Helmet meta={metaTags} title={`${siteTitle} • ${title}`}>
                 <link rel="shortcut icon" type="image/png" href="/favicon.png" />

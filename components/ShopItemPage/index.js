@@ -23,6 +23,7 @@ export default function ({
             og_image={og_image && og_image[0] && og_image[0]?.fixed?.src}
             background={images && images[0]}
             images={images}
+            layout="article"
         >
             <p>price: {price}</p>
             <div dangerouslySetInnerHTML={{ __html: description }} />

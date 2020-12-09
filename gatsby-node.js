@@ -98,7 +98,7 @@ exports.createPages = ({ graphql, actions }) => {
 
                 result.data.allContentfulShopItem.edges.forEach(({ node }) => {
                     createPage({
-                        path: slugify(node.title),
+                        path: 'shop/' + slugify(node.title),
                         component: ShopItemPage,
                         context: {
                             id: node.id,

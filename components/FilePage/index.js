@@ -21,7 +21,7 @@ export default function ({ data, pageContext, path }) {
     return (
         <Article
             title={title}
-            layout={layout}
+            layout={layout || 'article'}
             images={mappedImages}
             og_image={og_image && og_image.childImageSharp.fixed.src}
             background_mobile={background_mobile?.childImageSharp}
