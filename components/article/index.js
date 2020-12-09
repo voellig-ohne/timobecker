@@ -9,7 +9,6 @@ import Intro from '../Intro';
 
 import '../style/main.less';
 import style from './style.module.less';
-import { graphql, useStaticQuery } from 'gatsby';
 
 export default function ({
     pageContext,
@@ -22,26 +21,13 @@ export default function ({
     background_mobile,
     images,
 }) {
-    const staticPageData = useStaticQuery(graphql`
-        query MyQuery {
-            site {
-                siteMetadata {
-                    siteTitle
-                    siteUrl
-                    siteDescription
-                }
-            }
-        }
-    `);
-    // const staticPageData = {
-    //     site: {
-    //         siteMetadata: {
-    //             siteTitle: 'foo',
-    //             siteDescription: 'foo',
-    //             siteUrl: 'foo',
-    //         },
-    //     },
-    // };
+    const staticPageData = {
+        site: {
+            siteMetadata: {
+                siteTitle: 'Timo Becker',
+            },
+        },
+    };
 
     const { siteTitle, siteDescription, siteUrl } = staticPageData.site.siteMetadata;
     const { next, previous } = pageContext;

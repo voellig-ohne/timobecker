@@ -2,7 +2,7 @@ import React from 'react';
 import ProjectList from '../ProjectList';
 import Article from '../Article';
 import style from './style.module.less';
-import { useStaticQuery } from 'gatsby';
+import { graphql } from 'gatsby';
 
 export default function ({ data, pageContext, path }) {
     const {
@@ -15,8 +15,6 @@ export default function ({ data, pageContext, path }) {
         og_image,
         badge,
     } = data.markdownRemark.frontmatter;
-
-    console.log(data);
 
     return (
         <Article
