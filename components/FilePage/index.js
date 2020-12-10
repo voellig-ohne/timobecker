@@ -28,6 +28,7 @@ export default function ({ data, pageContext, path }) {
             background={background?.childImageSharp}
             pageContext={pageContext}
             path={path}
+            shopItems={data?.shopItems?.edges}
         >
             {badge && <img className={style.badge} src={badge.childImageSharp.original.src} alt="" />}
             {publisher ? <p className={style.sub_title}>{publisher}</p> : null}
@@ -113,6 +114,27 @@ export const pageQuery = graphql`
                                     ...GatsbyImageSharpFluid
                                 }
                             }
+                        }
+                    }
+                }
+            }
+        }
+        shopItems: allContentfulShopItem {
+            edges {
+                node {
+                    id
+                    title
+                    description {
+                        childMarkdownRemark {
+                            html
+                        }
+                    }
+                    images {
+                        fluid(maxWidth: 500) {
+                            sizes
+                            src
+                            srcSet
+                            aspectRatio
                         }
                     }
                 }

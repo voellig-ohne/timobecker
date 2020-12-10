@@ -10,7 +10,7 @@ import Intro from '../Intro';
 import '../style/main.less';
 import style from './style.module.less';
 import ShopItemList from '../ShopItemList';
-import { graphql, useStaticQuery } from 'gatsby';
+// import { graphql, useStaticQuery } from 'gatsby';
 
 export default function ({
     pageContext,
@@ -22,6 +22,7 @@ export default function ({
     background,
     background_mobile,
     images,
+    shopItems,
 }) {
     // const items = useStaticQuery(graphql`
     //     query MyQuery {
@@ -69,7 +70,7 @@ export default function ({
                 intro: <Intro />,
                 shop: (
                     <article className="page">
-                        <ShopItemList />
+                        <ShopItemList items={shopItems} title={title} children={children} />
                         <Footer next={next} prev={previous} />
                     </article>
                 ),
