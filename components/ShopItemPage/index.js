@@ -3,20 +3,12 @@ import Article from '../Article';
 
 export default function ({
     data: {
-        contentfulShopItem: {
-            title,
-            price,
-            childContentfulShopItemDescriptionTextNode: {
-                childMarkdownRemark: { html: description },
-            },
-            og_image,
-            images,
-        },
+        contentfulShopItem: { title, price, childContentfulShopItemDescriptionTextNode, og_image, images },
     },
     pageContext,
     path,
 }) {
-    console.log(images && images[0], pageContext, path);
+    // console.log(images && images[0], pageContext, path);
     return (
         <Article
             title={title}
@@ -26,7 +18,11 @@ export default function ({
             layout="article"
         >
             <p>price: {price}</p>
-            <div dangerouslySetInnerHTML={{ __html: description }} />
+            <div
+                dangerouslySetInnerHTML={{
+                    __html: childContentfulShopItemDescriptionTextNode?.childMarkdownRemark?.html,
+                }}
+            />
         </Article>
     );
 }
