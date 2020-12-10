@@ -129,6 +129,7 @@ export const pageQuery = graphql`
                             html
                         }
                     }
+                    price
                     images {
                         fluid(maxWidth: 500) {
                             sizes

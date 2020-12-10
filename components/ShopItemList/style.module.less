@@ -37,12 +37,17 @@
 
 .link {
     text-decoration: none;
+    position: relative;
+    display: block;
 
     &:hover {
         .image {
             img {
-                transform: scale(1.05);
+                // transform: scale(1.05);
             }
+        }
+        .itemTitle, .price {
+            visibility: visible;
         }
     }
 }
@@ -50,4 +55,33 @@
 .itemTitle {
     font-size: inherit;
     margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 1rem 4rem 1rem 1rem;
+    width: 100%;
+    min-height: 6rem;
+    z-index: 1;
+    text-shadow: 0 0 5px white;
+    background: rgba(255,255,255,1);
+    display: flex;
+    // align-items: flex-end;
+    visibility: hidden;
+}
+
+.price {
+    position: absolute;
+    background: black;
+    border-radius: 50%;
+    top: 1rem;
+    right: 1rem;
+    width: 4rem;
+    height: 4rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    font-weight: bold;
+    visibility: hidden;
 }
