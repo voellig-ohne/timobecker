@@ -34,7 +34,7 @@
     "serve": "gatsby serve",
     "build": "gatsby build",
     "clean": "gatsby clean",
-    "deploy": "rsync -avzc --del public/ timo@eltanin.uberspace.de:/var/www/virtual/timo/timobecker.com",
-    "deployTest": "rsync -avzc --del public/ timo@eltanin.uberspace.de:/var/www/virtual/timo/test.timobecker.com"
+    "deploy": "rsync -avzc --del public/ timo@timo.uber.space:/var/www/virtual/timo/timobecker.com",
+    "deployTest": "rsync -avzc --del public/ timo@timo.uber.space:/var/www/virtual/timo/test.timobecker.com"
   }
 }
