@@ -15,8 +15,12 @@ export default function ({ items, title, children }) {
                         return (
                             <li key={id} className={style.item}>
                                 <Link to={`/shop/${slugify(title)}`} className={style.link}>
-                                    <h2 className={style.itemTitle}>{title}</h2>
-                                    {price && <div className={style.price}>{price}€</div>}
+                                    <div className={style.itemHeader}>
+                                        <div className={style.itemHeaderInner}>
+                                            <h2 className={style.itemTitle}>{title}</h2>
+                                            {price && <div className={style.price}>{price}€</div>}
+                                        </div>
+                                    </div>
                                     <Img loading="eager" alt="" className={style.image} {...images[0]} />
                                 </Link>
                             </li>
