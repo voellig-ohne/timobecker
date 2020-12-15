@@ -14,8 +14,8 @@
     justify-content: space-between;
 }
 
-.price {
-    display: flex;
+.priceLabel {
+    display: block;
     flex: 0 0 auto;
     border-radius: 50%;
     height: 6rem;
@@ -23,10 +23,45 @@
     margin-left: 2rem;
     background: black;
     color: white;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-family: function;
+    text-decoration: none;
+    position: relative;
+
+    &Buy, &Price {
+        display: flex;
+        position: absolute;
+        align-items: center;
+        justify-content: center;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 1;
+    }
+
+    &Buy {
+        font-size: .9em;
+        animation-name: rotate;
+        animation-duration: 2s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        visibility: hidden;
+    }
+
+    &Price {
+        font-weight: bold;
+        font-family: function;
+    }
+
+    &:hover, &:focus {
+        .priceLabelPrice {
+            visibility: hidden;
+        }
+
+        .priceLabelBuy {
+            visibility: visible;
+            color: white;
+        }
+    }
 }
 
 .buyButtonContainer  {

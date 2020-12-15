@@ -40,7 +40,10 @@ Meine Adress ist:`,
             title={
                 <div className={style.title}>
                     {title}
-                    <div className={style.price}>{price}€</div>
+                    <a href={buyLink} className={style.priceLabel}>
+                        <div className={style.priceLabelBuy}>buy now!</div>
+                        <div className={style.priceLabelPrice}>{price}€</div>
+                    </a>
                 </div>
             }
         >
