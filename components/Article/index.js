@@ -67,7 +67,11 @@ export default function ({
     return (
         <>
             {{
-                intro: <Intro />,
+                intro: (
+                    <>
+                        <Intro /> <Navigation currentPath={path} />
+                    </>
+                ),
                 shop: (
                     <article className="page">
                         <ShopItemList items={shopItems} title={title} children={children} />
