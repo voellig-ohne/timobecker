@@ -71,46 +71,52 @@ export default function ({
                 shop: (
                     <article className="page">
                         <ShopItemList items={shopItems} title={title} children={children} />
-                        <Footer next={next} prev={previous} />
                     </article>
                 ),
                 article: (
-                    <article className="page">
-                        <header className={classNames(style.header)}>
-                            {background_mobile ? (
-                                <div>
-                                    <img
-                                        loading="eager"
-                                        className={classNames(style.background, style.background_mobile)}
-                                        alt=""
-                                        {...background_mobile.fluid}
-                                    />
-                                    <img
-                                        loading="eager"
-                                        className={classNames(style.background, style.background_desktop)}
-                                        alt=""
-                                        {...background.fluid}
-                                    />
+                    <>
+                        <article className="page">
+                            <header className={classNames(style.header)}>
+                                {background_mobile ? (
+                                    <div>
+                                        <img
+                                            loading="eager"
+                                            className={classNames(style.background, style.background_mobile)}
+                                            alt=""
+                                            {...background_mobile.fluid}
+                                        />
+                                        <img
+                                            loading="eager"
+                                            className={classNames(style.background, style.background_desktop)}
+                                            alt=""
+                                            {...background.fluid}
+                                        />
+                                    </div>
+                                ) : (
+                                    background && (
+                                        <img
+                                            loading="eager"
+                                            alt=""
+                                            className={style.background}
+                                            {...background.fluid}
+                                        />
+                                    )
+                                )}
+                                <div className={style.text}>
+                                    <div className={style.main}>
+                                        <h1>{title}</h1>
+                                        {children}
+                                    </div>
                                 </div>
-                            ) : (
-                                background && (
-                                    <img loading="eager" alt="" className={style.background} {...background.fluid} />
-                                )
-                            )}
-                            <div className={style.text}>
-                                <div className={style.main}>
-                                    <h1>{title}</h1>
-                                    {children}
-                                </div>
-                            </div>
-                            {hasGallery && <ScrollArrow className={style.scroll_hint} />}
-                        </header>
-                        {hasGallery && <Gallery images={images} />}
-                        <Footer next={next} prev={previous} />
-                    </article>
+                                {hasGallery && <ScrollArrow className={style.scroll_hint} />}
+                            </header>
+                            {hasGallery && <Gallery images={images} />}
+                            <Footer next={next} prev={previous} />
+                        </article>
+                        <Navigation currentPath={path} />
+                    </>
                 ),
             }[layout] || <article className="page">{children}</article>}
-            <Navigation currentPath={path} />
             <Helmet meta={metaTags} title={`${siteTitle} • ${title}`}>
                 <link rel="shortcut icon" type="image/png" href="/favicon.png" />
             </Helmet>

@@ -1,5 +1,8 @@
 import React from 'react';
-import Article from '../Article';
+import { Helmet } from 'react-helmet';
+import PlainPage from '../PlainPage';
+import style from './style.module.less';
+import Img from 'gatsby-image';
 
 export default function ({
     data: {
@@ -8,22 +11,38 @@ export default function ({
     pageContext,
     path,
 }) {
-    // console.log(images && images[0], pageContext, path);
+    console.log(images);
+    const metaTags = [
+        { name: 'description', content: childContentfulShopItemDescriptionTextNode?.childMarkdownRemark?.excerpt },
+        {
+            property: 'og:description',
+            content: childContentfulShopItemDescriptionTextNode?.childMarkdownRemark?.excerpt,
+        },
+        { property: 'og:image', content: og_image && og_image[0] && og_image[0]?.fixed?.src },
+    ];
+
     return (
-        <Article
-            title={title}
-            og_image={og_image && og_image[0] && og_image[0]?.fixed?.src}
-            background={images && images[0]}
-            images={images}
-            layout="article"
+        <PlainPage
+            className={style.container}
+            title={
+                <div className={style.title}>
+                    {title}
+                    <div className={style.price}>{price}€</div>
+                </div>
+            }
         >
-            <p>price: {price}</p>
             <div
                 dangerouslySetInnerHTML={{
                     __html: childContentfulShopItemDescriptionTextNode?.childMarkdownRemark?.html,
                 }}
             />
-        </Article>
+            <div className={style.images}>
+                {images.map(({ id, fluid }) => (
+                    <Img className={style.image} key={id} fluid={fluid} />
+                ))}
+            </div>
+            <Helmet meta={metaTags} />
+        </PlainPage>
     );
 }
 
@@ -35,6 +54,7 @@ export const pageQuery = graphql`
             childContentfulShopItemDescriptionTextNode {
                 childMarkdownRemark {
                     html
+                    excerpt
                 }
             }
             og_image: images {
@@ -43,7 +63,8 @@ export const pageQuery = graphql`
                 }
             }
             images {
-                fluid(maxWidth: 3000) {
+                id
+                fluid(maxWidth: 1000) {
                     src
                     srcSet
                     sizes
