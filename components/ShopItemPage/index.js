@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import PlainPage from '../PlainPage';
 import style from './style.module.less';
 import Img from 'gatsby-image';
+import { getMailtoUrl } from '../util';
 
 export default function ({
     data: {
@@ -20,6 +21,18 @@ export default function ({
         },
         { property: 'og:image', content: og_image && og_image[0] && og_image[0]?.fixed?.src },
     ];
+
+    const buyLink = getMailtoUrl({
+        to: 'order@timobecker.com',
+        subject: `Bestellung: "${title}"`,
+        body: `Hey Timo,
+
+ich hätte gern "${title}".
+
+Bitte schick mir die Rechnung.
+
+Meine Adress ist:`,
+    });
 
     return (
         <PlainPage
@@ -42,7 +55,7 @@ export default function ({
                 ))}
             </div>
             <div className={style.buyButtonContainer}>
-                <a href="#" className={style.buyButton}>
+                <a href={buyLink} className={style.buyButton}>
                     BUY NOW!
                 </a>
             </div>

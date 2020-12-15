@@ -20,3 +20,20 @@ exports.slugify = function slugify(string) {
             .replace(/-+$/, '')
     ); // Trim - from end of text
 };
+
+// http://xion.io/post/code/js-mailto-urls.html
+exports.getMailtoUrl = function getMailtoUrl({ to, subject, body }) {
+    var args = [];
+    if (typeof subject !== 'undefined') {
+        args.push('subject=' + encodeURIComponent(subject));
+    }
+    if (typeof body !== 'undefined') {
+        args.push('body=' + encodeURIComponent(body));
+    }
+
+    var url = 'mailto:' + encodeURIComponent(to);
+    if (args.length > 0) {
+        url += '?' + args.join('&');
+    }
+    return url;
+};
