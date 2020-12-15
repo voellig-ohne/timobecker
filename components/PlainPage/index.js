@@ -4,7 +4,7 @@ import Footer from '../Footer';
 import Navigation from '../Navigation';
 import style from './style.module.less';
 
-export default function ({ children, title, path }) {
+export default function ({ children, title, htmlTitle, path }) {
     return (
         <>
             <div className={style.container}>
@@ -16,7 +16,7 @@ export default function ({ children, title, path }) {
             <Footer />
             <Navigation currentPath={path} />
 
-            <Helmet title={`Timo Becker • ${title}`}>
+            <Helmet title={`Timo Becker • ${htmlTitle || title}`}>
                 <link rel="shortcut icon" type="image/png" href="/favicon.png" />
             </Helmet>
         </>

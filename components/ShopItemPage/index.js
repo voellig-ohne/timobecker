@@ -46,6 +46,7 @@ Meine Adress ist:`,
                     </a>
                 </div>
             }
+            htmlTitle={title}
         >
             <div
                 dangerouslySetInnerHTML={{
