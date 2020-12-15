@@ -20,3 +20,30 @@
     width: 100%;
     display: block;
 }
+
+.youtubeOuter {
+    display: flex;
+    justify-content: center;
+    background: black;
+}
+
+@videoAspectRatio: 0.57;
+
+.youtubeInner {
+    max-width: calc(100vh / @videoAspectRatio - 2rem);
+    width: 100%;
+}
+
+.youtubeInnerInner {
+    position: relative;
+    padding-bottom: (@videoAspectRatio * 100%);
+}
+
+.youtubeIFrame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
