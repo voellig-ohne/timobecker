@@ -41,6 +41,12 @@ export default function ({
                     <Img className={style.image} key={id} fluid={fluid} />
                 ))}
             </div>
+            <div className={style.buyButtonContainer}>
+                <a href="#" className={style.buyButton}>
+                    BUY NOW!
+                </a>
+            </div>
+
             <Helmet meta={metaTags} />
         </PlainPage>
     );
