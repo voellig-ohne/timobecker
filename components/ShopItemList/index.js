@@ -6,7 +6,6 @@ import Img from 'gatsby-image';
 import PlainPage from '../PlainPage';
 
 export default function ({ items, title, children }) {
-    console.log('items!', items);
     return (
         <PlainPage title={title}>
             <ul className={style.list}>

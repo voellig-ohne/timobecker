@@ -4,7 +4,6 @@ import Img from 'gatsby-image';
 import style from './style.module.less';
 
 export default function Gallery({ images }) {
-    console.log(images);
     return (
         <ul className={style.gallery}>
             {images.map((image, idx) => (

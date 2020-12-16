@@ -12,7 +12,6 @@ export default function ({
     pageContext,
     path,
 }) {
-    console.log(images);
     const metaTags = [
         { name: 'description', content: childContentfulShopItemDescriptionTextNode?.childMarkdownRemark?.excerpt },
         {

@@ -39,7 +39,6 @@ export default function ({
     // `);
 
     // console.log(items);
-    console.log(backgroundVideo);
 
     const staticPageData = {
         site: {
