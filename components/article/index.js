@@ -21,6 +21,7 @@ export default function ({
     og_image,
     background,
     background_mobile,
+    backgroundVideo,
     images,
     shopItems,
 }) {
@@ -105,6 +106,15 @@ export default function ({
                                             {...background.fluid}
                                         />
                                     )
+                                )}
+                                {backgroundVideo && (
+                                    <video
+                                        autoPlay
+                                        loop
+                                        className={classNames(style.background, style.background_desktop)}
+                                    >
+                                        <source src={backgroundVideo} type="video/mp4" />
+                                    </video>
                                 )}
                                 <div className={style.text}>
                                     <div className={style.main}>

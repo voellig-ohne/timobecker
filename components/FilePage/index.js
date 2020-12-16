@@ -10,6 +10,7 @@ export default function ({ data, pageContext, path }) {
         publisher,
         background,
         background_mobile,
+        backgroundVideo,
         images,
         layout,
         og_image,
@@ -24,6 +25,7 @@ export default function ({ data, pageContext, path }) {
             og_image={og_image && og_image.childImageSharp.fixed.src}
             background_mobile={background_mobile?.childImageSharp}
             background={background?.childImageSharp}
+            backgroundVideo={backgroundVideo?.publicURL}
             pageContext={pageContext}
             path={path}
             shopItems={data?.shopItems?.edges}
@@ -68,6 +70,9 @@ export const pageQuery = graphql`
                             srcSet
                         }
                     }
+                }
+                backgroundVideo {
+                    publicURL
                 }
                 images {
                     src {
