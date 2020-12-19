@@ -13,6 +13,7 @@
     "gatsby-plugin-react-helmet": "^3.6.0",
     "gatsby-plugin-sharp": "^2.10.1",
     "gatsby-remark-copy-linked-files": "^2.6.0",
+    "gatsby-remark-line-breaks": "^1.0.0",
     "gatsby-source-contentful": "^4.2.1",
     "gatsby-source-filesystem": "^2.7.0",
     "gatsby-transformer-remark": "^2.12.0",
