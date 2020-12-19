@@ -128,6 +128,7 @@ export const pageQuery = graphql`
                 node {
                     id
                     title
+                    subTitle
                     description {
                         childMarkdownRemark {
                             html

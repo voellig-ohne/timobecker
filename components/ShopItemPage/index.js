@@ -7,7 +7,7 @@ import { getMailtoUrl } from '../util';
 
 export default function ({
     data: {
-        contentfulShopItem: { title, price, childContentfulShopItemDescriptionTextNode, og_image, images },
+        contentfulShopItem: { title, price, childContentfulShopItemDescriptionTextNode, og_image, images, subTitle },
     },
     pageContext,
     path,
@@ -38,7 +38,10 @@ Meine Adress ist:`,
             className={style.container}
             title={
                 <div className={style.title}>
-                    {title}
+                    <div>
+                        {title}
+                        {subTitle && <div className={style.subTitle}>{subTitle}</div>}
+                    </div>
                     <a href={buyLink} className={style.priceLabel}>
                         <div className={style.priceLabelBuy}>buy now!</div>
                         <div className={style.priceLabelPrice}>{price}€</div>
@@ -73,6 +76,7 @@ export const pageQuery = graphql`
         contentfulShopItem(id: { eq: $id }) {
             price
             title
+            subTitle
             childContentfulShopItemDescriptionTextNode {
                 childMarkdownRemark {
                     html
