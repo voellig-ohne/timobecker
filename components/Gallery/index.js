@@ -16,6 +16,7 @@ export default function Gallery({ images }) {
                             <div className={style.youtubeInner}>
                                 <div className={style.youtubeInnerInner}>
                                     <iframe
+                                        title="youtube video"
                                         className={style.youtubeIFrame}
                                         width="560"
                                         height="315"

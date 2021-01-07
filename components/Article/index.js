@@ -108,10 +108,11 @@ export default function ({
                                     )
                                 )}
                                 {backgroundVideo && (
-                                    <video
+                                    <video // eslint-disable-line jsx-a11y/media-has-caption
                                         autoPlay
                                         loop
                                         className={classNames(style.background, style.background_desktop)}
+                                        aria-hidden="true"
                                     >
                                         <source src={backgroundVideo} type="video/mp4" />
                                     </video>
