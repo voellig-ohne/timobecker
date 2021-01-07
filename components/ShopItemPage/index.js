@@ -4,6 +4,7 @@ import PlainPage from '../PlainPage';
 import style from './style.module.less';
 import Img from 'gatsby-image';
 import { getMailtoUrl } from '../util';
+import { Link } from 'gatsby';
 
 export default function ({
     data: {
@@ -30,7 +31,7 @@ ich hätte gern "${title}".
 
 Bitte schick mir die Rechnung.
 
-Meine Adress ist:`,
+Meine Adresse ist:`,
     });
 
     return (
@@ -39,6 +40,9 @@ Meine Adress ist:`,
             title={
                 <div className={style.title}>
                     <div>
+                        <Link className={style.backLink} to="/shop">
+                            shop
+                        </Link>
                         {title}
                         {subTitle && <div className={style.subTitle}>{subTitle}</div>}
                     </div>
