@@ -11,8 +11,8 @@ export default function Navigation({ currentPath }) {
             title: 'Illustration',
         },
         {
-            link: '/concept/',
-            title: 'Concept',
+            link: '/design/',
+            title: 'Design',
         },
         {
             link: '/live/',
