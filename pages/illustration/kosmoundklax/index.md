@@ -2,7 +2,7 @@
 
 title: Kosmo&Klax
 publisher: Mixtvision
-order: 1
+order: 4
 background: "./176.jpg"
 thumbnail: "./189-2.jpg"
 badge: "./BUCHPREIS.png"

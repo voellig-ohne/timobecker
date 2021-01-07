@@ -15,6 +15,10 @@ export default function Navigation({ currentPath }) {
             title: 'Concept',
         },
         {
+            link: '/live/',
+            title: 'Live',
+        },
+        {
             link: '/sketches/',
             title: 'Sketches',
         },
