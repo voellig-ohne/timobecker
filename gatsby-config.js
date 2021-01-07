@@ -36,6 +36,7 @@ module.exports = {
                 siteId: '1',
                 matomoUrl: 'https://piwik.timobecker.com',
                 siteUrl: 'https://timobecker.com',
+                disableCookies: true,
             },
         },
         {
