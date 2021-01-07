@@ -12,7 +12,7 @@ export default function ProjectList({ projects }) {
 
     return (
         <>
-            {projects.map(project => (
+            {projects.map((project) => (
                 <Project key={project.node.fields.slug} project={project} />
             ))}
         </>
@@ -22,19 +22,21 @@ export default function ProjectList({ projects }) {
 function Project({ project }) {
     const frontmatter = project.node.frontmatter;
 
-    const imageProps = {
-        fluid: frontmatter.thumbnail.childImageSharp.fluid || frontmatter.background.childImageSharp.fluid,
-        className: classNames(style.projectImage, {
-            [style.projectImage__topAlgin]: frontmatter.thumbnailTopAlign,
-        }),
-    };
-
     return (
         <Link to={project.node.fields.slug} className={style.projectLink}>
             {frontmatter.title}
-            <div className={style.projectImage_container}>
-                <Img {...imageProps} />
-            </div>
+            {frontmatter.thumbnail && (
+                <div className={style.projectImage_container}>
+                    <Img
+                        className={classNames(style.projectImage, {
+                            [style.projectImage__topAlgin]: frontmatter.thumbnailTopAlign,
+                        })}
+                        fluid={
+                            frontmatter.thumbnail.childImageSharp.fluid || frontmatter.background.childImageSharp.fluid
+                        }
+                    />
+                </div>
+            )}
         </Link>
     );
 }
