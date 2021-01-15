@@ -5,6 +5,7 @@ import style from './style.module.less';
 import Img from 'gatsby-image';
 import { getMailtoUrl } from '../util';
 import { Link } from 'gatsby';
+import IconMail from './icon_mail.svg';
 
 export default function ({
     data: {
@@ -47,7 +48,6 @@ Meine Adresse ist:`,
                         {subTitle && <div className={style.subTitle}>{subTitle}</div>}
                     </div>
                     <a href={buyLink} className={style.priceLabel}>
-                        <div className={style.priceLabelBuy}>buy now!</div>
                         <div className={style.priceLabelPrice}>{price}€</div>
                     </a>
                 </div>

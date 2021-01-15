@@ -37,12 +37,12 @@
     height: 6rem;
     width: 6rem;
     margin-left: 2rem;
-    background: black;
+    background-color: black;
     color: white;
     text-decoration: none;
     position: relative;
 
-    &Buy, &Price {
+    &Price {
         display: flex;
         position: absolute;
         align-items: center;
@@ -54,28 +54,19 @@
         z-index: 1;
     }
 
-    &Buy {
-        font-size: .9em;
-        animation-name: rotate;
-        animation-duration: 2s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-        visibility: hidden;
-    }
-
     &Price {
         font-weight: bold;
         font-family: function;
     }
 
     &:hover, &:focus {
+        background-image: url("./icon_mail.svg");
+        background-position: center;
+        background-size: 2rem;
+        background-repeat: no-repeat;
+
         .priceLabelPrice {
             visibility: hidden;
-        }
-
-        .priceLabelBuy {
-            visibility: visible;
-            color: white;
         }
     }
 }
@@ -100,19 +91,10 @@
     margin: 5rem 0;
 
     &:hover {
-        color: white;
-        animation-name: rotate;
-        animation-duration: 1s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-    }
-}
-
-@keyframes rotate {
-    from {
-        transform: rotate(0)
-    }
-    to {
-        transform: rotate(360deg)
+        color: transparent;
+        background-image: url("./icon_mail.svg");
+        background-position: center;
+        background-size: 4rem;
+        background-repeat: no-repeat;
     }
 }
