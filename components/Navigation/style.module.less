@@ -1,12 +1,15 @@
 @import '../style/vars';
 
+@menuBreak: 400px;
+@smallerFontBreak: 650px;
+
 @thickness: .3em;
 
 .navigation {
     @padding: 1rem;
 
     position: fixed;
-    z-index: 10;
+    z-index: 9;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -14,7 +17,7 @@
     font-weight: 200;
     text-shadow: 0 0 5px rgba(255,255,255,.1);
 
-    @media (max-width: @break) {
+    @media (max-width: @smallerFontBreak) {
         font-size: inherit;
         background: rgba(255,255,255,.95);
         height: 3rem;
@@ -45,9 +48,33 @@
     &_main {
         right: @padding;
 
+        @media (max-width: @menuBreak) {
+            display: none;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            background: @background-color;
+            height: 100vh;
+            z-index: -1;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 3rem;
+        }
+
+        &_open {
+            display: flex;
+        }
+
         .nav_link {
             padding-left: .5em;
             position: relative;
+
+            @media (max-width: @menuBreak) {
+                margin-bottom: .5rem;
+            }
 
             &_active, &:hover {
                 &:after {
@@ -77,6 +104,21 @@
             right: 0;
             background: black;
         }
+    }
+}
+
+.menu_button {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    background: none;
+    cursor: pointer;
+
+    @media (min-width: @menuBreak) {
+        display: none;
     }
 }
 

@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'gatsby';
 import classNames from 'classnames';
 
 import style from './style.module.less';
 
 export default function Navigation({ currentPath }) {
+    const [menuOpen, setMenuOpen] = useState(false);
+
     const navLinks = [
         {
             link: '/illustration/',
@@ -27,6 +29,7 @@ export default function Navigation({ currentPath }) {
             title: 'Shop',
         },
     ];
+    console.log(menuOpen);
 
     return (
         <span>
@@ -41,7 +44,12 @@ export default function Navigation({ currentPath }) {
                 >
                     Timo Becker
                 </Link>
-                <nav className={style.navigation_main}>
+
+                <nav
+                    className={classNames(style.navigation_main, { [style.navigation_main_open]: menuOpen })}
+                    id="mainMenu"
+                    role="menu"
+                >
                     {navLinks.map((link, index) => (
                         <Link
                             to={link.link}
@@ -54,6 +62,15 @@ export default function Navigation({ currentPath }) {
                         </Link>
                     ))}
                 </nav>
+                <button
+                    className={classNames(style.menu_button, style.nav_link, { [style.nav_link_active]: menuOpen })}
+                    onClick={() => setMenuOpen(!menuOpen)}
+                    aria-controls="mainMenu"
+                    aria-haspopup="true"
+                    aria-expanded={menuOpen}
+                >
+                    Menu
+                </button>
             </header>
             <div className={style.force_load_font}>t</div>
         </span>
