@@ -17,10 +17,17 @@
     font-weight: 200;
     text-shadow: 0 0 5px rgba(255,255,255,.1);
 
-    @media (max-width: @smallerFontBreak) {
+    @media (max-width: @smallerFontBreak) and (min-width: @menuBreak) {
         font-size: inherit;
+    }
+
+    @media (max-width: @smallerFontBreak) {
         background: rgba(255,255,255,.95);
         height: 3rem;
+    }
+
+    @media (max-width: @menuBreak) {
+        height: 3.8rem;
     }
 
     &:after {
