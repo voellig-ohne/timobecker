@@ -1,3 +1,5 @@
+@import '../style/vars';
+
 .images {
     margin-top: 1rem;
 }
@@ -33,7 +35,6 @@
         display: inline-block;
         background-image: url('./arrow_back.svg');
         background-repeat: no-repeat;
-        // background-color: red;
         background-position: center;
         height: 1rem;
         width: 1rem;
@@ -58,6 +59,12 @@
     color: white;
     text-decoration: none;
     position: relative;
+
+    @media (max-width: @break){
+        height: 4rem;
+        width: 4rem;
+        font-size: 1rem;
+    }
 
     &Price {
         display: flex;

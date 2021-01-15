@@ -1,4 +1,4 @@
-
+@import '../style/vars';
 
 .list {
     list-style: none;
@@ -7,6 +7,10 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
     grid-gap: 2rem;
+
+    @media (max-width: @break){
+        grid-template-columns: 1fr;
+    }
 }
 
 .item {
