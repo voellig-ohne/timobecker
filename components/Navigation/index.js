@@ -29,7 +29,6 @@ export default function Navigation({ currentPath }) {
             title: 'Shop',
         },
     ];
-    console.log(menuOpen);
 
     return (
         <span>
