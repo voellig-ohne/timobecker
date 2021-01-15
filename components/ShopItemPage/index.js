@@ -5,7 +5,6 @@ import style from './style.module.less';
 import Img from 'gatsby-image';
 import { getMailtoUrl } from '../util';
 import { Link } from 'gatsby';
-import IconMail from './icon_mail.svg';
 
 export default function ({
     data: {
