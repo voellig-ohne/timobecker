@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router';
-import { prefixLink } from 'gatsby-helpers';
+import { Link } from 'gatsby';
 import Helmet from 'react-helmet';
-import { config } from 'config';
+// import { config } from 'config';
 import Logo from 'components/logo/logo';
 import POINTS from 'components/logo/points';
 
@@ -19,7 +18,7 @@ export default class Index extends React.Component {
     render() {
         return (
             <div>
-                <Helmet title={config.siteTitle} />
+                {/* <Helmet title={config.siteTitle} /> */}
                 <h1>Connect the dots</h1>
                 <Logo
                     className="tb_logo"

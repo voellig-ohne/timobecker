@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router';
-import { prefixLink } from 'gatsby-helpers';
+import { Link } from 'gatsby';
 import Helmet from 'react-helmet';
-import { config } from 'config';
+// import { config } from 'config';
 import Logo from 'components/logo/logo';
 import POINTS from 'components/logo/points';
-import sternchen from '!svg-inline-loader!./sternchen.svg';
+// import sternchen from '!svg-inline-loader!./sternchen.svg';
 
 import 'style/main.less';
 import style from './project.module.less';
@@ -45,7 +44,7 @@ export default class Projection extends React.Component {
     render() {
         return (
             <div className={style.container}>
-                <Helmet title={config.siteTitle} />
+                {/* <Helmet title={config.siteTitle} /> */}
                 <div className={style.canvasContainer}>
                     <Logo
                         className={style.painting}
@@ -62,7 +61,8 @@ export default class Projection extends React.Component {
                 <div className={style.printStuff}>
                     <div className={style.timo}>
                         <p>
-                            IDENTITÄT FÜR TIMO BECKER / TIMOBECKER.COM<br />
+                            IDENTITÄT FÜR TIMO BECKER / TIMOBECKER.COM
+                            <br />
                             logo, website, installation
                         </p>
                         <p>
@@ -72,7 +72,7 @@ export default class Projection extends React.Component {
                     </div>
                     <div className={style.vo}>
                         <p>
-                            <div className={style.logo} dangerouslySetInnerHTML={{ __html: sternchen }} />
+                            {/* <div className={style.logo} dangerouslySetInnerHTML={{ __html: sternchen }} /> */}
                             völlig ohne werkschau 2017 <br />
                             völligohne.de
                         </p>

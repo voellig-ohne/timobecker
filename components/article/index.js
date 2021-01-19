@@ -1,108 +1,192 @@
 import React from 'react';
-import { Link } from 'react-router';
-import { prefixLink } from 'gatsby-helpers';
+import Helmet from 'react-helmet';
 import classNames from 'classnames';
-import ResponsiveImage from 'components/ResponsiveImage';
-import ImageHelmet from 'components/ImageHelmet';
-import Footer from 'components/Footer';
-import ScrollArrow from 'components/ScrollArrow';
-import { filter, includes, reduce, flow, sortBy } from 'lodash';
+import Footer from '../Footer';
+import ScrollArrow from '../ScrollArrow';
+import Gallery from '../Gallery';
+import Navigation from '../Navigation';
+import ProjectList from '../ProjectList';
+import Intro from '../Intro';
 
+import '../style/main.less';
 import style from './style.module.less';
 
 export default class Article extends React.Component {
     render() {
         const {
-            background,
-            background_mobile,
             title,
             publisher,
-            descriptionSecondary,
-        } = this.props.children.props.route.page.data;
+            background,
+            background_mobile,
+            images,
+            layout,
+            og_image,
+            badge,
+        } = this.props.data.markdownRemark.frontmatter;
+        const { html } = this.props.data.markdownRemark;
+        const { siteTitle, siteDescription, siteUrl } = this.props.data.site.siteMetadata;
+        const { next, previous } = this.props.pageContext;
+        const children = this.props.data.children.edges;
+        const hasGallery = !!(images && images.length);
 
-        const { mainAddition, gallery } = this.props;
+        const metaTags = [
+            { name: 'description', content: siteDescription },
+            { property: 'og:description', content: siteDescription },
+            { property: 'og:url', content: siteUrl + this.props.path },
+        ];
 
-        const backgroundImage = background;
-        const currentPath = this.props.children.props.route.path;
-
-        const subTitle = publisher;
-
-        const parentPath = '/' + currentPath.split('/')[1] + '/';
-
-        const nextPrev = flow(
-            pages =>
-                filter(pages, page => {
-                    return page.path !== parentPath && includes(page.path, parentPath);
-                }),
-            pages =>
-                sortBy(pages, page => {
-                    return page.data.order;
-                }),
-            pages =>
-                reduce(
-                    pages,
-                    (o, page, idx) => {
-                        if (page.path === currentPath) {
-                            o.prev = pages[mod(idx - 1, pages.length)];
-                            o.next = pages[(idx + 1) % pages.length];
-                        }
-                        return o;
-                    },
-                    {}
-                )
-        )(this.props.children.props.route.pages);
+        if (og_image) {
+            metaTags.push({
+                property: 'og:image',
+                content: og_image.childImageSharp.fixed.src,
+            });
+        }
 
         return (
-            <article className="page">
-                <header className={classNames(style.header, { [style['header--no_gallery']]: !gallery })}>
-                    {background_mobile
-                        ? <div>
-                              <ResponsiveImage
-                                  source={background_mobile}
-                                  location={currentPath}
-                                  className={classNames(style.background, style.background_mobile)}
-                              />
-                              <ResponsiveImage
-                                  source={background}
-                                  location={currentPath}
-                                  className={classNames(style.background, style.background_desktop)}
-                              />
-                          </div>
-                        : <ResponsiveImage source={background} location={currentPath} className={style.background} />}
-                    <div className={style.text}>
-                        <div className={style.main}>
-                            <h1>
-                                {title}
-                            </h1>
-                            {subTitle
-                                ? <p className={style.sub_title}>
-                                      {subTitle}
-                                  </p>
-                                : null}
-                            {this.props.children}
-                            {mainAddition
-                                ? <div>
-                                      {mainAddition}
-                                  </div>
-                                : null}
-                        </div>
-                    </div>
-                    {gallery ? <ScrollArrow className={style.scroll_hint} /> : null}
-                </header>
-
-                {gallery
-                    ? <div>
-                          {gallery}
-                      </div>
-                    : null}
-
-                <Footer next={nextPrev.next} prev={nextPrev.prev} />
-                <ImageHelmet source={background_mobile || background} location={currentPath} />
-            </article>
+            <>
+                {layout === 'intro' ? (
+                    <Intro />
+                ) : (
+                    <article className="page">
+                        <header className={classNames(style.header)}>
+                            {background_mobile ? (
+                                <div>
+                                    <img
+                                        loading="eager"
+                                        className={classNames(style.background, style.background_mobile)}
+                                        alt=""
+                                        {...background_mobile.childImageSharp.fluid}
+                                    />
+                                    <img
+                                        loading="eager"
+                                        className={classNames(style.background, style.background_desktop)}
+                                        alt=""
+                                        {...background.childImageSharp.fluid}
+                                    />
+                                </div>
+                            ) : (
+                                background && (
+                                    <img
+                                        loading="eager"
+                                        alt=""
+                                        className={style.background}
+                                        {...background.childImageSharp.fluid}
+                                    />
+                                )
+                            )}
+                            <div className={style.text}>
+                                <div className={style.main}>
+                                    <h1>{title}</h1>
+                                    {badge && (
+                                        <img className={style.badge} src={badge.childImageSharp.original.src} alt="" />
+                                    )}
+                                    {publisher ? <p className={style.sub_title}>{publisher}</p> : null}
+                                    <div dangerouslySetInnerHTML={{ __html: html }} />
+                                    <ProjectList projects={children} />
+                                </div>
+                            </div>
+                            {hasGallery && <ScrollArrow className={style.scroll_hint} />}
+                        </header>
+                        {hasGallery && <Gallery images={images} />}
+                        <Footer next={next} prev={previous} />
+                    </article>
+                )}
+                <Navigation currentPath={this.props.path} />
+                <Helmet meta={metaTags} title={`${siteTitle} • ${title}`}>
+                    <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+                </Helmet>
+            </>
         );
     }
 }
 
-function mod(n, m) {
-    return (n % m + m) % m;
-}
+export const pageQuery = graphql`
+    query PostsBySlug($slug: String!) {
+        site {
+            siteMetadata {
+                siteTitle
+                siteUrl
+                siteDescription
+            }
+        }
+        markdownRemark(fields: { slug: { eq: $slug } }) {
+            id
+            html
+            frontmatter {
+                title
+                layout
+                publisher
+                layout
+                background {
+                    childImageSharp {
+                        fluid(maxWidth: 1500) {
+                            src
+                            srcSet
+                        }
+                    }
+                }
+                og_image: background {
+                    childImageSharp {
+                        fixed(width: 1000) {
+                            src
+                        }
+                    }
+                }
+                background_mobile {
+                    childImageSharp {
+                        fluid(maxWidth: 1000) {
+                            src
+                            srcSet
+                        }
+                    }
+                }
+                images {
+                    src {
+                        childImageSharp {
+                            fluid(maxWidth: 1500) {
+                                ...GatsbyImageSharpFluid
+                            }
+                        }
+                    }
+                }
+                badge {
+                    childImageSharp {
+                        original {
+                            src
+                        }
+                    }
+                }
+            }
+        }
+        children: allMarkdownRemark(
+            filter: { fields: { slug: { regex: $slug, ne: $slug } } }
+            sort: { order: ASC, fields: frontmatter___order }
+        ) {
+            edges {
+                node {
+                    fields {
+                        slug
+                    }
+                    frontmatter {
+                        title
+                        thumbnailTopAlign
+                        background {
+                            childImageSharp {
+                                fluid(maxWidth: 500) {
+                                    ...GatsbyImageSharpFluid
+                                }
+                            }
+                        }
+                        thumbnail {
+                            childImageSharp {
+                                fluid(maxWidth: 500) {
+                                    ...GatsbyImageSharpFluid
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+`;

@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router';
-import { prefixLink } from 'gatsby-helpers';
+import { Link } from 'gatsby';
 import Helmet from 'react-helmet';
-import { config } from 'config';
+// import { config } from 'config';
 import Logo from 'components/logo/logo';
 import POINTS from 'components/logo/points';
 //import findPaths from 'components/logo/findPaths'
@@ -26,9 +25,7 @@ export default class Index extends React.Component {
 
             return (
                 <div className={style.wrapper} key={index}>
-                    <h2>
-                        {title}
-                    </h2>
+                    <h2>{title}</h2>
                     <Logo
                         className={style.logo}
                         points={POINTS}
@@ -43,7 +40,7 @@ export default class Index extends React.Component {
 
         return (
             <div>
-                <Helmet title={config.siteTitle} />
+                {/* <Helmet title={config.siteTitle} /> */}
                 <h1>
                     {POINTS.length} POINTS, {uniques.length} variations:{' '}
                 </h1>

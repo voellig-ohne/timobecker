@@ -1,14 +1,16 @@
-@import '../../style/vars';
+@import '../style/vars';
 
 @breakFooter: 680px;
 
 .container {
     width: 100%;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-gap: 2rem;
     align-items: center;
 
     @media (max-width: @breakFooter) {
-        flex-wrap: wrap;
+        grid-template-columns: 1fr 1fr;
     }
 }
 
@@ -19,18 +21,17 @@
 
 .vo_hint {
     text-align: center;
-    margin-top: .5rem;
-    
+    margin-top: 1rem;
+
     @media (max-width: @breakFooter) {
-        margin-top: 1rem;
+        margin-top: 2rem;
     }
 }
 
 .nextPrev {
     &_link {
         text-decoration: none;
-        padding: 1rem;
-        flex: 0 1 50%;
+        grid-row: 1;
 
         @media (max-width: @breakFooter) {
             order: 0;
@@ -38,6 +39,15 @@
 
         &:first-child {
             text-align: right;
+            grid-column: 1;
+        }
+
+        &:last-child {
+            grid-column: 3;
+
+            @media (max-width: @breakFooter) {
+                grid-column: 2;
+            }
         }
     }
 
@@ -60,7 +70,7 @@
         margin-right: .5rem;
     }
 
-    svg {
+    img {
         height: 100%;
         width: 100%;
     }
@@ -70,12 +80,11 @@
     flex: 1 0 auto;
     display: flex;
     justify-content: center;
-    margin: 0 1rem;
+    align-items: center;
+    grid-column: 2;
 
     @media (max-width: @breakFooter) {
-        order: 2;
-        width: 100%;
-        margin: 0;
+        grid-column: span 2;
         padding: 0 1rem;
     }
 }
