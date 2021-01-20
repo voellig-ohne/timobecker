@@ -8,3 +8,5 @@ order: 6
 images: 
 
 ---
+
+Every face has it’s unique characteristic. A good caricature is much more about looking carefully than about drawing precisely.
