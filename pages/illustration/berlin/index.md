@@ -7,3 +7,7 @@ order: 2
 images: 
 
 ---
+
+<br>
+
+These are various illustrations for Berlin based projects.
