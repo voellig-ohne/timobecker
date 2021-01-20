@@ -10,8 +10,6 @@ I love sketching, exploring, designing and teaching.
 
 • 
 
-test
-
 Feel free to contact me!
 
 mail@timobecker.com  
