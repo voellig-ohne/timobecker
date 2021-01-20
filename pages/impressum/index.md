@@ -9,22 +9,24 @@ Verantwortlich für den Inhalt:
 */ Responsible for all content:*
 
 Timo Becker  
-Siemensstr 16  
-10551 Berlin  
+Thörlstraße 12
+21075 Hamburg
 
 mail@timobecker.com  
 +49.176.8111 4552
 
 • 
 
-Gestaltung & Programmierung, Fotos (bis auf Portrait):  
-*/ Design & Code, Photos (except portrait):*
+Gestaltung & Programmierung, Fotos "Sketches":  
+*/ Design & Code, Photos "Sketches":*
 
 <a href="https://volligohne.de" target="_blank">Völlig Ohne</a>
 
 • 
 
 Portraitfoto: Norman Z
+
+Fotos "Illustration", "Shop": Philipp Karadensky
 
 • 
 
