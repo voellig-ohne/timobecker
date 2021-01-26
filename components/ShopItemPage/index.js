@@ -13,6 +13,9 @@ export default function ({
     pageContext,
     path,
 }) {
+    const mailAddress =
+        typeof window !== `undefined` ? ['order@timo', 'becker.com'].join('') : 'order (ät) timobecker.com';
+
     const metaTags = [
         { name: 'description', content: childContentfulShopItemDescriptionTextNode?.childMarkdownRemark?.excerpt },
         {
@@ -23,7 +26,7 @@ export default function ({
     ];
 
     const buyLink = getMailtoUrl({
-        to: ['order@timo', 'becker.com'].join(''),
+        to: mailAddress,
         subject: `Bestellung: "${title}"`,
         body: `Hey Timo,
 
@@ -71,6 +74,10 @@ My address is:`,
                         BUY NOW!
                     </a>
                 )}
+                <div className={style.buyHint}>
+                    If the button above does not work for you, please send me a mail with the title of the image and
+                    your address to <em>{mailAddress}</em>
+                </div>
             </div>
 
             <Helmet meta={metaTags} />
