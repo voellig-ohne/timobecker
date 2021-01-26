@@ -15,7 +15,10 @@ export default function ({ data, pageContext, path }) {
         layout,
         og_image,
         badge,
+        logos,
     } = data.markdownRemark.frontmatter;
+
+    console.log(logos);
 
     return (
         <Article
@@ -32,6 +35,16 @@ export default function ({ data, pageContext, path }) {
         >
             {badge && <img className={style.badge} src={badge.childImageSharp.original.src} alt="" />}
             {publisher ? <p className={style.sub_title}>{publisher}</p> : null}
+
+            {logos && (
+                <ul className={style.logos}>
+                    {logos.map(({ title, src }) => (
+                        <li className={style.logoItem}>
+                            <img className={style.logo} alt={title} src={src.publicURL} />
+                        </li>
+                    ))}
+                </ul>
+            )}
             <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
             <ProjectList projects={data.children.edges} />
         </Article>
@@ -89,6 +102,12 @@ export const pageQuery = graphql`
                         original {
                             src
                         }
+                    }
+                }
+                logos {
+                    title
+                    src {
+                        publicURL
                     }
                 }
             }
