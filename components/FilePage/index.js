@@ -18,8 +18,6 @@ export default function ({ data, pageContext, path }) {
         logos,
     } = data.markdownRemark.frontmatter;
 
-    console.log(logos);
-
     return (
         <Article
             title={title}
@@ -39,7 +37,7 @@ export default function ({ data, pageContext, path }) {
             {logos && (
                 <ul className={style.logos}>
                     {logos.map(({ title, src }) => (
-                        <li className={style.logoItem}>
+                        <li className={style.logoItem} key={src.publicURL}>
                             <img className={style.logo} alt={title} src={src.publicURL} />
                         </li>
                     ))}
