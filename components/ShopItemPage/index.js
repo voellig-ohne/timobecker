@@ -23,15 +23,15 @@ export default function ({
     ];
 
     const buyLink = getMailtoUrl({
-        to: 'order@timobecker.com',
+        to: ['order@timo', 'becker.com'].join(''),
         subject: `Bestellung: "${title}"`,
         body: `Hey Timo,
 
-ich hätte gern "${title}".
+I would like to order "${title}".
 
-Bitte schick mir die Rechnung.
+Please send me an invoice.
 
-Meine Adresse ist:`,
+My address is:`,
     });
 
     return (
@@ -46,9 +46,11 @@ Meine Adresse ist:`,
                         {title}
                         {subTitle && <div className={style.subTitle}>{subTitle}</div>}
                     </div>
-                    <a href={buyLink} className={style.priceLabel}>
-                        <div className={style.priceLabelPrice}>{price}€</div>
-                    </a>
+                    {typeof window !== `undefined` && (
+                        <a href={buyLink} className={style.priceLabel}>
+                            <div className={style.priceLabelPrice}>{price}€</div>
+                        </a>
+                    )}
                 </div>
             }
             htmlTitle={title}
@@ -64,9 +66,11 @@ Meine Adresse ist:`,
                 ))}
             </div>
             <div className={style.buyButtonContainer}>
-                <a href={buyLink} className={style.buyButton}>
-                    BUY NOW!
-                </a>
+                {typeof window !== `undefined` && (
+                    <a href={buyLink} className={style.buyButton}>
+                        BUY NOW!
+                    </a>
+                )}
             </div>
 
             <Helmet meta={metaTags} />
