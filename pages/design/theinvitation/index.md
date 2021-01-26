@@ -9,6 +9,8 @@ images:
  - src: "./vlcsnap-2020-12-15-17h27m30s726.png"
  - src: "./vlcsnap-2020-12-15-17h26m31s305.png"
  - src: "./vlcsnap-2020-12-15-17h26m46s697.png"
+logos: 
+ - src: "./tool1.png" 
 
 ---
 

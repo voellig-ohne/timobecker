@@ -6,6 +6,9 @@ order: 3
 # background: "./176.jpg"
 # thumbnail: "./189-2.jpg"
 images: 
+logos: 
+  - src: "./kindermann.png"
+    title: "Kindermann Verlag"
 
 ---
 

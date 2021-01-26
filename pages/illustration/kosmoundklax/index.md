@@ -18,6 +18,9 @@ images:
  - src: "./111.jpg"
  - src: "./192.jpg"
  - src: "./186.jpg"
+logos: 
+  - src: "./mixtvision.svg"
+    title: "Mixtvision"
 
 ---
 

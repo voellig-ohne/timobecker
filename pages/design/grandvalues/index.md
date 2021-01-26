@@ -9,6 +9,8 @@ images:
  - src: "./00_START.jpg"
  - src: "./_GV_update_2017_chars.jpg"
  - src: "./_GV_ update_2017_env.jpg"
+logos: 
+ - src: "./bearhands.png" 
 
 
 ---

@@ -2,6 +2,17 @@
 
 title: Live
 # background: "./00_START.jpg"
+logos: 
+  - src: "./staatsoperhamburg.png"
+    title: "Hamburger Staatsoper"
+  - src: "./fritzkola.svg"
+    title: "fritz-kola"
+  - src: "./db.svg"
+    title: "Deutsche Bahn"
+  - src: "./zalando.svg"
+    title: "Zalando"
+  - src: "./COTY.svg"
+    title: "COTY"
 
 ---
 
