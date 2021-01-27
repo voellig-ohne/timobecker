@@ -21,7 +21,7 @@ export default function Gallery({ images }) {
                                         className={style.youtubeIFrame}
                                         width="560"
                                         height="315"
-                                        src="https://www.youtube-nocookie.com/embed/SDTdLQTdOYI"
+                                        src={`https://www.youtube-nocookie.com/embed/${image.youtubeId}`}
                                         frameBorder="0"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                         allowFullScreen
