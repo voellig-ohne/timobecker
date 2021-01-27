@@ -18,6 +18,10 @@ logos:
     title: "tool1"
   - src: "./dierkscompany.svg"
     title: "DIERKS + COMPANY"
+  - src: "./xi_design.svg"
+    title: "Xi-Design"
+  - src: "./fritzkola.svg"
+    title: "fritz-kola"
 
 
 ---

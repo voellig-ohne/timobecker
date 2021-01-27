@@ -27,6 +27,8 @@ logos:
     title: "Zalando"
   - src: "./COTY.svg"
     title: "COTY"
+  - src: "./axelspringer.svg"
+    title: "Axel Springer"
 
 ---
 
