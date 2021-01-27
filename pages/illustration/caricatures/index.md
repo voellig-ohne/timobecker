@@ -2,9 +2,15 @@
 
 title: Caricatures
 order: 6
-# background: "./176.jpg"
-# thumbnail: "./189-2.jpg"
+background: "./_banner.jpg"
+thumbnail: "./__.jpg"
 images: 
+  - src: "./1.jpg"
+  - src: "./2.jpg"
+  - src: "./3.jpg"
+  - src: "./4.jpg"
+  - src: "./5.jpg"
+  - src: "./6.jpg"
 logos: 
   - src: "./arabella.svg"
     title: "Radio Arabella"

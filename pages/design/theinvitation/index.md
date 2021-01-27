@@ -1,14 +1,32 @@
 ---
 
 title: "The Invitation"
-backgroundVideo: "./gametrailer_1.mp4"
-thumbnail: "./vlcsnap-2020-12-15-17h27m30s726.png"
-thumbnailTopAlign: true
+# backgroundVideo: "./gametrailer_1.mp4"
+background: "./ti01_platzhalter.png"
+thumbnail: "./__.jpg"
+# thumbnailTopAlign: true
 images:
- - youtubeId: "MWYyUzgs-iY"
- - src: "./vlcsnap-2020-12-15-17h27m30s726.png"
- - src: "./vlcsnap-2020-12-15-17h26m31s305.png"
- - src: "./vlcsnap-2020-12-15-17h26m46s697.png"
+ - youtubeId: "svJrYKahwNY"
+ - src: "./ti00.jpg"
+ - src: "./ti02.jpg"
+ - src: "./ti03.jpg"
+#  - src: "./ti04.gif"
+ - src: "./ti05.jpg"
+ - src: "./ti06.jpg"
+ - src: "./ti07.jpg"
+ - src: "./ti08.jpg"
+#  - src: "./ti09.gif"
+ - src: "./ti10.jpg"
+ - src: "./ti11.jpg"
+#  - src: "./ti12.gif"
+ - src: "./ti13.jpg"
+ - src: "./ti14.jpg"
+#  - src: "./ti15.gif"
+ - src: "./ti16.jpg"
+ - src: "./ti17.jpg"
+#  - src: "./ti18.gif"
+ - src: "./ti19.jpg"
+ - src: "./ti20.jpg"
 logos: 
  - src: "./tool1.png" 
 

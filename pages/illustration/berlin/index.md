@@ -1,10 +1,27 @@
 ---
 
 title: Berlin
-# publisher: Kindermann Verlag
 order: 2
-# background: "./176.jpg"
+background: "./_banner.jpg"
+thumbnail: "./__.jpg"
 images: 
+  - src: "./01.jpg"
+  - src: "./02.jpg"
+  - src: "./03.jpg"
+  - slideshow:
+    - "./04slideshow/_berlinleuchtet01.jpg"
+    - "./04slideshow/_berlinleuchtet02.jpg"
+    - "./04slideshow/_berlinleuchtet03.jpg"
+    - "./04slideshow/_berlinleuchtet04.jpg"
+    - "./04slideshow/_berlinleuchtet05.jpg"
+  - src: "./05.jpg"
+  - src: "./06.jpg"
+  - src: "./07.jpg"
+  - src: "./08.jpg"
+  - src: "./09.jpg"
+  - src: "./10.jpg"
+  - src: "./11.jpg"
+  - src: "./12.jpg"
 logos:
   - src: "./siemens.svg"
     title: "Siemens"

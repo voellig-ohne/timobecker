@@ -2,6 +2,20 @@
 
 title: Live
 # background: "./00_START.jpg"
+backgroundVideo: "./_00banner.mp4"
+images: 
+  - src: "./_10.jpg"
+  - src: "./_01.JPG"
+  - src: "./_02.jpg"
+  - src: "./_03.jpg"
+  - src: "./_03b.jpg"
+  - src: "./_03c.JPG"
+  - src: "./_04.jpg"
+  - src: "./_05.jpg"
+  - src: "./_06.jpg"
+  - src: "./_07.jpg"
+  - src: "./_08.jpg"
+  - src: "./_09.jpg"
 logos: 
   - src: "./staatsoperhamburg.png"
     title: "Hamburger Staatsoper"

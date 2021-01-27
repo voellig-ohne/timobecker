@@ -3,9 +3,16 @@
 title: BASE Magazin
 # publisher: Mixtvision
 order: 1
-# background: "./176.jpg"
-# thumbnail: "./189-2.jpg"
+background: "./_1base0banner.jpg"
+thumbnail: "./__.jpg"
 images: 
+  - src: "./_1base1.jpg"
+  - src: "./_1base2.jpg"
+  - src: "./_1base3.jpg"
+  - src: "./_1base4.jpg"
+  - src: "./_1base5.jpg"
+  - src: "./_1base6.jpg"
+  - src: "./_1base8.jpg"
 logos: 
   - src: "./xi_design.svg"
     title: "Xi-Design"
