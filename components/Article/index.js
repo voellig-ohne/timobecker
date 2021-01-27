@@ -111,6 +111,7 @@ export default function ({
                                     <video // eslint-disable-line jsx-a11y/media-has-caption
                                         autoPlay
                                         loop
+                                        muted
                                         className={classNames(style.background, style.background_desktop)}
                                         aria-hidden="true"
                                     >

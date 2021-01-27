@@ -2,7 +2,7 @@
 
 title: Live
 # background: "./00_START.jpg"
-backgroundVideo: "./_00banner.mp4"
+backgroundVideo: "./_00banner-silent.mp4"
 images: 
   - src: "./_10.jpg"
   - src: "./_01.JPG"
