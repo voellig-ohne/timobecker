@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Img from 'gatsby-image';
+import classNames from 'classnames';
 
 import style from './style.module.less';
 
@@ -29,8 +30,41 @@ export default function Gallery({ images }) {
                             </div>
                         </div>
                     )}
+                    {image.slideshow && <Slideshow images={image.slideshow} />}
                 </li>
             ))}
         </ul>
+    );
+}
+
+function Slideshow({ images }) {
+    const [currentImage, setCurrentImage] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentImage((currentImage + 1) % images.length);
+        }, 1500);
+        return () => clearInterval(interval);
+    }, [currentImage]);
+
+    return (
+        <div className={style.slideshow}>
+            {images.map((image, index) => {
+                return (
+                    <div
+                        className={classNames(style.slideshowImageContainer, {
+                            [style.active]: index <= currentImage,
+                        })}
+                    >
+                        <Img
+                            className={style.slideshowImage}
+                            key={index}
+                            loading="lazy"
+                            fluid={image.childImageSharp.fluid}
+                        />
+                    </div>
+                );
+            })}
+        </div>
     );
 }

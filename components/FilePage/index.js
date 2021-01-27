@@ -94,6 +94,13 @@ export const pageQuery = graphql`
                         }
                     }
                     youtubeId
+                    slideshow {
+                        childImageSharp {
+                            fluid(maxWidth: 1500) {
+                                ...GatsbyImageSharpFluid
+                            }
+                        }
+                    }
                 }
                 badge {
                     childImageSharp {

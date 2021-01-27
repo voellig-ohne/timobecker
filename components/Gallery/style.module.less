@@ -47,3 +47,32 @@
     height: 100%;
     z-index: 1;
 }
+
+.slideshow {
+    position: relative;
+}
+
+.slideshowImageContainer {
+    &:not(:first-child) {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+        mask-image: linear-gradient(to right, transparent, transparent 50%, #fff 50%, #fff);
+        mask-size: 200% 100%;
+        transition: .5s all;
+        // visibility: visible;
+
+        mask-position: 0; // visible
+        &.active {
+            // visibility: hidden;
+            mask-position: -100% 0; // invisible
+
+
+        }
+
+        &:hover {
+        }
+    }
+}
