@@ -1,7 +1,7 @@
 ---
 
 title: Herkules
-publisher: Mixtvision
+publisher: Kindermann Verlag
 order: 3
 background: "./_banner.jpg"
 thumbnail: "./__.jpg"

@@ -1,7 +1,6 @@
 ---
 
 title: For Kids
-publisher: Mixtvision
 order: 5
 background: "./_3forkids0banner.jpg"
 thumbnail: "./__.jpg"

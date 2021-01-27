@@ -4,6 +4,7 @@ title: "The Invitation"
 # backgroundVideo: "./gametrailer_1.mp4"
 background: "./ti01_platzhalter.png"
 thumbnail: "./__.jpg"
+publisher: "tool1"
 # thumbnailTopAlign: true
 images:
  - youtubeId: "svJrYKahwNY"
@@ -29,6 +30,7 @@ images:
  - src: "./ti20.jpg"
 logos: 
  - src: "./tool1.png" 
+   title: "tool1"
 
 ---
 
