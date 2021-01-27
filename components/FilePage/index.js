@@ -38,7 +38,7 @@ export default function ({ data, pageContext, path }) {
                 <ul className={style.logos}>
                     {logos.map(({ title, src }) => (
                         <li className={style.logoItem} key={src.publicURL}>
-                            <img className={style.logo} alt={title} src={src.publicURL} />
+                            <img className={style.logo} alt={title} title={title} src={src.publicURL} />
                         </li>
                     ))}
                 </ul>
