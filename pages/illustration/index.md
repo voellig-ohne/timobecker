@@ -1,7 +1,7 @@
 ---
 
 title: Illustration
-background: "./coverIllustration.jpg"
+background: "./_banner.jpg"
 
 ---
 
