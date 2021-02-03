@@ -12,7 +12,7 @@ export default class Footer extends React.Component {
                 <div className={style.container}>
                     {prev && (
                         <Link to={prev.fields.slug} className={style.nextPrev_link}>
-                            <div className={style.nextPrev_label}>vorheriges</div>
+                            <div className={style.nextPrev_label}>previous</div>
                             <div className={style.nextPrev_title}>{prev.frontmatter.title}</div>
                         </Link>
                     )}
@@ -41,7 +41,7 @@ export default class Footer extends React.Component {
                     </div>
                     {next && (
                         <Link to={next.fields.slug} className={style.nextPrev_link}>
-                            <div className={style.nextPrev_label}>nächstes</div>
+                            <div className={style.nextPrev_label}>next</div>
                             <div className={style.nextPrev_title}>{next.frontmatter.title}</div>
                         </Link>
                     )}
