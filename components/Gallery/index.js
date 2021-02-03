@@ -65,6 +65,7 @@ function Slideshow({ images }) {
                         className={classNames(style.slideshowImageContainer, {
                             [style.active]: index <= currentImage,
                         })}
+                        key={index}
                     >
                         <Img
                             className={style.slideshowImage}
