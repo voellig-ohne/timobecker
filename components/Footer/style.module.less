@@ -30,8 +30,27 @@
 
 .nextPrev {
     &_link {
+        position: relative;
         text-decoration: none;
         grid-row: 1;
+
+        &:before {
+            content: '';
+            position: absolute;
+            right: 100%;
+            display: block;
+            height: 100%;
+            background-image: url(./arrow_back.svg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 4rem;
+            margin: 0 1rem;
+            background-position: center right;
+
+            @media (max-width: @breakFooter) {
+                display: none;
+            }
+        }
 
         @media (max-width: @breakFooter) {
             order: 0;
@@ -40,10 +59,22 @@
         &:first-child {
             text-align: right;
             grid-column: 1;
+            justify-self: end;
+
+            &:before {
+                right: 100%;
+            }
         }
 
         &:last-child {
             grid-column: 3;
+
+            justify-self: start;
+
+            &:before {
+                left: 100%;
+                transform: scaleX(-1);
+            }
 
             @media (max-width: @breakFooter) {
                 grid-column: 2;
