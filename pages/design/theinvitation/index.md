@@ -31,6 +31,7 @@ images:
 logos: 
  - src: "./tool1.png" 
    title: "tool1"
+order: 1
 
 ---
 

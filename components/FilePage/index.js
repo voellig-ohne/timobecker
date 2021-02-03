@@ -82,9 +82,9 @@ export const pageQuery = graphql`
                         }
                     }
                 }
-                backgroundVideo {
-                    publicURL
-                }
+                # backgroundVideo {
+                #     publicURL
+                # }
                 images {
                     src {
                         childImageSharp {
