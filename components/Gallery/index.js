@@ -31,6 +31,16 @@ export default function Gallery({ images }) {
                         </div>
                     )}
                     {image.slideshow && <Slideshow images={image.slideshow} />}
+                    {image.mp4 && (
+                        <video // eslint-disable-line jsx-a11y/media-has-caption
+                            autoPlay
+                            loop
+                            muted
+                            className={classNames(style.image)}
+                        >
+                            <source src={image.mp4.publicURL} type="video/mp4" />
+                        </video>
+                    )}
                 </li>
             ))}
         </ul>

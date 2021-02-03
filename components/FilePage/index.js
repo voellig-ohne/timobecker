@@ -101,6 +101,9 @@ export const pageQuery = graphql`
                             }
                         }
                     }
+                    mp4 {
+                        publicURL
+                    }
                 }
                 badge {
                     childImageSharp {
