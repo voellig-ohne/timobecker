@@ -47,7 +47,6 @@ export default function Navigation({ currentPath }) {
                 <nav
                     className={classNames(style.navigation_main, { [style.navigation_main_open]: menuOpen })}
                     id="mainMenu"
-                    role="menu"
                 >
                     {navLinks.map((link, index) => (
                         <Link

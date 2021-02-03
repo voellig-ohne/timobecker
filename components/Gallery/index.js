@@ -55,7 +55,7 @@ function Slideshow({ images }) {
             setCurrentImage((currentImage + 1) % images.length);
         }, 1500);
         return () => clearInterval(interval);
-    }, [currentImage]);
+    }, [currentImage, images.length]);
 
     return (
         <div className={style.slideshow}>
