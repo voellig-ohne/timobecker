@@ -134,6 +134,7 @@ export default function ({
                 ),
             }[layout] || <article className="page">{children}</article>}
             <Helmet meta={metaTags} title={`${siteTitle} • ${title}`}>
+                <html lang="en" />
                 <link rel="shortcut icon" type="image/png" href="/favicon.png" />
             </Helmet>
         </>

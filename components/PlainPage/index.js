@@ -17,6 +17,7 @@ export default function ({ children, title, htmlTitle, path }) {
             <Navigation currentPath={path} />
 
             <Helmet title={`Timo Becker • ${htmlTitle || title}`}>
+                <html lang="en" />
                 <link rel="shortcut icon" type="image/png" href="/favicon.png" />
             </Helmet>
         </>
