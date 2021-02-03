@@ -18,9 +18,9 @@ images:
   - src: "./06.jpg"
   - src: "./07.jpg"
   - src: "./08.jpg"
+  - src: "./11.jpg"
   - src: "./09.jpg"
   - src: "./10.jpg"
-  - src: "./11.jpg"
   - src: "./12.jpg"
 logos:
   - src: "./siemens.svg"
