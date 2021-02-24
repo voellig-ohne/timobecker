@@ -24,10 +24,10 @@ export default function Navigation({ currentPath }) {
             link: '/sketches/',
             title: 'Sketches',
         },
-        {
-            link: '/shop/',
-            title: 'Shop',
-        },
+        // {
+        //     link: '/shop/',
+        //     title: 'Shop',
+        // },
     ];
 
     return (
