@@ -9,7 +9,6 @@ images:
   - src: "./_02.jpg"
   - src: "./_03.jpg"
   - src: "./_03b.jpg"
-  - src: "./_03c.JPG"
   - src: "./_04.jpg"
   - src: "./_05.jpg"
   - src: "./_06.jpg"
