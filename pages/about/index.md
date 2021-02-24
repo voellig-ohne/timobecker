@@ -17,7 +17,7 @@ mail@timobecker.com
 
 • 
 
-**2010+:** Freelancing Illustrator und Designer (amongst others for Siemens, Deutsche Bahn, fritz-kola)
+**2010+:** Freelancing Illustrator and Designer (amongst others for Siemens, Deutsche Bahn, fritz-kola)
 
 **2020+:** CEO of tool1
 
