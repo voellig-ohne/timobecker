@@ -37,6 +37,7 @@
     "clean": "gatsby clean",
     "deploy": "rsync -avzc --del public/ timo@timo.uber.space:/var/www/virtual/timo/timobecker.com",
     "deployTest": "rsync -avzc --del public/ timo@timo.uber.space:/var/www/virtual/timo/test.timobecker.com",
-    "deployLocal": "rsync -avzc --del public/ /var/www/virtual/timo/test.timobecker.com/"
+    "deployLocal": "rsync -avzc --del public/ /var/www/virtual/timo/timobecker.com/",
+    "deployLocalTest": "rsync -avzc --del public/ /var/www/virtual/timo/test.timobecker.com/"
   }
 }
