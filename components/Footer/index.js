@@ -9,7 +9,6 @@ import Impressum from "./icons_impressum.svg";
 import * as style from './style.module.less';
 
 export default function Footer({ next, prev }) {
-    console.log('huhu', LinkedIn)
     return (
         <footer className={style.container_outer}>
             <div className={style.container}>
