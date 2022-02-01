@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Img from 'gatsby-image';
 import classNames from 'classnames';
 
-import style from './style.module.less';
+import * as style from './style.module.less';
 
 export default function Gallery({ images }) {
     return (

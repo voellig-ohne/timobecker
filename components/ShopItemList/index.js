@@ -1,7 +1,7 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import { slugify } from '../util';
-import style from './style.module.less';
+import * as style from './style.module.less';
 import Img from 'gatsby-image';
 import PlainPage from '../PlainPage';
 
@@ -9,7 +9,7 @@ export default function ({ items, title, children }) {
     return (
         <PlainPage title={title}>
             <ul className={style.list}>
-                {items.map(({ node: { id, title, images, price, subTitle } }) => {
+                {items?.map(({ node: { id, title, images, price, subTitle } }) => {
                     return (
                         <li key={id} className={style.item}>
                             <Link to={`/shop/${slugify(title)}`} className={style.link}>

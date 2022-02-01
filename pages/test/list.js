@@ -8,7 +8,7 @@ import POINTS from 'components/logo/points';
 import PATHS from 'components/logo/renderedPaths7.json';
 
 import 'style/main.less';
-import style from './style.module.less';
+import * as style from './style.module.less';
 
 export default class Index extends React.Component {
     render() {

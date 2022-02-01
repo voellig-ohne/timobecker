@@ -2,7 +2,7 @@ import React from 'react';
 import Logo from '../logo/logo';
 import POINTS from '../logo/points';
 
-import style from './style.module.less';
+import * as style from './style.module.less';
 
 export default class Intro extends React.Component {
     reset() {

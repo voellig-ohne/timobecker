@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'gatsby';
 import classNames from 'classnames';
 
-import style from './style.module.less';
+import * as style from './style.module.less';
 
 export default function Navigation({ currentPath }) {
     const [menuOpen, setMenuOpen] = useState(false);

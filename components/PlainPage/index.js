@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import Footer from '../Footer';
 import Navigation from '../Navigation';
-import style from './style.module.less';
+import * as style from './style.module.less';
 
 export default function ({ children, title, htmlTitle, path }) {
     return (

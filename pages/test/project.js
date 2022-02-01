@@ -7,7 +7,7 @@ import POINTS from 'components/logo/points';
 // import sternchen from '!svg-inline-loader!./sternchen.svg';
 
 import 'style/main.less';
-import style from './project.module.less';
+import * as style from './project.module.less';
 
 const KEY_TO_DOT = {
     a: 0,

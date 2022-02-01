@@ -1,10 +1,11 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import PlainPage from '../PlainPage';
-import style from './style.module.less';
+import * as style from './style.module.less';
 import Img from 'gatsby-image';
 import { getMailtoUrl } from '../util';
 import { Link } from 'gatsby';
+import { graphql } from 'gatsby';
 
 export default function ({
     data: {

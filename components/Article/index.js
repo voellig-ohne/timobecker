@@ -8,7 +8,7 @@ import Navigation from '../Navigation';
 import Intro from '../Intro';
 
 import '../style/main.less';
-import style from './style.module.less';
+import * as style from './style.module.less';
 import ShopItemList from '../ShopItemList';
 // import { graphql, useStaticQuery } from 'gatsby';
 

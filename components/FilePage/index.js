@@ -1,7 +1,7 @@
 import React from 'react';
 import ProjectList from '../ProjectList';
 import Article from '../Article';
-import style from './style.module.less';
+import * as style from './style.module.less';
 import { graphql } from 'gatsby';
 
 export default function ({ data, pageContext, path }) {
@@ -150,28 +150,28 @@ export const pageQuery = graphql`
                 }
             }
         }
-        shopItems: allContentfulShopItem {
-            edges {
-                node {
-                    id
-                    title
-                    subTitle
-                    description {
-                        childMarkdownRemark {
-                            html
-                        }
-                    }
-                    price
-                    images {
-                        fluid(maxWidth: 500) {
-                            sizes
-                            src
-                            srcSet
-                            aspectRatio
-                        }
-                    }
-                }
-            }
-        }
+    #    shopItems: allContentfulShopItem {
+    #        edges {
+    #            node {
+    #                id
+    #                 title
+    #                 subTitle
+    #                 description {
+    #                     childMarkdownRemark {
+    #                         html
+    #                     }
+    #                 }
+    #                 price
+    #                 images {
+    #                     fluid(maxWidth: 500) {
+    #                         sizes
+    #                         src
+    #                         srcSet
+    #                         aspectRatio
+    #                     }
+    #                 }
+    #             }
+    #         }
+    #     }
     }
 `;

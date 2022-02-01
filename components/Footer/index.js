@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-import style from './style.module.less';
+import * as style from './style.module.less';
 
 export default function Footer({ next, prev }) {
     return (

@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import classNames from 'classnames';
 
-import style from './style.module.less';
+import * as style from './style.module.less';
 
 export default function ProjectList({ projects }) {
     if (projects.length === 0) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import style from './style.module.less';
+import * as style from './style.module.less';
 
 export default class ScrollArrow extends React.Component {
     render() {

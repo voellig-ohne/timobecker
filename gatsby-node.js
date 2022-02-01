@@ -9,7 +9,7 @@ exports.createPages = ({ graphql, actions }) => {
 
     return new Promise((resolve, reject) => {
         const FilePage = path.resolve('./components/FilePage/index.js');
-        const ShopItemPage = path.resolve('./components/ShopItemPage/index.js');
+        // const ShopItemPage = path.resolve('./components/ShopItemPage/index.js');
 
         resolve(
             graphql(
@@ -39,19 +39,19 @@ exports.createPages = ({ graphql, actions }) => {
                                 }
                             }
                         }
-                        allContentfulShopItem {
-                            edges {
-                                node {
-                                    id
-                                    title
-                                    description {
-                                        childMarkdownRemark {
-                                            html
-                                        }
-                                    }
-                                }
-                            }
-                        }
+#                        allContentfulShopItem {
+#                            edges {
+#                                node {
+#                                    id
+#                                    title
+#                                    description {
+#                                        childMarkdownRemark {
+#                                            html
+#                                        }
+#                                    }
+#                                }
+#                            }
+#                        }
                     }
                 `
             ).then((result) => {
@@ -96,15 +96,15 @@ exports.createPages = ({ graphql, actions }) => {
                     });
                 });
 
-                result.data.allContentfulShopItem.edges.forEach(({ node }) => {
-                    createPage({
-                        path: 'shop/' + slugify(node.title),
-                        component: ShopItemPage,
-                        context: {
-                            id: node.id,
-                        },
-                    });
-                });
+                // result.data.allContentfulShopItem.edges.forEach(({ node }) => {
+                //     createPage({
+                //         path: 'shop/' + slugify(node.title),
+                //         component: ShopItemPage,
+                //         context: {
+                //             id: node.id,
+                //         },
+                //     });
+                // });
             })
         );
     });
@@ -142,7 +142,7 @@ exports.onCreateWebpackConfig = ({ actions, stage }) => {
         plugins: [
             new webpack.DefinePlugin({
                 'process.env': {
-                    STATIC: stage === 'build-html',
+                    STATIC: stage === "build-html" || stage === "develop-html",
                 },
             }),
         ],
