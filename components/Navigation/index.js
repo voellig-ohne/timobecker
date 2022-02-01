@@ -12,10 +12,10 @@ export default function Navigation({ currentPath }) {
             link: '/illustration/',
             title: 'Illustration',
         },
-        {
-            link: '/design/',
-            title: 'Design',
-        },
+        // {
+        //     link: '/design/',
+        //     title: 'Design',
+        // },
         {
             link: '/live/',
             title: 'Live',
