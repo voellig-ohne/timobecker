@@ -1,9 +1,15 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import LinkedIn from "./icons_linkedin.svg";
+import Instagram from "./icons_instagram.svg";
+import VO from "./icons_vo.svg";
+import Mail from "./icons_mail.svg";
+import Impressum from "./icons_impressum.svg";
 
 import * as style from './style.module.less';
 
 export default function Footer({ next, prev }) {
+    console.log('huhu', LinkedIn)
     return (
         <footer className={style.container_outer}>
             <div className={style.container}>
@@ -17,20 +23,20 @@ export default function Footer({ next, prev }) {
                     <LinkIcon
                         href="https://de.linkedin.com/in/timobecker-design"
                         title="LinkedIn"
-                        img={require('./icons_linkedin.svg')}
+                        img={LinkedIn}
                     />
                     <LinkIcon
                         href="https://www.instagram.com/timo_becker_/"
                         title="Instagram"
-                        img={require('./icons_instagram.svg')}
+                        img={Instagram}
                     />
-                    <LinkIcon href="mailto:mail@timobecker.com" title="Mail" img={require('./icons_mail.svg')} />
+                    <LinkIcon href="mailto:mail@timobecker.com" title="Mail" img={Mail} />
                     <LinkIcon
                         href="http://volligohne.de/projekte/timobecker/"
                         title="Völlig Ohne"
-                        img={require('./icons_vo.svg')}
+                        img={VO}
                     />
-                    <LinkIcon href="/impressum/" title="Impressum / Kontakt" img={require('./icons_impressum.svg')} />
+                    <LinkIcon href="/impressum/" title="Impressum / Kontakt" img={Impressum} />
                 </div>
                 {next && (
                     <Link to={next.fields.slug} className={style.nextPrev_link}>
