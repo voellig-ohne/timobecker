@@ -24,6 +24,8 @@ const SIZES = {
 
 export default class Logo extends React.Component {
     init() {
+        this.timers = [];
+
         if (this.props.order) {
             this.drawLine(this.PaperScope, this.points, this.props.order);
         }
@@ -91,6 +93,9 @@ export default class Logo extends React.Component {
 
     componentWillUnmount() {
         document.ontouchmove = undefined;
+        this.timers.forEach(timer => {
+            clearTimeout(timer)
+        })
         this.PaperScope.remove();
         // window._paq.push(['trackEvent', 'painting', 'connectionCount', this.connectionCount]);
     }
@@ -304,7 +309,7 @@ export default class Logo extends React.Component {
             this.paintGroup.children.forEach((child, idx) => {
                 child.opacity = 0;
 
-                setTimeout(() => {
+                this.timers.push(setTimeout(() => {
                     child.opacity = 1;
                     this.setCanvasSize();
                     this.PaperScope.view.draw();
@@ -319,7 +324,7 @@ export default class Logo extends React.Component {
                             }, 5000);
                         }
                     }
-                }, idx * 100);
+                }, idx * 100));
             });
         }
 
