@@ -68,7 +68,6 @@ function Slideshow({ images }) {
                         key={index}
                     >
                         <Img
-                            className={style.slideshowImage}
                             key={index}
                             loading="lazy"
                             fluid={image.childImageSharp.fluid}

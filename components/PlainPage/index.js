@@ -4,7 +4,7 @@ import Footer from '../Footer';
 import Navigation from '../Navigation';
 import * as style from './style.module.less';
 
-export default function ({ children, title, htmlTitle, path }) {
+export default function PlainPage ({ children, title, htmlTitle, path }) {
     return (
         <>
             <div className={style.container}>

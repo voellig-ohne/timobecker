@@ -12,7 +12,7 @@ import * as style from './style.module.less';
 import ShopItemList from '../ShopItemList';
 // import { graphql, useStaticQuery } from 'gatsby';
 
-export default function ({
+export default function Article({
     pageContext,
     path,
     children,

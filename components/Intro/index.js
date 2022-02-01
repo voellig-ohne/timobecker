@@ -13,7 +13,6 @@ export default class Intro extends React.Component {
         return (
             <div className={style.intro}>
                 <Logo
-                    className={style.logo}
                     points={POINTS}
                     size={400}
                     margin={20}

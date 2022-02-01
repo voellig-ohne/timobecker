@@ -4,7 +4,7 @@ import Article from '../Article';
 import * as style from './style.module.less';
 import { graphql } from 'gatsby';
 
-export default function ({ data, pageContext, path }) {
+export default function FilePage ({ data, pageContext, path }) {
     const {
         title,
         publisher,
@@ -37,7 +37,7 @@ export default function ({ data, pageContext, path }) {
             {logos && (
                 <ul className={style.logos}>
                     {logos.map(({ title, src }) => (
-                        <li className={style.logoItem} key={src.publicURL}>
+                        <li key={src.publicURL}>
                             <img className={style.logo} alt={title} title={title} src={src.publicURL} />
                         </li>
                     ))}

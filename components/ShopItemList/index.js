@@ -5,7 +5,7 @@ import * as style from './style.module.less';
 import Img from 'gatsby-image';
 import PlainPage from '../PlainPage';
 
-export default function ({ items, title, children }) {
+export default function ShopItemList ({ items, title, children }) {
     return (
         <PlainPage title={title}>
             <ul className={style.list}>
